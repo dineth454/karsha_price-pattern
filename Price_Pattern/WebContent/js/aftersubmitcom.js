@@ -3,11 +3,11 @@
  */
 
 var searchfield = location.search.split('com=')[1]; //get the company name from url // this is wrong if space that not valid 
-					document.write(searchfield);
+					//document.write(searchfield);
 					console.log(searchfield);
 				
 					if(searchfield){
-						if(searchfield.length>1){
+						if(searchfield.length>=1){
 					  var myExp = new RegExp(searchfield,"i"); 
 					  
  					  //console.log(myExp);
@@ -18,19 +18,33 @@ var searchfield = location.search.split('com=')[1]; //get the company name from 
  					   
  					   	var tmp=''; 
                 for (var i=0; i<data.RECORDS.length; i++) 
-                  if(data.RECORDS[i].COMNAM.search(myExp) != -1) {
+                  if((data.RECORDS[i].COMNAM.search(myExp) != -1)  || (data.RECORDS[i].TSYMBOL.search(myExp) != -1) || (String(data.RECORDS[i].PERMNO).search(myExp) != -1) ){
                 	  	var eachRecord =data.RECORDS[i].COMNAM;
                 	  	
                 	  	var permno=data.RECORDS[i].PERMNO;
                 	  	var tsym=data.RECORDS[i].TSYMBOL;
                 	  	var naics=data.RECORDS[i].NAICS;
                 	  	
-                	  	tmp += '<a  href="page2.html?Key='+permno+'&symbol='+tsym+'&naics='+naics+'" >'+eachRecord+'</a><br>'; //get the each permno and symbol
+                	  	tmp += '<div class="alert alert-info" role="alert"><a  href="page2.html?Key='+permno+'&symbol='+tsym+'&naics='+naics+'" >'+
+                	  	eachRecord+
+                	  	'| <b>PERMNO :</b>'+permno+
+                	  	'|<b>Trademark symbol - </b>'+tsym+
+                	  	'</a></div><br>'; //get the each permno and symbol
                 	  	console.log(tmp);
-                	  	document.getElementById('suggest').innerHTML=tmp + "test";
+                	  	document.getElementById('suggest').innerHTML=tmp;
                   }
  				   
  				  });	
 					}
 					}
+					
+					
+/*--------function onload */
+					
+					function myFunction() {
+						if(searchfield){
+					    document.getElementById("search").value = searchfield;
+						}
+					}
+
 				

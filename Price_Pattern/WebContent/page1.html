@@ -10,12 +10,14 @@
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
           rel="stylesheet">
   <link href="css/font-awesome.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+  
   <link href="css/dashboard.css" rel="stylesheet">
+ 
   
  
   <script src="js/jquery-1.7.2.min.js"></script> 
 <script src="js/bootstrap.js"></script> 
+ <link href="css/style.css" rel="stylesheet">
 
 
   <style type="text/css">
@@ -25,6 +27,10 @@
 	    border: 3px solid #73AD21; 
 	}
 	
+	.main{
+	height: auto;
+	
+	}
 	
 #suggest a:hover{
     text-decoration: none;
@@ -32,10 +38,10 @@
   </style>
   
 </head>
-<body>
+<body onload="myFunction()">
    <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
-      <div class="container">
+      <div class="container top">
        <a class="brand" href="index.html">Karsha : Price -Pattern </a>
       </div>
     </div>
@@ -57,24 +63,29 @@
  	<div class="container">
  		<div class="row">
  			<div class="col-md-12 main1" align="left">
+
  			
  				<form id="searchform" action="" method="GET">
 					  <div class="form-group">
 					    <label for="email" id="email">Company Name</label>
-					    <input type="text" class="form-control" id="search" name="com" required>
+					    <input type="text" class="form-control" id="search"  name="com" required placeholder="Name | PERMNO | SYMBOL ">
 					  	<input  type="submit" class=" "  value="" id="sbc">
 					  	
 	
 
 					  </div>
-					  
-					<!--   --> 
+
+
+				
+				
+
+									 
+													
+			<!--   --> 
 				</form>
 				
-				
-				<script src="js/aftersubmitcom.js"></script> <!--  this is for show sumbit values regexp-->
- 				 
- 				<script src="js/company.js"></script>
+ <script src="js/aftersubmitcom.js"></script> <!--  this is for show sumbit values regexp-->				 
+<script src="js/company.js"></script>
  			</div>
  		</div>
  		<div class="row">

@@ -20,7 +20,7 @@ $ ("#search").keyup(function(){
                 	  	var naics=data.RECORDS[i].NAICS;
                 	  	
                 	  	tmp += '<a  href="page2.html?Key='+permno+'&symbol='+tsym+'&naics='+naics+'" >'+eachRecord+'</a><br>'; //get the each permno and symbol
-                	  	console.log(tmp);
+                	  	//console.log(tmp);
                 	  	document.getElementById('suggest').innerHTML=tmp //.link(eachRecord ); //link here
               }
  						

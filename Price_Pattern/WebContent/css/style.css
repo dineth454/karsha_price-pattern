@@ -72,7 +72,7 @@ textarea {
 .navbar-inner {
 	padding: 7px 0;
 	
-	background: #5f88b3 !important;
+	background: #247b77;
 	
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
@@ -1297,6 +1297,7 @@ newly add by asensanjula----
 
 #search{
 	width:400px;
+	height: 30px;
 }
 
 #sbc{
@@ -1311,3 +1312,14 @@ newly add by asensanjula----
 #sbc:HOVER {
 	background-color:black;
 }
+
+.alert{
+	background-color: #99ffdd;
+	width:700px;
+	
+}
+
+.alert a{
+	color:black;
+}
+
