@@ -9,7 +9,7 @@ Bootstrap Admin Template by EGrappler.com
 */
 
 body {
-	background: #f9f6f1;
+	//background: #f9f6f1;
 	font: 13px/1.7em 'Open Sans';
 }
     
@@ -1284,3 +1284,30 @@ color: #333;
 	
 }
 
+
+/*
+newly add by asensanjula----
+ */
+ 
+#email{
+	color:#1C36E2;
+	font-size: 18px;
+	
+}
+
+#search{
+	width:400px;
+}
+
+#sbc{
+	//background-color: red;
+	margin-top: 0px;
+	width:32px;
+	height:32px;
+	background-image: url("ser.png");
+	background-color: white;
+}
+
+#sbc:HOVER {
+	background-color:black;
+}

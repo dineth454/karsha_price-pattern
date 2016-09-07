@@ -1,9 +1,15 @@
-$ ("#search").keyup(function(){
-          var searchfield =$("#search").val();
-            var myExp = new RegExp(searchfield,"i"); 
-            
-            if(searchfield ){
-            	if(searchfield.length>1){
+/**
+ * 
+ */
+
+var searchfield = location.search.split('com=')[1]; //get the company name from url // this is wrong if space that not valid 
+					document.write(searchfield);
+					console.log(searchfield);
+				
+					if(searchfield){
+						if(searchfield.length>1){
+					  var myExp = new RegExp(searchfield,"i"); 
+					  
  					  //console.log(myExp);
  				   $.getJSON('cmp.json',function(data){
  						//console.log(data);
@@ -21,12 +27,10 @@ $ ("#search").keyup(function(){
                 	  	
                 	  	tmp += '<a  href="page2.html?Key='+permno+'&symbol='+tsym+'&naics='+naics+'" >'+eachRecord+'</a><br>'; //get the each permno and symbol
                 	  	console.log(tmp);
-                	  	document.getElementById('suggest').innerHTML=tmp //.link(eachRecord ); //link here
-              }
- 						
- 				   	});	
-            }
-            }
- 				});
-
-
+                	  	document.getElementById('suggest').innerHTML=tmp + "test";
+                  }
+ 				   
+ 				  });	
+					}
+					}
+				
