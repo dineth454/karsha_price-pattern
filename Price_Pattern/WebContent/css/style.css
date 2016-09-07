@@ -9,7 +9,7 @@ Bootstrap Admin Template by EGrappler.com
 */
 
 body {
-	background: #f9f6f1;
+	//background: #f9f6f1;
 	font: 13px/1.7em 'Open Sans';
 }
     
@@ -72,7 +72,7 @@ textarea {
 .navbar-inner {
 	padding: 7px 0;
 	
-	background: #5f88b3 !important;
+	background: #247b77;
 	
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
@@ -1282,5 +1282,44 @@ color: #333;
 		width: 200px;
 	}
 	
+}
+
+
+/*
+newly add by asensanjula----
+ */
+ 
+#email{
+	color:#1C36E2;
+	font-size: 18px;
+	
+}
+
+#search{
+	width:400px;
+	height: 30px;
+}
+
+#sbc{
+	//background-color: red;
+	margin-top: 0px;
+	width:32px;
+	height:32px;
+	background-image: url("ser.png");
+	background-color: white;
+}
+
+#sbc:HOVER {
+	background-color:black;
+}
+
+.alert{
+	background-color: #99ffdd;
+	width:700px;
+	
+}
+
+.alert a{
+	color:black;
 }
 
