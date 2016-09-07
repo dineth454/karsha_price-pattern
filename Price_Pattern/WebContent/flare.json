@@ -1,0 +1,137 @@
+
+  {
+  "name": "Companies",
+  "parent": "null",
+  "children": [
+    {
+      "name": "sec:11 Agriculture",
+      "parent": "Top Level",
+      "children": [
+        {
+          "name": "Son of A",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "Daughter of A",
+          "parent": "Level 2: A"
+        }
+      ]
+    },
+    {
+      "name": "secC:21 Mining",
+      "parent": "Top Level",
+      "children": [
+        {
+          "name": "Son of A",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "Daughter of A",
+          "parent": "Level 2: A"
+        }
+      ]
+    },
+    {
+      "name": "sec:22 Utilities",
+      "parent": "Top Level",
+      "children": [
+        {
+          "name": "Son of A",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "Daughter of A",
+          "parent": "Level 2: A"
+        }
+      ]
+    },
+    {
+      "name": "sec:23 Construction",
+      "parent": "Top Level",
+      "children": [
+        {
+          "name": "Son of A",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "Daughter of A",
+          "parent": "Level 2: A"
+        }
+      ]
+    },
+    {
+      "name": "sec:31-33 Manufacturing",
+      "parent": "Top Level",
+      "children": [
+        {
+          "name": "Son of A",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "Daughter of A",
+          "parent": "Level 2: A"
+        }
+      ]
+    },
+    {
+      "name": "sec:42 Wholesale Trade",
+      "parent": "Top Level",
+      "children": [
+        {
+          "name": "Son of A",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "Daughter of A",
+          "parent": "Level 2: A"
+        }
+      ]
+    },
+    {
+      "name": "sec:44-45 Retail Trade",
+      "parent": "Top Level",
+      "children": [
+        {
+          "name": "Son of A",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "Daughter of A",
+          "parent": "Level 2: A"
+        }
+      ]
+    },
+    {
+      "name": "sec:48-49 Transportation and Warehousing",
+      "parent": "Top Level",
+      "children": [
+        {
+          "name": "Son of A",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "Daughter of A",
+          "parent": "Level 2: A"
+        }
+      ]
+    },
+    {
+      "name": "sec:51 Information",
+      "parent": "Top Level",
+      "children": [
+        {
+          "name": "Son of A",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "Daughter of A",
+          "parent": "Level 2: A"
+        }
+      ]
+    },
+    {
+      "name": "sec:52 Finance and Insurance",
+      "parent": "Top Level"
+    }
+  ]
+}
