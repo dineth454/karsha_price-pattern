@@ -7,17 +7,23 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
-          rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
   <link href="css/font-awesome.css" rel="stylesheet">
-  
   <link href="css/dashboard.css" rel="stylesheet">
- 
   
- 
-  <script src="js/jquery-1.7.2.min.js"></script> 
-<script src="js/bootstrap.js"></script> 
- <link href="css/style.css" rel="stylesheet">
+    <!-- CSS files for D3 Tree -->
+  <link href="css/customStyle.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  
+  <script src="js/jquery-2.1.4.min.js"></script> 
+  <script src="js/bootstrap.min.js"></script> 
+  <script>
+$(document).ready(function(){
+    $("#expndBtn").click(function(){
+        $("#result").toggle();
+    });
+});
+</script>
 
 
   <style type="text/css">
@@ -62,39 +68,64 @@
 <div class="main">
  	<div class="container">
  		<div class="row">
- 			<div class="col-md-12 main1" align="left">
-
- 			
- 				<form id="searchform" action="" method="GET">
+ 			<div class="col-md-8" >
+ 				<div class="panel panel-default">
+    				<div class="panel-heading">Search Company Details</div>
+    			<div class="panel-body">
+    			<form id="searchform" action="" method="GET">
 					  <div class="form-group">
-					    <label for="email" id="email">Company Name</label>
 					    <input type="text" class="form-control" id="search"  name="com" required placeholder="Name | PERMNO | SYMBOL ">
 					  	<input  type="submit" class=" "  value="" id="sbc">
-					  	
-	
-
 					  </div>
-
-
-				
-				
-
-									 
-													
-			<!--   --> 
 				</form>
-				
- <script src="js/aftersubmitcom.js"></script> <!--  this is for show sumbit values regexp-->				 
+    			</div>
+  				</div>
+ 				
+<script src="js/aftersubmitcom.js"></script> <!--  this is for show sumbit values regexp-->				 
 <script src="js/company.js"></script>
  			</div>
+ 			
+ 			<!-- Collapse Button -->
+			<div class="col-md-4">
+  				<div class="panel panel-default">
+    				<div class="panel-heading">Navigate Company Details</div>
+    			<div class="panel-body">
+    			<button id="expndBtn" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">
+			    <span class="glyphicon glyphicon-collapse-down"></span> View Companies
+			  </button></div>
+  				</div>
+			</div>
  		</div>
- 		<div class="row">
+ 		
+ 		<!-- search result -->
+ 		<div id="result" class="row">
  			<div class="col-md-12">
- 					<div id="suggest" align="left">
- 					<div id="lol" align="right"></div>		
- 					</div>
+ 				<div id="suggest" align="left">	
+ 				</div>
  			</div>
  		</div>
+ 		
+ 		<!-- Company Tree -->
+ 		<div class="row">
+ 		<div class="col-md-12">
+			<div id="demo" class="collapse">
+			<div class="panel panel-default">
+    				<div class="panel-heading">All companies</div>
+    			<div class="panel-body">
+    				<div id="treeView" class="widget-content">
+			          	<div class="widget big-stats-container">
+			                  <div class="widget-content">
+			                     <h6 class="bigstats">
+			                        Click on the nodes to see the structure
+			                     </h6>
+			                   </div>
+			            </div>
+			       </div>
+    			</div>
+  			</div>
+			</div>
+			</div>
+			</div>
  	
  	</div>
 </div>
@@ -127,6 +158,22 @@
   <!-- /footer-inner --> 
 </div>
 <!-- /footer --> 
+
+<!-- expand view -->
+<script>
+$(document).ready(function(){
+  $("#demo").on("hide.bs.collapse", function(){
+    $(".btn").html('<span class="glyphicon glyphicon-collapse-down"></span> View Companies');
+  });
+  $("#demo").on("show.bs.collapse", function(){
+    $(".btn").html('<span class="glyphicon glyphicon-collapse-up"></span> Search Companies');
+  });
+});
+</script>
+
+<!-- scripts for Company Tree -->
+<script src="js/d3.min.js"></script>
+<script src="js/customScript.js"></script>
 
 </body>
 </html>

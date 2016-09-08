@@ -1,4 +1,4 @@
-$ ("#search").keyup(function(){
+$("#search").keyup(function(){
           var searchfield =$("#search").val();
             var myExp = new RegExp(searchfield,"i"); 
             

@@ -3,7 +3,7 @@
  */
 
 var searchfield = location.search.split('com=')[1]; //get the company name from url // this is wrong if space that not valid 
-					//document.write(searchfield);
+					
 					console.log(searchfield);
 				
 					if(searchfield){
