@@ -317,7 +317,7 @@ textarea {
 
 .footer-inner {
 	padding: 15px 0;
-	
+	//position:fixed;
 	font-size: 12px;
 	background: #111;
 	color: #999;
@@ -1312,6 +1312,7 @@ newly add by asensanjula----
 	height:32px;
 	background-image: url("ser.png");
 	background-color: white;
+	margin-top: -5px;
 
 }
 
