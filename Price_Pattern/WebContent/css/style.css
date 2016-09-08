@@ -1323,10 +1323,19 @@ newly add by asensanjula----
 .alert{
 	background-color: #99ffdd;
 	width:700px;
+	margin-bottom: 0px;
 	
 }
 
 .alert a{
 	color:black;
 }
+#eachRecord{
+	color:#004d4d;
+	
+}
 
+#eachRecord:HOVER{
+	font-size:1.5em;
+	text-decoration: underline;
+}
