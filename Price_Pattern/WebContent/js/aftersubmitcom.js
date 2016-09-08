@@ -17,7 +17,7 @@ var searchfield = location.search.split('com=')[1]; //get the company name from 
  					  
  					   
  					   	var tmp=''; 
-                for (var i=0; i<data.RECORDS.length; i++) 
+                for (var i=0; i<data.RECORDS.length; i++) {
                   if((data.RECORDS[i].COMNAM.search(myExp) != -1)  || (data.RECORDS[i].TSYMBOL.search(myExp) != -1) || (String(data.RECORDS[i].PERMNO).search(myExp) != -1) ){
                 	  	var eachRecord =data.RECORDS[i].COMNAM;
                 	  	
@@ -25,14 +25,19 @@ var searchfield = location.search.split('com=')[1]; //get the company name from 
                 	  	var tsym=data.RECORDS[i].TSYMBOL;
                 	  	var naics=data.RECORDS[i].NAICS;
                 	  	
-                	  	tmp += '<div class="alert alert-info" role="alert"><a  href="page2.html?Key='+permno+'&symbol='+tsym+'&naics='+naics+'" >'+
-                	  	eachRecord+
+                	  	tmp += '<div class="alert alert-info" role="alert"><a  href="page2.html?Key='+permno+'&symbol='+tsym+'&naics='+naics+'" >'+'<div id="eachRecord" style="display:inline; "><b>'+
+                	  	eachRecord+'</b></div>'+
                 	  	'| <b>PERMNO :</b>'+permno+
                 	  	'|<b>Trademark symbol - </b>'+tsym+
+                	  	' |<b> NAICS - </b>'+naics+
                 	  	'</a></div><br>'; //get the each permno and symbol
                 	  	console.log(tmp);
                 	  	document.getElementById('suggest').innerHTML=tmp;
                   }
+                }
+                if(tmp.length==0){
+                	document.getElementById('suggest').innerHTML="<div style='color:red;display:inline;'>No results found for </div>"+searchfield;
+                }
  				   
  				  });	
 					}

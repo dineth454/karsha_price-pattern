@@ -23,6 +23,7 @@ $ ("#search").keyup(function(){
                 	  	//console.log(tmp);
                 	  	document.getElementById('suggest').innerHTML=tmp //.link(eachRecord ); //link here
               }
+                 
  						
  				   	});	
             }
