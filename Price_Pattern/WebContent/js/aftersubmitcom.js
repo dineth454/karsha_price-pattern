@@ -25,7 +25,7 @@ var searchfield = location.search.split('com=')[1]; //get the company name from 
                 	  	var tsym=data.RECORDS[i].TSYMBOL;
                 	  	var naics=data.RECORDS[i].NAICS;
                 	  	
-                	  	tmp += '<div class="alert alert-info" role="alert"><a  href="page2.html?Key='+permno+'&symbol='+tsym+'&naics='+naics+'" >'+'<div id="eachRecord" style="display:inline; "><b>'+
+                	  	tmp += '<div class="alert alert-info" role="alert"><a  href="predict.html?Key='+permno+'&symbol='+tsym+'&naics='+naics+'&company='+eachRecord+'" >'+'<div id="eachRecord" style="display:inline; "><b>'+
                 	  	eachRecord+'</b></div>'+
                 	  	'| <b>PERMNO :</b>'+permno+
                 	  	'|<b>Trademark symbol - </b>'+tsym+
