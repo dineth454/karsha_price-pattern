@@ -6,6 +6,7 @@
   <title>Price Pattern</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
@@ -26,7 +27,6 @@ $(document).ready(function(){
 });
 </script>
 
-
   <style type="text/css">
 	.logo {
 	    width: 250px;
@@ -42,7 +42,7 @@ $(document).ready(function(){
 #suggest a:hover{
     text-decoration: none;
 }
-  </style>
+  </style> 
   
 </head>
 <body onload="myFunction()">
@@ -71,7 +71,7 @@ $(document).ready(function(){
  		<div class="row">
  			<div class="col-md-8" >
  				<div class="panel panel-default">
-    				<div class="panel-heading">Search Company Details</div>
+    				<div class="panel-heading"><strong>Search Company Details</strong></div>
     			<div class="panel-body">
     			<form id="searchform" action="" method="GET">
 					  <div class="form-group">
@@ -89,10 +89,10 @@ $(document).ready(function(){
  			<!-- Collapse Button -->
 			<div class="col-md-4">
   				<div class="panel panel-default">
-    				<div class="panel-heading">Navigate Company Details</div>
+    				<div class="panel-heading"><strong>Browse through Company Tree</strong></div>
     			<div class="panel-body">
     			<button id="expndBtn" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">
-			    <span class="glyphicon glyphicon-collapse-down"></span> View Companies
+			    <span class="glyphicon glyphicon-hand-down"> </span> All Companies 
 			  </button></div>
   				</div>
 			</div>
@@ -111,7 +111,7 @@ $(document).ready(function(){
  		<div class="col-md-12">
 			<div id="demo" class="collapse">
 			<div class="panel panel-default">
-    				<div class="panel-heading">All companies</div>
+    				<div class="panel-heading"><strong>All companies</strong></div>
     			<div class="panel-body">
     				<div id="treeView" class="widget-content">
 			          	<div class="widget big-stats-container">
@@ -119,6 +119,10 @@ $(document).ready(function(){
 			                     <h6 class="bigstats">
 			                        Click on the nodes to see the structure
 			                     </h6>
+			                     <div class="col-md-12">
+			                     	<button class="btn btn-primary" onclick="expandAll()">Expand All</button>
+			                   	 	<button class="btn btn-primary" onclick="collapseAllNodes()">Collapse All</button>
+			                     </div>
 			                   </div>
 			            </div>
 			       </div>
@@ -164,10 +168,10 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
   $("#demo").on("hide.bs.collapse", function(){
-    $(".btn").html('<span class="glyphicon glyphicon-collapse-down"></span> View Companies');
+    $("#expndBtn").html('<span class="glyphicon glyphicon-hand-down">  </span> All Companies ');
   });
   $("#demo").on("show.bs.collapse", function(){
-    $(".btn").html('<span class="glyphicon glyphicon-collapse-up"></span> Search Companies');
+    $("#expndBtn").html('<span class="glyphicon glyphicon-hand-left">  </span> Back To Search ');
   });
 });
 </script>
