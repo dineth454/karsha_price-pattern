@@ -1,5 +1,34 @@
 //============== D3 tree scripts ===============//
 
+function collapse(d) {
+    if (d.children) {
+      d._children = d.children;
+      d._children.forEach(collapse);
+      d.children = null;
+    }
+  }
+  
+  function collapseAllNodes(){
+	    root.children.forEach(collapse);
+	    collapse(root);
+	    update(root);
+  }
+  
+function expand(d){   
+    var children = (d.children)?d.children:d._children;
+    if (d._children) {        
+        d.children = d._children;
+        d._children = null;       
+    }
+    if(children)
+      children.forEach(expand);
+}
+
+function expandAll(){
+    expand(root); 
+    update(root);
+}
+
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
     width = 960 - margin.right - margin.left,
     height = 800 - margin.top - margin.bottom;
@@ -27,17 +56,10 @@ d3.json("flare.json", function(error, flare) {
   root.x0 = height / 2;
   root.y0 = 0;
 
-  function collapse(d) {
-    if (d.children) {
-      d._children = d.children;
-      d._children.forEach(collapse);
-      d.children = null;
-    }
-  }
-
   root.children.forEach(collapse);
   update(root);
 });
+
 
 d3.select(self.frameElement).style("height", "800px");
 
@@ -54,22 +76,39 @@ function update(source) {
   // Update the nodes…
   var node = svg.selectAll("g.node")
       .data(nodes, function(d) { return d.id || (d.id = ++i); });
+  
+  //leaf
+  //var leaves = d3.selectAll("g.node").filter(function(d) {
+	  //return d.children === null;
+	//});
+     
 
   // Enter any new nodes at the parent's previous position.
   var nodeEnter = node.enter().append("g")
       .attr("class", "node")
       .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-      .on("click", click);
+      .on("click", click)
+  	  .on("mouseover", mouseover)
+      .on("mouseout", mouseout);
 
   nodeEnter.append("circle")
       .attr("r", 1e-6)
+      /*.style("fill",function(d) {
+    	  var isLeaf;
+    	  if(d.children === null){
+    		  isLeaf = "green";
+    	  }else{
+    		  isLeaf = "red";
+    	  }
+    	  return isLeaf;
+    	  });*/
       .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
 
   nodeEnter.append("text")
       .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
       .attr("dy", ".35em")
       .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-      .text(function(d) { return d.name; })
+      .text(function(d) { return d.sector; })
       .style("fill-opacity", 1e-6); 
   
   //hyperlink part
@@ -156,4 +195,20 @@ function click(d) {
   }
   update(d);
 }
+
+function mouseover(d) {
+    d3.select(this).append("text")
+        .attr("class", "hover")
+        .attr('transform', function(d){ 
+            return 'translate(5, -10)';
+        })
+        .text(d.name);
+}
+
+//Toggle children on click.
+function mouseout(d) {
+    d3.select(this).select("text.hover").remove();
+}
+
+
 
