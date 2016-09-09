@@ -9,7 +9,7 @@ Bootstrap Admin Template by EGrappler.com
 */
 
 body {
-	background: #f9f6f1;
+	//background: #f9f6f1;
 	font: 13px/1.7em 'Open Sans';
 }
     
@@ -71,8 +71,9 @@ textarea {
 
 .navbar-inner {
 	padding: 7px 0;
+	height:50px;
 	
-	background: #5f88b3 !important;
+	background: #247b77;
 	
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
@@ -84,19 +85,21 @@ textarea {
 }
 
 .navbar .nav a {
-	font-size: 11px;
+	font-size: 18px;
 }
 .navbar .nav>li>a { color:#fff !important;}
 .navbar .brand {
 	font-weight: 600;
 	position: relative;
 	top: 2px;
+	font-size: 18px;
+	color:white;
 }
 
 .navbar .search-query {
 	background-color: #444;
 	width: 150px;
-	font-size: 11px;
+	font-size: 18px;
 	font-weight: bold;
 }
 
@@ -130,7 +133,7 @@ textarea {
 	
 	height: 80px;
 	padding: 0;
-	margin: 0;
+	margin-top:-15px;
 	
 }
 
@@ -314,7 +317,7 @@ textarea {
 
 .footer-inner {
 	padding: 15px 0;
-	
+	//position:fixed;
 	font-size: 12px;
 	background: #111;
 	color: #999;
@@ -1282,5 +1285,58 @@ color: #333;
 		width: 200px;
 	}
 	
+}
+
+
+/*
+newly add by asensanjula----
+ */
+ 
+#email{
+	color:#1C36E2;
+	font-size: 18px;
+	
+}
+
+#search{
+	width:400px;
+	//height: 30px;
+	display: inline;
+}
+
+
+#sbc{
+	//background-color: red;
+	//padding-top: 10px;
+	width:32px;
+	height:32px;
+	background-image: url("ser.png");
+	background-color: white;
+	margin-top: -5px;
+
+}
+
+#sbc:HOVER {
+	background-color:black;
+}
+
+.alert{
+	background-color: #99ffdd;
+	width:700px;
+	margin-bottom: 0px;
+	
+}
+
+.alert a{
+	color:black;
+}
+#eachRecord{
+	color:#004d4d;
+	
+}
+
+#eachRecord:HOVER{
+	font-size:1.5em;
+	text-decoration: underline;
 }
 
