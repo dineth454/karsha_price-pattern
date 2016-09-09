@@ -250,7 +250,34 @@
     {
       "name": "Finance and Insurance",
       "sector": "Sec: 52",
-      "parent": "Top Level"
+      "parent": "Top Level",
+      "children": [
+        {
+          "name": "BA Company",
+          "sector": "BA Company",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "BB Company",
+          "sector": "BB Company",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "BC Company",
+          "sector": "BC Company",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "BD Company",
+          "sector": "BD Company",
+          "parent": "Level 2: A"
+        },
+        {
+          "name": "BE Company",
+          "sector": "BE Company",
+          "parent": "Level 2: A"
+        }
+      ]
     }
   ]
 }
