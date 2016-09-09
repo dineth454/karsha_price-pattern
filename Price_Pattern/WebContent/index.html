@@ -34,7 +34,7 @@
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-       <a class="brand" href="index.html">Project Name : Karsha</a>
+       <a class="brand" href="index.html">Project Name : Karsha - PRICE PATTERN</a>
       </div>
     </div>
   </div>
@@ -43,56 +43,21 @@
       <div class="container">
        <ul class="mainnav">
           <li  class="active"><a href="index.html"><i class="icon-home"></i><span>Home</span> </a> </li>
-          <li><a href="page1.html"><i class="icon-dashboard"></i><span>Page 01</span> </a> </li>
-          <li><a href="page2.html"><i class="icon-list-alt"></i><span>Page 02</span> </a> </li>
-          <li><a href="page3.html"><i class="icon-user"></i><span>Page 03</span> </a></li>
+          <li><a href="page1.html"><i class="icon-dashboard"></i><span>Search</span> </a> </li>
+          
+          <li><a href="page3.html"><i class="icon-user"></i><span>About</span> </a></li>
         </ul>
       </div>
     </div>
   </div>
   
-  <!-- Collapse Button -->
-  <div class="container">
-    <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo">
-      <span class="glyphicon glyphicon-collapse-down"></span> View Companies
-    </button>
-  </div>
-  <br>
+ 
 
 <!-- Company Tree -->
-<div id="demo" class="collapse">
-<div class="main">
-  <div class="main-inner">
-    <div class="container">
-      <div class="row">
-        <div class="span12">
-          <div class="widget widget-nopad">
-            <div class="widget-header"> <i class="icon-list-alt"></i>
-              <h3>All Companies</h3>
-            </div>
-            <div class="widget-content">
-              <div class="widget big-stats-container">
-                <div id="treeView" class="widget-content">
-                  <div class="widget big-stats-container">
-                    <div class="widget-content">
-                      <h6 class="bigstats">
-                        Select companies using company tree 
-                      </h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /span6 --> 
-      </div>
-      <!-- /row --> 
-    </div>
-    <!-- /container --> 
+<div class="jumbotron">
+  <div class="container">
+    <h1 align="center" style="">Project KARSHA - PRICE PATTERN</h1>
   </div>
-  <!-- /main-inner --> 
-</div>
 </div>
 
 <!-- /main -->
@@ -124,21 +89,7 @@
 <script src="js/jquery-2.1.4.min.js"></script> 
 <script src="js/bootstrap.min.js"></script> 
 
-<!-- expand view -->
-<script>
-$(document).ready(function(){
-  $("#demo").on("hide.bs.collapse", function(){
-    $(".btn").html('<span class="glyphicon glyphicon-collapse-down"></span> View Companies');
-  });
-  $("#demo").on("show.bs.collapse", function(){
-    $(".btn").html('<span class="glyphicon glyphicon-collapse-up"></span> Search Companies');
-  });
-});
-</script>
 
-<!-- scripts for Company Tree -->
-<script src="js/d3.min.js"></script>
-<script src="js/customScript.js"></script>
 
 </body>
 </html>
