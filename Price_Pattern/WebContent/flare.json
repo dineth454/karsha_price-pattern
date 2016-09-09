@@ -250,7 +250,6 @@
     {
       "name": "Finance and Insurance",
       "sector": "Sec: 52",
-<<<<<<< HEAD
       "parent": "Top Level",
       "children": [
         {
@@ -279,9 +278,6 @@
           "parent": "Level 2: A"
         }
       ]
-=======
-      "parent": "Top Level"
->>>>>>> branch 'master' of https://github.com/dineth454/karsha_price-pattern.git
     }
   ]
 }
