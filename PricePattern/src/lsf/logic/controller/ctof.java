@@ -37,6 +37,8 @@ public class ctof {
  
 		//String result = "@Produces(\"application/json\") Output: \n\nF to C Converter Output: \n\n" + jsonObject;
 		return Response.status(200).entity(jsonObject.toString()).build();
+		//to check this result please refer the following URL
+		//http://localhost:8080/PricePattern/WStest/ctof
 	}
 	
 }
