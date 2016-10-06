@@ -10,12 +10,12 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <servlet-name>test</servlet-name>
-    <servlet-class>lsf.logic.controller.test</servlet-class>
+		<servlet-name>price Pattern Webservice</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>test</servlet-name>
-  	<url-pattern>/testUP</url-pattern>
+		<servlet-name>price Pattern Webservice</servlet-name>
+		<url-pattern>/WStest/*</url-pattern>
   </servlet-mapping>
-
 </web-app>
