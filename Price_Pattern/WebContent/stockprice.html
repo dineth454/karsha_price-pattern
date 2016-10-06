@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="css/c3.css" rel="stylesheet" type="text/css">
+  
+  <!-- Load d3.js and c3.js -->
+  <script src="js/d3.min.js" charset="utf-8"></script>
+  <script src="js/c3.js"></script>
+
+  <script src="js/jquery-1.7.2.min.js"></script> 
+<meta charset="ISO-8859-1">
+<title>Company Price Graph</title>
+</head>
+<body>
+<div id="here"></div>
+<script>
+var permno=92611;
+var url = "http://localhost:8080/KarshaCEP/stockprice?PERMNO="+permno;
+$.ajax({
+	type : 'GET',
+	url : url,
+	dataType : 'json',
+	success : function(data) {
+		draw_pricegrap(here,data);
+		},
+		error : function(data, error) {
+			console.log(error+"data doesnt loading correctly");
+		},
+		async : false
+});
+
+
+function draw_pricegrap (id,data) {
+    var chart = c3.generate({
+        bindto: id,
+        data: {
+            x: 'AllDates',
+    //        xFormat: '%Y%m%d', // 'xFormat' can be used as custom format of 'x'
+            axes: {
+                PRC: 'y',
+                PseudoPrice: 'y',
+                Turnover : 'y2'
+            },
+            json : data,
+			mimeType : 'json'
+        },
+        axis: {
+            x: {
+                type: 'timeseries',
+                tick: {
+                    format: '%Y-%m-%d'
+                },
+                label:'Time',
+            },
+            y:{
+                label:'Price/PseudoPrice in $',
+            } ,
+            y2: {
+                show: true,
+                label:'Turnover'
+            }
+        },
+        tooltip: {
+            format: {
+                value: function (value, ratio, id) {
+                    var format = id === 'Turnover' ? d3.format(',') : d3.format('$');
+                    return format(value);
+                }
+            }
+        },
+    zoom: {
+        enabled: true
+    }
+    });
+}
+
+</script>
+
+</body>
+</html>
