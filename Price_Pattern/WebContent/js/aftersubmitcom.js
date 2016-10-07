@@ -4,7 +4,7 @@
 
 var searchfield = location.search.split('com=')[1]; //get the company name from url // this is wrong if space that not valid 
 					
-					console.log(searchfield);
+					//console.log(searchfield);
 				
 					if(searchfield){
 						if(searchfield.length>=1){
@@ -31,7 +31,7 @@ var searchfield = location.search.split('com=')[1]; //get the company name from 
                 	  	'|<b>Trademark symbol - </b>'+tsym+
                 	  	' |<b> NAICS - </b>'+naics+
                 	  	'</a></div><br>'; //get the each permno and symbol
-                	  	console.log(tmp);
+                	  	//console.log(tmp);
                 	  	document.getElementById('suggest').innerHTML=tmp;
                   }
                 }
