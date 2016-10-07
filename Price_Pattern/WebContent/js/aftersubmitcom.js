@@ -11,7 +11,7 @@ var searchfield = location.search.split('com=')[1]; //get the company name from 
 					  var myExp = new RegExp(searchfield,"i"); 
 					  
  					  //console.log(myExp);
- 				   $.getJSON('cmp.json',function(data){
+ 				   $.getJSON('data/cmp.json',function(data){
  						//console.log(data);
               
  					  

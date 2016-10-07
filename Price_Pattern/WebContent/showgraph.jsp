@@ -4,7 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>graph</title>
+
+
+  <title>Stock Price Graph</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+          rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/dashboard.css" rel="stylesheet">
+  
+   <script src="js/jquery-2.1.4.min.js"></script> 
+  <script src="js/bootstrap.min.js"></script>
+   <script src="js/predict.js"></script> 
+
 <link href="css/bootstrap.min.css" rel="stylesheet">
   <!-- Load c3.css -->
   <link href="css/c3.css" rel="stylesheet" type="text/css">
@@ -19,7 +35,7 @@
 </head>
 
 <body>
- <h2>price pattern graph</h2>
+ 
  
  <div id="chart"></div>
  

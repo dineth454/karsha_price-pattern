@@ -5,7 +5,7 @@ $("#search").keyup(function(){
             if(searchfield ){
             	if(searchfield.length>1){
  					  //console.log(myExp);
- 				   $.getJSON('cmp.json',function(data){
+ 				   $.getJSON('data/cmp.json',function(data){
  						//console.log(data);
               
  					  
