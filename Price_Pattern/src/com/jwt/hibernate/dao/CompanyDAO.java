@@ -15,13 +15,13 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import com.google.gson.Gson;
-import com.jwt.hibernate.bean.Company;
+import com.jwt.hibernate.bean.companydetails;
 
 
 public class CompanyDAO {
-	public List<Company> getDetails(){
-		List<Company> list = null;
-		
+	public List<companydetails> getDetails(int permno){
+		List<companydetails> list = null;
+		System.out.print("hello");
     	try {
             // 1. configuring hibernate
             Configuration configuration = new Configuration().configure();
@@ -34,19 +34,19 @@ public class CompanyDAO {
  
             // 4. Starting Transaction
             Transaction transaction = session.beginTransaction();
-            Query<?> query = session.createQuery("from Company");
+            Query<?> query = session.createQuery("from companydetails where PERMNO=' "+permno+" ' ");
             
             //1st way....
-            List<Company> result = (List<Company>) query.list();
+            List<companydetails> result = (List<companydetails>) query.list();
             
             //Gson gson = new Gson();
             //String jsonString = gson.toJson(result);
-            
-            for(Company company : result)
+        /*    
+            for(companydetails companydetails : result)
             {
-            	System.out.println("PERMNO: "+company.getPERMNO()+", PRC: "+company.getPRC());
+            	System.out.println("PermNo: "+companydetails.getPERMNO()+", Price: "+companydetails.getPRC());
             }
-            
+            */
             // 2nd way......
             //List users = (List)query.list();
             //for (Iterator iterator = users.iterator(); iterator.hasNext();)
@@ -69,7 +69,7 @@ public class CompanyDAO {
     	
     }
 	
-	public void genJson(List<Company> list, HttpServletRequest request, HttpServletResponse response){
+	public void genJson(List<companydetails> list, HttpServletRequest request, HttpServletResponse response){
 		String theList = "";
 		Gson gson = new Gson();
 		theList = gson.toJson(list);
@@ -79,8 +79,9 @@ public class CompanyDAO {
 		try {
 			PrintWriter pwr = response.getWriter();
 			//pwr.print(theList);
-			if (userPath.equals("/json")) {
+			if (userPath.equals("/pricecontroller")) {
 				pwr.print(theList);
+				
 			}else{}
 			System.out.print("success inside genJson method..");
 		} catch (IOException e) {

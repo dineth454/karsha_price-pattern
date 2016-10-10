@@ -5,7 +5,7 @@ $("#search").keyup(function(){
             if(searchfield ){
             	if(searchfield.length>1){
  					  //console.log(myExp);
- 				   $.getJSON('cmp.json',function(data){
+ 				   $.getJSON('data/cmp.json',function(data){
  						//console.log(data);
               
  					  
@@ -19,7 +19,7 @@ $("#search").keyup(function(){
                 	  	var tsym=data.RECORDS[i].TSYMBOL;
                 	  	var naics=data.RECORDS[i].NAICS;
                 	  	
-                	  	tmp += '<a  href="predict.html?Key='+permno+'&symbol='+tsym+'&naics='+naics+'&company='+eachRecord+'" >'+eachRecord+'</a><br>'; //get the each permno and symbol
+                	  	tmp += '<a  href="showgraph.jsp?Key='+permno+'&symbol='+tsym+'&naics='+naics+'&company='+eachRecord+'" >'+eachRecord+'</a><br>'; //get the each permno and symbol
                 	  	//console.log(tmp);
                 	  	document.getElementById('suggest').innerHTML=tmp //.link(eachRecord ); //link here
               }

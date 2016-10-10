@@ -1,11 +1,12 @@
 package com.jwt.hibernate.bean;
 
-public class Company {
+public class companydetails {
 	private int PERMNO;
 	private String Date;
 	private double PRC;
 	private double Pseudo_PRC;
 	private double Turnover;
+	
 	
 	public int getPERMNO() {
 		return PERMNO;
@@ -38,5 +39,5 @@ public class Company {
 		Turnover = turnover;
 	}
 	
-	
+
 }
