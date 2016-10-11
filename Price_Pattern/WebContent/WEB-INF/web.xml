@@ -21,7 +21,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>price Pattern Webservice</servlet-name>
-		<url-pattern>/WStest/*</url-pattern>
+		<url-pattern>/getDetails/*</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>

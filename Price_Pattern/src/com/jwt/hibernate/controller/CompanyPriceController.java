@@ -42,21 +42,31 @@ public class CompanyPriceController {
 		return Response.status(200).entity(jsonArray.toString()).build();
 	}
 	
-	@Path("{c}")
+	@Path("{graphData}")
 	@GET
 	@Produces("application/json")
-	public Response ctof_input(@PathParam("c") Double c){
-		JSONObject jsonObject = new JSONObject();
-		Double fahrenheit;
-		Double celsius = c;
-		fahrenheit = ((celsius * 9) / 5) + 32;
-		jsonObject.put("F Value", fahrenheit); 
-		jsonObject.put("C Value", celsius);
- 
-		//String result = "@Produces(\"application/json\") Output: \n\nF to C Converter Output: \n\n" + jsonObject;
-		return Response.status(200).entity(jsonObject.toString()).build();
-		//to check this result please refer the following URL
-		//http://localhost:8080/PricePattern/WStest/ctof
+	public Response ctof_input(@PathParam("graphData") int permno){
+		CompanyDAO company = new CompanyDAO();
+		List<companydetails>  list =  company.getDetails(permno);
+		//company.genJson(list, request, response);
+		JSONArray jsonArray = new JSONArray();
+		
+		
+		for(companydetails companydetails : list)
+        {
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("PERMNO",companydetails.getPERMNO());
+			jsonObject.put("Date",companydetails.getDate());
+			jsonObject.put("PRC",companydetails.getPRC());
+			jsonObject.put("Pseudo_PRC",companydetails.getPseudo_PRC());
+			jsonArray.put(jsonObject);
+			//jsonObject.put(companydetails.getPRC());
+			
+			
+			
+        }	
+		
+		return Response.status(200).entity(jsonArray.toString()).build();
 	}
 	
 }
