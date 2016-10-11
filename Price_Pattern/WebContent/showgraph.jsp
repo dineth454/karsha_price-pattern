@@ -113,7 +113,7 @@
  setTimeout(function () {
         chart = c3.generate({
             data: {
-                url: '/Price_Pattern/pricecontroller?Key='+permno,	
+                url: '/Price_Pattern/WStest/CompanyPriceController',	
                 mimeType: 'json',
                 keys: {
                     x: 'Date', // it's possible to specify 'x' when category axis
