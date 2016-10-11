@@ -1,3 +1,4 @@
+
 package com.jwt.hibernate.bean;
 
 public class companydetails {

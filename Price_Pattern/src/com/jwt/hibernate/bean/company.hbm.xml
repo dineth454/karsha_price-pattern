@@ -18,4 +18,5 @@
       <property name="Turnover" column="Turnover" type="double"/>
       
    </class>
+
 </hibernate-mapping>

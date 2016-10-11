@@ -1,3 +1,4 @@
+
 package com.jwt.hibernate.dao;
 
 import java.io.IOException;
@@ -82,9 +83,7 @@ public class CompanyDAO {
 			if (userPath.equals("/pricecontroller")) {
 				pwr.print(theList);
 				
-			}else{
-				System.out.print("Url is not Correct");
-			}
+			}else{}
 			System.out.print("success inside genJson method..");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -92,3 +91,4 @@ public class CompanyDAO {
 		}
 	}
 }
+

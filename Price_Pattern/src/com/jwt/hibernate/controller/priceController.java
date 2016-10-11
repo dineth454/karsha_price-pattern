@@ -1,3 +1,4 @@
+
 package com.jwt.hibernate.controller;
 
 import java.util.List;
@@ -70,3 +71,4 @@ public class priceController extends HttpServlet {
 	}
 
 }
+
