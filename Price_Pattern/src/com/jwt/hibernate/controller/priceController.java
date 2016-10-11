@@ -39,9 +39,9 @@ public class priceController extends HttpServlet {
 		//System.out.print(permno);
 		
 		try{	
-			CompanyDAO company = new CompanyDAO();
-			List<companydetails>  list =  company.getDetails(permno);
-			company.genJson(list, request, response);
+			//CompanyDAO company = new CompanyDAO();
+		//	List<companydetails>  list =  company.getDetails(permno);
+			//company.genJson(list, request, response);
 			
 			
 			
