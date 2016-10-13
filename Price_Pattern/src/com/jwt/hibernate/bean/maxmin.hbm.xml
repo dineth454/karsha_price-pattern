@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+ 
+<hibernate-mapping>
+   <class name="com.jwt.hibernate.bean.maxminDetails" table="lsf38703table">
+     <meta attribute="class-description">
+         This class contains the Maxima and  Minima detail. 
+      </meta>
+      <id name="META_DATE"  column="META_DATE">
+         <generator class="assigned"/>
+      </id>
+      <property name="EXTREMATYPE" column="EXTREMATYPE" type="string"/>
+      <property name="META_PERMNO" column="META_PERMNO" type="int"/>
+      <property name="META_PRC" column="META_PRC" type="double"/>
+      <property name="META_PSEUDOPRC" column="META_PSEUDOPRC" type="double"/>
+      <property name="META_PSEUDOPRCN" column="META_PSEUDOPRCN" type="double"/>
+      <property name="META_RET" column="META_RET" type="double"/>
+      <property name="META_RAWVOL" column="META_RAWVOL" type="int"/>
+      <property name="META_SHROUT" column="META_SHROUT" type="int"/>
+      
+      <property name="META_TURNOVER" column="META_TURNOVER" type="double"/>
+      <property name="META_VOL" column="META_VOL" type="int"/>
+      <property name="META_ID" column="META_ID" type="int"/>
+      
+      
+   </class>
+
+</hibernate-mapping>

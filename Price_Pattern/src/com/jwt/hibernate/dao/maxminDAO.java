@@ -1,0 +1,59 @@
+package com.jwt.hibernate.dao;
+
+import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
+
+import com.jwt.hibernate.bean.maxminDetails;
+
+public class maxminDAO {
+	public List<maxminDetails> getMaximaSet(int permno){
+		List<maxminDetails> list = null;
+		
+    	try {
+           
+            Configuration configuration = new Configuration().configure();
+            SessionFactory sessionFactory = configuration.buildSessionFactory();
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+ 
+            String Max="max";
+            Query<?> query = session.createQuery("from maxminDetails where META_PERMNO=' "+permno+" ' and EXTREMATYPE = '"+Max+"'   ");
+         
+            List<maxminDetails> result = (List<maxminDetails>) query.list();
+           
+          /*  for(maxminDetails max : result)
+            {
+            	System.out.println("Type: "+max.getEXTREMATYPE()+", Date: "+max.getMETA_DATE() );
+            }
+            */
+       
+            
+            transaction.commit();
+            System.out.println("\n\n Retrieved \n");
+            return result;
+            
+ 
+        } catch (HibernateException e) {
+            System.out.println(e.getMessage());
+            System.out.println("error");
+        }
+    	
+    	return list;
+    	
+    }
+	
+	public static void main(String args[]){
+		maxminDAO m = new maxminDAO();
+		List<maxminDetails> li = m.getMaximaSet(38703);
+		
+		
+	}
+	}
+

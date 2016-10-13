@@ -46,63 +46,14 @@
     </div>
   </div>
  
- <div class="main">
-  <div class="main-inner">
-    <div class="container">
-    <div class="row">
-    <!-- pagination in top  -->
-    	<div class="col-md-12">
-    			 <ol class="breadcrumb">
-				  <li><a href="index.html">Home</a></li>
-				  <li><a href="search.html">Company Details</a></li>
-				  <li class="active">Price Graph</li>
-				</ol>
-    	</div>
-    </div>
-</div>
-
-
-<!-- end Of container -->	
-</div>
-</div>		
-	<!-- start 02container  -->	   
- <div class="container">
-<div class="row">
-    	
-    		<div class="col-md-6">
-    			   <div class="page-header">
-								<h1>Price Analysis </h1>
-				</div>
-			</div>
-			<!-- Company Details From URL -->
-				<div class="col-md-6">
-						<div class="panel panel-default">
-								  <div class="panel-heading">
-								    <h3 class="panel-title" style="color:blue;">Company Name :&nbsp;&nbsp;<script>document.write(comName)</script> </h3>
-								    </div>
-								    
-								  <div class="panel-body">
-							
-								   <div class="col-md-4" id="dperm"><h5><b>TSYMBOL</b></h5><script>document.write(tsymbol)</script></div>
-								    <div class="col-md-4"  id="dtsym"><h5><b>PERMNO</b></h5><script>document.write(permno)</script></div>
-								     <div class="col-md-4"  id="dnaics"><h5><b>NAICS</b></h5><script>document.write(Naics)</script></div>
-								   </div> 
-								  
-</div>
-				</div>
-		
-			<!-- end of company Details -->
- </div>
- </div>
-   
-    
+ 
     
 <div class="container">
 <div class="row">
-			 <div class="col-md-12">
-			 			 <div id="chart"></div>  <!-- Graph Representation -->
+			
+			  <div class="col-md-6">
+			 			 <div id="jjj"></div>  <!-- Graph Representation -->
 			 </div>
-			 
 	 </div>
  </div>
  
@@ -112,8 +63,11 @@
  
  setTimeout(function () {
         chart = c3.generate({
+        
             data: {
-                url: '/Price_Pattern/getDetails/CompanyPriceController/'+ permno,	
+                url: '/Price_Pattern/getDetails/maximaLogic/'+ 38703,
+            
+
                 mimeType: 'json',
                 keys: {
                     x: 'Date', // it's possible to specify 'x' when category axis
