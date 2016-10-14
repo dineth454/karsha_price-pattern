@@ -12,34 +12,38 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.jwt.hibernate.bean.CompanyEventData;
+import com.jwt.hibernate.bean.companydetails;
 import com.jwt.hibernate.dao.CompanyEventDAO;
 
 @Path("/CompanyEventController")
 public class CompanyEventController {
+	@Path("{maximaGraphData}")
 	@GET
 	@Produces("application/json")
-	public void genMaximaJson(){
+	public Response genMaximaJson(@PathParam("maximaGraphData") int permno){
 		CompanyEventDAO companyEvent = new CompanyEventDAO();
-		List<CompanyEventData> list =  companyEvent.repMaxima();
-		//company.genJson(list, request, response);
-		/*JSONArray jsonArray = new JSONArray();
+		List<List<companydetails>> list =  companyEvent.repMaxima(permno);
+		JSONArray jsonArray = new JSONArray();
 		
+		int i;
+		for(i=0; i<list.size(); i++){
+			JSONArray inerJsonArray = new JSONArray();
 		
-		for(companydetails companydetails : list)
-        {
-			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("PERMNO",companydetails.getPERMNO());
-			jsonObject.put("Date",companydetails.getDate());
-			jsonObject.put("PRC",companydetails.getPRC());
-			jsonObject.put("Pseudo_PRC",companydetails.getPseudo_PRC());
-			jsonArray.put(jsonObject);
-			//jsonObject.put(companydetails.getPRC());
+			for(companydetails companydetails : list.get(i))
+	        {
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("PERMNO",companydetails.getPERMNO());
+				jsonObject.put("Date",companydetails.getDate());
+				jsonObject.put("PRC",companydetails.getPRC());
+				jsonObject.put("Pseudo_PRC",companydetails.getPseudo_PRC());
+				inerJsonArray.put(jsonObject);
+				//jsonObject.put(companydetails.getPRC());	
+	        }
 			
-			
-			
-        }	
+			jsonArray.put(inerJsonArray);
+		}
 		
-		return Response.status(200).entity(jsonArray.toString()).build();*/
+		return Response.status(200).entity(jsonArray.toString()).build();
 	}
 
 }
