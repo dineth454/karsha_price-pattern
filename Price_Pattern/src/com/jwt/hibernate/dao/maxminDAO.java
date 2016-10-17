@@ -49,11 +49,6 @@ public class maxminDAO {
     	
     }
 	
-	public static void main(String args[]){
-		maxminDAO m = new maxminDAO();
-		List<maxminDetails> li = m.getMaximaSet(38703);
-		
-		
-	}
+	
 	}
 

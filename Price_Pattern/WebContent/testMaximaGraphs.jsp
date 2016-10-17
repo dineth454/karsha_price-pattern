@@ -23,6 +23,7 @@
    <script src="js/jquery-2.1.4.min.js"></script> 
   <script src="js/bootstrap.min.js"></script>
    <script src="js/predict.js"></script> 
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
   <!-- Load c3.css -->
@@ -36,7 +37,13 @@
     <script src="js/predict.js"></script> 
   
 </head>
+<style>
+.c3-region.regionX {
+  fill : red;
+}
 
+
+</style>
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
@@ -49,41 +56,13 @@
  
     
 <div class="container">
-<div class="row">
-			
-			  <div class="col-md-6">
-			 			 <div id="jjj"></div>  <!-- Graph Representation -->
-			 </div>
-	 </div>
- </div>
- 
- 
- 
- <script>
- 
- setTimeout(function () {
-        chart = c3.generate({
-        
-            data: {
-                url: '/Price_Pattern/getDetails/maximaLogic/'+ 38703,
-            
+<div class="row"><button id="add">ADD</button></div>
 
-                mimeType: 'json',
-                keys: {
-                    x: 'Date', // it's possible to specify 'x' when category axis
-                    value: ['PRC', 'Pseudo_PRC'],
-                }
-            },
-            axis: {
-                x: {
-                    type: 'timeseries',
-                    tick: {format: '%Y-%m-%d'}
-                }
-            }
-        });
-    }, 500);
- </script>
-  <script src="js/pace.js"></script>
+	<div class="row" id="parent"></div>
+			  
+</div>
+  
 </body>
-
+<script src="js/graphs/maxima_data.js"></script>
+ <!--script src="js/pace.js"></script-->
 </html>

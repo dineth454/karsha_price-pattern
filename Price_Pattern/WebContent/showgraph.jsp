@@ -32,7 +32,7 @@
   <script src="js/d3.min.js" charset="utf-8"></script>
   <script src="js/c3.js"></script>
 
-  <script src="js/jquery-1.7.2.min.js"></script> 
+    <script src="js/jquery-2.1.4.min.js"></script> 
     <script src="js/predict.js"></script> 
   
 </head>
@@ -117,9 +117,13 @@
                 mimeType: 'json',
                 keys: {
                     x: 'Date', // it's possible to specify 'x' when category axis
-                    value: ['PRC', 'Pseudo_PRC'],
+                    value: ['PRC', 'Pseudo_PRC','Turnover'],
                 }
             },
+            zoom: {
+    	    	enabled: true,
+    	  		rescale: true
+    			},
             axis: {
                 x: {
                     type: 'timeseries',
