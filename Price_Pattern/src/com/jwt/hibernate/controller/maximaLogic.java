@@ -36,7 +36,7 @@ public class maximaLogic {
 		List<stock> stockdata = st.getDetails(permno); // get the Stock  details
 		
 		//Big LOOP
-		for(int k=0;k<maxset.size()-1;k++){
+		for(int k=0;k<maxset.size();k++){
 		
 		double psedoPRC = maxset.get(k).getMETA_PSEUDOPRC();
 		double maxpp= psedoPRC  - (psedoPRC*0.01);
@@ -96,6 +96,7 @@ public class maximaLogic {
 		String rightmaximaDate="";
 		
 		count=0;
+		if(x+10<=stockdata.size()-1){
 		for(int j=x;j<=x+10;j++){
 			JSONObject jsonObject = new JSONObject();
 			//System.out.println(stockdata.get(j).getDate());
@@ -107,7 +108,7 @@ public class maximaLogic {
 				count=1;
 				
 			}
-			jsonObject.put("PERMNO",permno);	
+			jsonObject.put("PERMNO",permno);
 			jsonObject.put("Date",stockdata.get(j).getDate());
 			jsonObject.put("PRC",stockdata.get(j).getPRC());
 			jsonObject.put("Pseudo_PRC",stockdata.get(j).getPseudoPRC());
@@ -117,8 +118,33 @@ public class maximaLogic {
 			}
 			jsonArray.put(jsonObject);
 		
-		}
+		} 
 		
+		} else if(x+10>stockdata.size()-1){
+			for(int j=x;j<stockdata.size();j++){
+				JSONObject jsonObject = new JSONObject();
+				//System.out.println(stockdata.get(j).getDate());
+				double spp = stockdata.get(j).getPseudoPRC();
+				
+				if(spp<=maxpp && count==0){
+					rightmaximaDate=stockdata.get(j).getDate();
+					
+					count=1;
+					
+				}
+				jsonObject.put("PERMNO",permno);	
+				jsonObject.put("Date",stockdata.get(j).getDate());
+				jsonObject.put("PRC",stockdata.get(j).getPRC());
+				jsonObject.put("Pseudo_PRC",stockdata.get(j).getPseudoPRC());
+				if(j==stockdata.size()-1){
+					jsonObject.put("rightDate",rightmaximaDate);
+					jsonObject.put("leftDate",leftmaximaDate);	
+				}
+				jsonArray.put(jsonObject);
+			
+			}
+			
+		}
 		//System.out.println("right Maxima Date"+rightmaximaDate);
 		
 		return jsonArray;

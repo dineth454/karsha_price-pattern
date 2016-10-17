@@ -25,11 +25,11 @@
 
 arr = JSON.parse( arr); // Do not need to pass to a array; 
 for(c=0;c<arr.length;c++){
-	  $('#parent').append('<div class="col-md-4"><div id="demo'+ c +'"></div></div>');
+	  $('#parent').append('<div class="col-md-4"><div class="page-header" align="center">Maxima -'+(c+1)+'</div><div id="demo'+ c +'"></div></div>');
 	  }
 
 //document.write(arr);
-//console.log(arr.length);
+console.log(arr[37].length);
 var i;
  for(i=0;i<arr.length;i++){
 var chart=c3.generate({
@@ -48,17 +48,36 @@ var chart=c3.generate({
 	    axis: {
 	        x: {
 	        	 type: 'timeseries',
-              	tick: {format: '%Y-%m-%d'},
+	        	 tick: {
+	                 count: 4,
+	                 format: '%Y-%m-%d'
+	             },
 				    label: {
 				        text: 'Dates',
 				        position: 'Right',
 				     }
-	        }
+	        },
+	        y: {
+	        	tick: {
+	                format: d3.format("$,")
+//	                format: function (d) { return "$" + d; }
+	            },
+	            label: {
+	                text: 'PRC/PsedoPRC in $',
+	                position: 'outer-middle'
+	                // inner-top : default
+	                // inner-middle
+	                // inner-bottom
+	                // outer-top
+	                // outer-middle
+	                // outer-bottom
+	            }
+	        },
 	    },
 	    grid: {
 	        x: {
 	            lines: [
-	                {value: arr[i][9]['Date'], text: 'Maxima',position: 'middle'}
+	                {value: arr[i][9]['Date'], text: 'MAXIMA',position: 'middle'}
 	               
 	            ]
 	        }
@@ -71,7 +90,7 @@ var chart=c3.generate({
 	  		rescale: true
 			},
 			regions: [
-			          {axis: 'x', start:  arr[i][19]['leftDate'], end:  arr[i][19]['rightDate'], class: 'regionX'},
+			          {axis: 'x', start:  arr[i][arr[i].length-1]['leftDate'], end:  arr[i][arr[i].length-1]['rightDate'], class: 'regionX'},
 			         
 			          
 			      ],
