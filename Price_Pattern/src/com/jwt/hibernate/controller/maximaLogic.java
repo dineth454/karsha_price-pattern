@@ -35,7 +35,7 @@ public class maximaLogic {
 		stockDAO st = new stockDAO();
 		List<stock> stockdata = st.getDetails(permno); // get the Stock  details
 		
-		//Big LOOP
+		//OuterLOOP
 		for(int k=0;k<maxset.size();k++){
 		
 		double psedoPRC = maxset.get(k).getMETA_PSEUDOPRC();
@@ -48,8 +48,8 @@ public class maximaLogic {
 		
 		jsonArrayobj=makeJsonArray(maxpp,date,stockdata,permno);
 		jsonArray.put(jsonArrayobj);
-		// find a way to make 37 index.. error in java 100 line x+10
-		//String tt = "var par ="+jsonArray.toString();
+		
+		
 		
 		}		
 		
@@ -62,6 +62,8 @@ public class maximaLogic {
 	private JSONArray makeJsonArray(double maxpp, String date, List<stock> stockdata,int permno) {
 		
 		JSONArray jsonArray = new JSONArray();
+		
+		/*this is the loop for find the index of Maxima date in stock Table */
 		int x=0; // x is refer to index of maxima in stock list
 		for(int i =0;i<stockdata.size();i++){
 			String sdate =stockdata.get(i).getDate();
@@ -72,7 +74,9 @@ public class maximaLogic {
 		}
 		
 		String leftmaximaDate="";
+		
 		int count=0;
+		if(x-10>=0){
 		for(int j=x-1;j>x-10;j--){
 			
 			JSONObject jsonObject = new JSONObject();
@@ -89,10 +93,27 @@ public class maximaLogic {
 			jsonObject.put("Pseudo_PRC",stockdata.get(j).getPseudoPRC());
 			jsonArray.put(jsonObject);
 		}
+	}else{
+			for(int j=x-1;j>=0;j--){
+						
+						JSONObject jsonObject = new JSONObject();
+						double spp = stockdata.get(j).getPseudoPRC();
+					
+						if(spp<=maxpp && count==0){
+							leftmaximaDate=stockdata.get(j).getDate();
+							count=1;
+							
+						}
+						jsonObject.put("PERMNO",permno);
+						jsonObject.put("Date",stockdata.get(j).getDate());
+						jsonObject.put("PRC",stockdata.get(j).getPRC());
+						jsonObject.put("Pseudo_PRC",stockdata.get(j).getPseudoPRC());
+						jsonArray.put(jsonObject);
+					}
+	}
 		
 		
-		//System.out.println("left Maxima Date"+leftmaximaDate);
-		
+
 		String rightmaximaDate="";
 		
 		count=0;
@@ -104,7 +125,6 @@ public class maximaLogic {
 			
 			if(spp<=maxpp && count==0){
 				rightmaximaDate=stockdata.get(j).getDate();
-				
 				count=1;
 				
 			}

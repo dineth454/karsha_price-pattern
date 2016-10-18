@@ -6,15 +6,11 @@
 
  $('#add').on('click', function() {	 
  var c;
-
- 
-
  var arr;
  $.ajax({
 	    url:  '/Price_Pattern/getDetails/maximaLogic/'+ 38703,
 	    type: "GET",
 	    dataType: 'html',
-	    //contentType: "application/json; charset=utf-8",
 	    async: false,
          cache: false,
 	    success: function (data) {
@@ -23,13 +19,14 @@
 	            });
  
 
-arr = JSON.parse( arr); // Do not need to pass to a array; 
+arr = JSON.parse( arr); // Do not need to pass to a another array; 
+
 for(c=0;c<arr.length;c++){
 	  $('#parent').append('<div class="col-md-4"><div class="page-header" align="center">Maxima -'+(c+1)+'</div><div id="demo'+ c +'"></div></div>');
 	  }
 
-//document.write(arr);
-console.log(arr[37].length);
+
+//console.log(arr[37].length);
 var i;
  for(i=0;i<arr.length;i++){
 var chart=c3.generate({
@@ -83,7 +80,8 @@ var chart=c3.generate({
 	        }
 	    },
 	    size:{
-	    	 width:300
+	    	 width:300,
+	    	 height:275
 	    },
 	    zoom: {
 	    	enabled: true,
