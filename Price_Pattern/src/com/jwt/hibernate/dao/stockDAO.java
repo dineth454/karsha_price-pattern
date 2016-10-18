@@ -50,11 +50,6 @@ public class stockDAO {
     	
     }
 	
-	public static void main(String args[]){
-		stockDAO m = new stockDAO();
-		List<stock> li = m.getDetails(38703);
-		
-		
-	}
+	
 	}
 
