@@ -138,9 +138,7 @@
 
 		</div>
 	</div>
-
-
-
+	
 	<script>
 		setTimeout(function() {
 			chart = c3.generate({
