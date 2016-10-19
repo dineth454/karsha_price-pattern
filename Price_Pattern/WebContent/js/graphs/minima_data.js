@@ -7,12 +7,12 @@
  * This is where graph data is found and visualize graph in web page
  */
 
-
- $('#add').on('click', function() {	 
+$('#minima').on('click', doThis);
+function doThis () {    
  var c;
  var arr;
  $.ajax({
-	    url:  '/Price_Pattern/getDetails/minimaLogic/'+ 38703,
+	    url:  '/Price_Pattern/getDetails/minimaLogic/'+ permno,
 	    type: "GET",
 	    dataType: 'html',
 	    async: false,
@@ -24,9 +24,9 @@
  
 
 arr = JSON.parse( arr); // Do not need to pass to a another array; 
-
+if(arr.length>0){
 for(c=0;c<arr.length;c++){
-	  $('#parent').append('<div class="col-md-4"><div class="page-header" align="center">Minima -'+(c+1)+'</div><div id="demo'+ c +'"></div></div>');
+	  $('#parent1').append('<div class="col-md-4"><div class="page-header" align="center">Minima -'+(c+1)+'</div><div id="demot'+ c +'"></div></div>');
 	  }
 
 
@@ -34,7 +34,7 @@ console.log(arr.length);
 var i;
  for(i=0;i<arr.length;i++){
 var chart=c3.generate({
-	bindto: document.getElementById('demo'+i),
+	bindto: document.getElementById('demot'+i),
 	    data: {                
 	        
 	        json: arr[i],
@@ -104,4 +104,10 @@ var chart=c3.generate({
 	    
 	});
  }
- });
+}
+else{
+	//document.write("No Maxima Found")
+	alert(" No Data Found");
+}
+$('#minima').off('click',doThis);
+ }

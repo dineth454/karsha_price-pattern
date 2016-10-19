@@ -3,12 +3,13 @@
  * This is where graph data is found and visualize graph in web page
  */
 
-
- $('#add').on('click', function() {	 
+$('#maxima').on('click', doThism);
+function doThism () {   
  var c;
+ //document.getElementById('parent').innerHTML = "";
  var arr;
  $.ajax({
-	    url:  '/Price_Pattern/getDetails/maximaLogic/'+ 38703,
+	    url:  '/Price_Pattern/getDetails/maximaLogic/'+permno,
 	    type: "GET",
 	    dataType: 'html',
 	    async: false,
@@ -20,13 +21,13 @@
  
 
 arr = JSON.parse( arr); // Do not need to pass to a another array; 
-
+if(arr.length>0){
 for(c=0;c<arr.length;c++){
 	  $('#parent').append('<div class="col-md-4"><div class="page-header" align="center">Maxima -'+(c+1)+'</div><div id="demo'+ c +'"></div></div>');
 	  }
 
 
-//console.log(arr[37].length);
+//console.log(arr.length);
 var i;
  for(i=0;i<arr.length;i++){
 var chart=c3.generate({
@@ -100,4 +101,11 @@ var chart=c3.generate({
 	    
 	});
  }
- });
+}
+else{
+	//document.write("No Maxima Found")
+	alert(" No Data Found");
+}
+$('#maxima').off('click',doThism);
+
+ }

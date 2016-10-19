@@ -35,6 +35,7 @@
     <script src="js/jquery-2.1.4.min.js"></script> 
     <script src="js/predict.js"></script> 
   
+  <link href="css/shwgrph.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -66,11 +67,11 @@
 </div>
 </div>		
 	<!-- start 02container  -->	   
- <div class="container">
+ <div class="container ">
 <div class="row">
     	
     		<div class="col-md-6">
-    			   <div class="page-header">
+    			   <div class="page-header" align="center">
 								<h1>Price Analysis </h1>
 				</div>
 			</div>
@@ -78,7 +79,7 @@
 				<div class="col-md-6">
 						<div class="panel panel-default">
 								  <div class="panel-heading">
-								    <h3 class="panel-title" style="color:blue;">Company Name :&nbsp;&nbsp;<script>document.write(comName)</script> </h3>
+								    <h3 class="panel-title" >Company Name :&nbsp;&nbsp;<script>document.write(comName)</script> </h3>
 								    </div>
 								    
 								  <div class="panel-body">
@@ -97,59 +98,103 @@
    
     
     
-<div class="container">
+<div class="container" id="PRCgraph">
 <div class="row">
 			 <div class="col-md-12">
+			 <div class="panel panel-default"  style="border-color: #cceeff;">
+			  <div class="panel-body">
 			 			 <div id="chart"></div>  <!-- Graph Representation -->
+			 			 </div>
+			 			 </div>
 			 </div>
 			 
 	 </div>
  </div>
+
+ <div class="container" >
+ <div class="row">
+ 	<div class="col-md-12">
+							<div class="panel panel-default">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">Maxima & Minima Calculation</h3>
+							  </div>
+							  <div class="panel-body">
+							    <button id="maxima" type="button" class="btn btn-danger" style="background-color: #e62e00;">Maxima</button>
+							    <button id="minima" type="button" class="btn btn-success" style="background-color: #00802b;">Minima</button>
+							    <button id="PRCB" type="button" class="btn btn-primary" style="background-color: #1a1aff;display:none">Show PRC_Graph</button>
+							  </div>
+							</div> 	
+ 	
+ 					</div>
+ 
+ 
+			 </div>
+	</div>
+	<div class="container pre-scrollable">	
+	
+ <div class="row" id="parent"></div><!-- This id for show maxima -->
+  <div class="row" id="parent1"></div><!-- This id for show minima -->
+ </div>
+ 
+ 
+ <div class="footer">
+  <div class="footer-inner">
+    <div class="container">
+      <div class="row">
+        <div class="span12"> &copy; 2016 <a href="#">
+          </a></div>
+        <!-- /span12 --> 
+      </div>
+      <!-- /row --> 
+    </div>
+    <!-- /container --> 
+  </div>
+  <!-- /footer-inner --> 
+</div>
+<!-- /footer --> 
  
  
  
- <script>
- 
- setTimeout(function () {
-        chart = c3.generate({
-            data: {
-                url: '/Price_Pattern/getDetails/CompanyPriceController/'+ permno,	
-                mimeType: 'json',
-                keys: {
-                    x: 'Date', // it's possible to specify 'x' when category axis
-                    value: ['PRC', 'Pseudo_PRC','Turnover'],
-                }
-            },
-            zoom: {
-    	    	enabled: true,
-    	  		rescale: true
-    			},
-            axis: {
-                x: {
-                    type: 'timeseries',
-                    tick: {format: '%Y-%m-%d'}
-                },
-                y: {
-    	        	tick: {
-    	                format: d3.format("$,")
-//    	                format: function (d) { return "$" + d; }
-    	            },
-    	            label: {
-    	                text: 'PRC/PsedoPRC in $',
-    	                position: 'outer-middle'
-    	                // inner-top : default
-    	                // inner-middle
-    	                // inner-bottom
-    	                // outer-top
-    	                // outer-middle
-    	                // outer-bottom
-    	            }
-    	        },
-            }
-        });
-    }, 500);
- </script>
+  <script src="js/graphs/price_graph.js"></script>
+    <script>
+$(document).ready(function(){
+    $("#maxima,#minima").click(function(){
+       // $("#PRCgraph").fadeOut();
+       // $("#PRCgraph").fadeOut("slow");
+      //$("#parent").fadeOut();
+       $("#PRCgraph").fadeOut(1000);
+       $("#PRCB").fadeIn(1000);
+    });
+    $("#maxima").click(function(){
+        // $("#PRCgraph").fadeOut();
+        // $("#PRCgraph").fadeOut("slow");
+       $("#parent1").fadeOut();
+       $("#parent").fadeIn();
+       
+       
+     });
+    $("#minima").click(function(){
+        // $("#PRCgraph").fadeOut();
+        // $("#PRCgraph").fadeOut("slow");
+       $("#parent").fadeOut();
+       $("#parent1").fadeIn();
+       
+       
+     });
+    
+    $("#PRCB").click(function(){
+        // $("#PRCgraph").fadeOut();
+        // $("#PRCgraph").fadeOut("slow");
+        $("#PRCgraph").fadeIn(1000);
+        $("#PRCB").fadeOut(1000);
+     });
+});
+</script>
+  <script src="js/graphs/maxima_data.js"></script>
+   <script src="js/graphs/minima_data.js"></script>
   <script src="js/pace.js"></script>
+  
+
 </body>
 
 </html>
