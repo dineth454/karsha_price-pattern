@@ -55,7 +55,7 @@
 $("#createButtons").click(function () { 
 	
 	//read json url and assign it to a data string
-	 $.getJSON('/Price_Pattern/getDetails/CompanyMaximaController/38703', function(data) {
+	 $.getJSON('/Price_Pattern/getDetails/CompanyMinimaController/38703', function(data) {
 		     var jsonArr = data;
 		     
 		     //generate maxima chart divs  

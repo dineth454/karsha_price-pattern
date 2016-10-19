@@ -11,12 +11,11 @@ import javax.ws.rs.core.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.jwt.hibernate.bean.CompanyEventData;
 import com.jwt.hibernate.bean.companydetails;
 import com.jwt.hibernate.dao.CompanyEventDAO;
 
-@Path("/CompanyEventController")
-public class CompanyEventController {
+@Path("/CompanyMaximaController")
+public class CompanyMaximaController {
 	@Path("{maximaGraphData}")
 	@GET
 	@Produces("application/json")

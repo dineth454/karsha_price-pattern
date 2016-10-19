@@ -62,6 +62,51 @@ public class CompanyEventDAO {
 	}
 	
 	
+	
+	//return minima list
+	public List<List<companydetails>> retMinima(int permno){
+		List<List<companydetails>> list = null;
+		
+    	try {
+            // 1. configuring hibernate
+            Configuration configuration = new Configuration().configure();
+ 
+            // 2. create sessionfactory
+            SessionFactory sessionFactory = configuration.buildSessionFactory();
+ 
+            // 3. Get Session object
+            Session session = sessionFactory.openSession();
+ 
+            // 4. Starting Transaction
+            Transaction transaction = session.beginTransaction();
+            
+            Query<?> query = session.createQuery("from CompanyEventData where EXTREMATYPE='min' and META_PERMNO='"+permno+"'");           
+            List<CompanyEventData> result = (List<CompanyEventData>) query.list();
+            
+            Query<?> queryToGetComanyList = session.createQuery("from companydetails where PERMNO='"+permno+"'");
+    		List<companydetails> resultComanyList = (List<companydetails>) queryToGetComanyList.list();
+            
+    		List<List<companydetails>> minimaDataCollection = new ArrayList<List<companydetails>>();
+            int i;
+    		for(i=0; i < result.size(); i++){
+    			minimaDataCollection.add(getMinimaDetails(resultComanyList, result.get(i).getMETA_DATE()));
+    		}
+            
+            transaction.commit();
+            System.out.println("\n\n correct \n");
+            return minimaDataCollection;
+            
+ 
+        } catch (HibernateException e) {
+            System.out.println(e.getMessage());
+            System.out.println("error");
+        }
+    	
+    	return list;
+	}
+	
+	
+	
 	//get maxima details (values of maxima date range)
 	public List<companydetails> getMaximaDetails(List<companydetails> result, String maxDate){
 		List<companydetails> maximaRange = new ArrayList<companydetails>();
@@ -120,4 +165,60 @@ public class CompanyEventDAO {
 		}
 		return maximaRange;
 	}
+	
+	
+	
+	
+	//get minima details (values of minima date range)
+		public List<companydetails> getMinimaDetails(List<companydetails> result, String minDate){
+			List<companydetails> minimaRange = new ArrayList<companydetails>();
+
+			int i;
+			for(i=0 ; i < result.size(); i++){
+				if(result.get(i).getDate().equals(minDate)){
+					double minPRC = result.get(i).getPseudo_PRC();
+					double upperLevelPRC = minPRC * (100+1)/100 ;
+					
+					int j;
+					for(j=i; j < result.size(); j++){
+						if((result.get(j).getPseudo_PRC() >= upperLevelPRC)){
+							System.out.println(result.get(j).getPseudo_PRC());
+							System.out.println(result.get(j).getDate());
+							break;
+						}
+					}
+					
+					
+					int k;
+					for(k=i; k > 0; k--){
+						if((result.get(k).getPseudo_PRC() >= upperLevelPRC)){
+							System.out.println(result.get(k).getPseudo_PRC());
+							System.out.println(result.get(k).getDate());
+							break;
+						}
+					}
+
+					int l;
+					if((i-9)<0){
+						for(l = 0; l <= i + 10; l++){
+							minimaRange.add(result.get(l));
+						}
+					}
+					
+					if((i+10)>result.size()){
+						for(l = i - 9; l < result.size(); l++){
+							minimaRange.add(result.get(l));
+						}
+					}
+					
+					if((i-9)>=0 && (i+10)<=result.size()){
+						for(l = i - 9; l <= i + 10; l++){
+							minimaRange.add(result.get(l));
+						}
+					}
+									
+				}
+			}
+			return minimaRange;
+		}
 }
