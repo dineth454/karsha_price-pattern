@@ -22,7 +22,7 @@ public class CompanyEventController {
 	@Produces("application/json")
 	public Response genMaximaJson(@PathParam("maximaGraphData") int permno){
 		CompanyEventDAO companyEvent = new CompanyEventDAO();
-		List<List<companydetails>> list =  companyEvent.repMaxima(permno);
+		List<List<companydetails>> list =  companyEvent.retMaxima(permno);
 		JSONArray jsonArray = new JSONArray();
 		
 		int i;

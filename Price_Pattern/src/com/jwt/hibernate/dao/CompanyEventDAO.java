@@ -16,7 +16,8 @@ import com.jwt.hibernate.bean.companydetails;
 
 public class CompanyEventDAO {
 
-	public List<List<companydetails>> repMaxima(int permno){
+	//return a list of maxima detail list
+	public List<List<companydetails>> retMaxima(int permno){
 		List<List<companydetails>> list = null;
 		
     	try {
@@ -31,23 +32,21 @@ public class CompanyEventDAO {
  
             // 4. Starting Transaction
             Transaction transaction = session.beginTransaction();
+            
+            //query for get maxima 
             Query<?> query = session.createQuery("from CompanyEventData where EXTREMATYPE='max' and META_PERMNO='"+permno+"'");           
             List<CompanyEventData> result = (List<CompanyEventData>) query.list();
             
+            //query for get company details according permno
             Query<?> queryToGetComanyList = session.createQuery("from companydetails where PERMNO='"+permno+"'");
     		List<companydetails> resultComanyList = (List<companydetails>) queryToGetComanyList.list();
             
+    		//put maxima details to the return list
     		List<List<companydetails>> maximaDataCollection = new ArrayList<List<companydetails>>();
             int i;
     		for(i=0; i < result.size(); i++){
     			maximaDataCollection.add(getMaximaDetails(resultComanyList, result.get(i).getMETA_DATE()));
     		}
-            /*List<companydetails> maximaDataList = getMaximaDetails(resultComanyList, "2009-01-02");
-            
-            for(companydetails maxa : maximaDataList)
-            {
-            	System.out.println("PermNo: " + maxa.getDate()+", Price: " + maxa.getPRC());
-            }*/
             
             transaction.commit();
             System.out.println("\n\n correct \n");
@@ -63,17 +62,19 @@ public class CompanyEventDAO {
 	}
 	
 	
+	//get maxima details (values of maxima date range)
 	public List<companydetails> getMaximaDetails(List<companydetails> result, String maxDate){
 		List<companydetails> maximaRange = new ArrayList<companydetails>();
-		
-		
+
 		int i;
 		for(i=0 ; i < result.size(); i++){
+			//find index of maximaDate
 			if(result.get(i).getDate().equals(maxDate)){
 				double maxPRC = result.get(i).getPseudo_PRC();
-				double lowerLevelPRC = maxPRC * 99/100 ;
-				//System.out.println(i);
+				double lowerLevelPRC = maxPRC * (100-1)/100 ;
+				//System.out.println(i + "pure");
 				
+				//find up lowerLeverPrice of maxima
 				int j;
 				for(j=i; j < result.size(); j++){
 					if((result.get(j).getPseudo_PRC() <= lowerLevelPRC)){
@@ -83,6 +84,7 @@ public class CompanyEventDAO {
 					}
 				}
 				
+				//find down lowerLeverPrice of maxima
 				int k;
 				for(k=i; k > 0; k--){
 					if((result.get(k).getPseudo_PRC() <= lowerLevelPRC)){
@@ -91,24 +93,23 @@ public class CompanyEventDAO {
 						break;
 					}
 				}
-				
+
+				//if maxima exists on first 9 days 
 				int l;
-				companydetails nullCompany = new companydetails(result.get(i).getPERMNO(), "1992-10-10", 100, 200, 130);
 				if((i-9)<0){
-					int x;
-					for(x = 0; (i-9) + x<0; x++){
-						result.add(0, nullCompany);
+					for(l = 0; l <= i + 10; l++){
+						maximaRange.add(result.get(l));
 					}
 				}
 				
+				//if maxima exists on last 10 days
 				if((i+10)>result.size()){
-					int y;
-					System.out.println("udin madi");
-					for(y = 0; (i+10)-y >result.size(); y++){
-						result.add(result.size()-2, nullCompany);
+					for(l = i - 9; l < result.size(); l++){
+						maximaRange.add(result.get(l));
 					}
 				}
 				
+				//default maxima 
 				if((i-9)>=0 && (i+10)<=result.size()){
 					for(l = i - 9; l <= i + 10; l++){
 						maximaRange.add(result.get(l));
