@@ -183,24 +183,28 @@ public class CompanyEventDAO {
 					double minPRC = result.get(i).getPseudo_PRC();
 					double upperLevelPRC = minPRC * (100+1)/100 ;
 					
-					int j;
-					for(j=i; j < result.size(); j++){
-						if((result.get(j).getPseudo_PRC() >= upperLevelPRC)){
-							System.out.println(result.get(j).getPseudo_PRC());
-							System.out.println(result.get(j).getDate());
-							break;
-						}
-					}
-					
-					
 					int k;
 					for(k=i; k > 0; k--){
 						if((result.get(k).getPseudo_PRC() >= upperLevelPRC)){
 							System.out.println(result.get(k).getPseudo_PRC());
 							System.out.println(result.get(k).getDate());
+							minimaRange.add(result.get(k));
 							break;
 						}
 					}
+					
+					minimaRange.add(result.get(i));
+					
+					int j;
+					for(j=i; j < result.size(); j++){
+						if((result.get(j).getPseudo_PRC() >= upperLevelPRC)){
+							System.out.println(result.get(j).getPseudo_PRC());
+							System.out.println(result.get(j).getDate());
+							minimaRange.add(result.get(j));
+							break;
+						}
+					}
+					
 
 					int l;
 					if((i-9)<0){

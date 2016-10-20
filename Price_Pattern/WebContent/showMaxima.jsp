@@ -105,9 +105,7 @@ $("#createButtons").click(function () {
 						            lines: [{value: jsonArr[i][1].Date}]
 						        }
 						    },
-						    regions: [
-						              {start:jsonArr[i][0].Date, end:jsonArr[i][2].Date}
-						          ]
+						    regions: [{start:jsonArr[i][0].Date, end:jsonArr[i][2].Date}]
 						});
 					}
 				});

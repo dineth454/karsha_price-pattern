@@ -32,7 +32,7 @@
 <body>
 
 <div class="container"></div>
-<button id="createButtons">CreateElements</button>
+<button id="createButtons">Minima</button>
 
 
 <!--  <div class="container">
@@ -84,14 +84,30 @@ $("#createButtons").click(function () {
 								x : {
 									type : 'timeseries',
 									tick : {
+										count: 4,
 										format : '%Y-%m-%d'
 									}
+								},
+								
+								y : {
+									show: true,
+									tick: {
+						                format: d3.format("$")
+						            }
 								}
 							},
 							size : {
-								width : 500,
-								height : 300
-							}
+								width : 300,
+								height : 200
+							},
+							grid: {
+						        x: {
+						            lines: [{value: jsonArr[i][1].Date}]
+						        }
+						    },
+						    regions: [
+						              {start:jsonArr[i][0].Date, end:jsonArr[i][2].Date}
+						          ]
 						});
 					}
 				});
