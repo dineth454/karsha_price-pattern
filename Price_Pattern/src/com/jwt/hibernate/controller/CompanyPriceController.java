@@ -16,31 +16,6 @@ import com.jwt.hibernate.dao.CompanyDAO;
 
 @Path("/CompanyPriceController")
 public class CompanyPriceController {
-	@GET
-	@Produces("application/json")
-	public Response generateJson(){
-		CompanyDAO company = new CompanyDAO();
-		List<companydetails>  list =  company.getDetails(36469);
-		//company.genJson(list, request, response);
-		JSONArray jsonArray = new JSONArray();
-		
-		
-		for(companydetails companydetails : list)
-        {
-			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("PERMNO",companydetails.getPERMNO());
-			jsonObject.put("Date",companydetails.getDate());
-			jsonObject.put("PRC",companydetails.getPRC());
-			jsonObject.put("Pseudo_PRC",companydetails.getPseudo_PRC());
-			jsonArray.put(jsonObject);
-			//jsonObject.put(companydetails.getPRC());
-			
-			
-			
-        }	
-		
-		return Response.status(200).entity(jsonArray.toString()).build();
-	}
 	
 	@Path("{graphData}")
 	@GET
