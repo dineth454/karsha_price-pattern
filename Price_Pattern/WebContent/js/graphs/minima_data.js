@@ -78,7 +78,7 @@ var chart=c3.generate({
 	    grid: {
 	        x: {
 	            lines: [
-	                {value: arr[i][9]['Date'], text: 'MINIMA',position: 'middle'}
+	                {value: arr[i][arr[i].length-1]['minimaDate'], text: 'MINIMA',position: 'middle'}
 	               
 	            ]
 	        }

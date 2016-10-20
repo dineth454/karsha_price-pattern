@@ -13,7 +13,7 @@ function doThism () {
 	    type: "GET",
 	    dataType: 'html',
 	    async: false,
-         cache: false,
+        cache: false,
 	    success: function (data) {
 	           arr=data;
 	    }
@@ -75,7 +75,7 @@ var chart=c3.generate({
 	    grid: {
 	        x: {
 	            lines: [
-	                {value: arr[i][9]['Date'], text: 'MAXIMA',position: 'middle'}
+	                {value: arr[i][arr[i].length-1]['maximaDate'], text: 'MAXIMA',position: 'middle'}
 	               
 	            ]
 	        }

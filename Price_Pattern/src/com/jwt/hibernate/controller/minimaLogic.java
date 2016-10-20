@@ -134,7 +134,8 @@ public class minimaLogic {
 			jsonObject.put("Pseudo_PRC",stockdata.get(j).getPseudoPRC());
 			if(j==x+10){
 				jsonObject.put("rightDate",rightminimaDate);
-				jsonObject.put("leftDate",leftminimaDate);	
+				jsonObject.put("leftDate",leftminimaDate);
+				jsonObject.put("minimaDate",date);
 			}
 			jsonArray.put(jsonObject);
 		
@@ -158,7 +159,8 @@ public class minimaLogic {
 				jsonObject.put("Pseudo_PRC",stockdata.get(j).getPseudoPRC());
 				if(j==stockdata.size()-1){
 					jsonObject.put("rightDate",rightminimaDate);
-					jsonObject.put("leftDate",leftminimaDate);	
+					jsonObject.put("leftDate",leftminimaDate);
+					jsonObject.put("minimaDate",date);
 				}
 				jsonArray.put(jsonObject);
 			
