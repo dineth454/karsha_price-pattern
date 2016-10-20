@@ -22,7 +22,7 @@ import com.jwt.hibernate.bean.companydetails;
 public class CompanyDAO {
 	public List<companydetails> getDetails(int permno){
 		List<companydetails> list = null;
-		//System.out.print("hello");
+
     	try {
             // 1. configuring hibernate
             Configuration configuration = new Configuration().configure();
@@ -70,7 +70,7 @@ public class CompanyDAO {
     	
     }
 	
-	/*public void genJson(List<companydetails> list, HttpServletRequest request, HttpServletResponse response){
+	public void genJson(List<companydetails> list, HttpServletRequest request, HttpServletResponse response){
 		String theList = "";
 		Gson gson = new Gson();
 		theList = gson.toJson(list);
@@ -89,6 +89,6 @@ public class CompanyDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}*/
+	}
 }
 

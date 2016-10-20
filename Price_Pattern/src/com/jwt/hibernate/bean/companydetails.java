@@ -8,7 +8,18 @@ public class companydetails {
 	private double Pseudo_PRC;
 	private double Turnover;
 	
+	public companydetails(int PERMNO, String Date, double PRC, double Pseudo_PRC, double Turnover){
+		this.PERMNO = PERMNO;
+		this.Date = Date;
+		this.PRC = PRC;
+		this.Pseudo_PRC = Pseudo_PRC;
+		this.Turnover = Turnover;
+	}
 	
+	public companydetails() {
+
+	}
+
 	public int getPERMNO() {
 		return PERMNO;
 	}
