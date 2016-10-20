@@ -33,6 +33,7 @@ public class CompanyPriceController {
 			jsonObject.put("Date",companydetails.getDate());
 			jsonObject.put("PRC",companydetails.getPRC());
 			jsonObject.put("Pseudo_PRC",companydetails.getPseudo_PRC());
+			jsonObject.put("Turnover",companydetails.getTurnover());
 			jsonArray.put(jsonObject);
 			//jsonObject.put(companydetails.getPRC());
         }	

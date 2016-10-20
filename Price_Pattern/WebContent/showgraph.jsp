@@ -138,6 +138,11 @@
 
 		</div>
 	</div>
+
+<button id="maxButton">Maxima</button>
+<button id="minButton">Minima</button>
+<div id="graphs"></div>
+
 	
 	<script>
 		setTimeout(function() {
@@ -148,7 +153,7 @@
 					mimeType : 'json',
 					keys : {
 						x : 'Date', // it's possible to specify 'x' when category axis
-						value : [ 'PRC', 'Pseudo_PRC' ],
+						value : [ 'PRC', 'Pseudo_PRC', 'Turnover'],
 					}
 				},
 				zoom : {
@@ -165,7 +170,133 @@
 			});
 		}, 500);
 	</script>
-	<script src="js/pace.js"></script>
+<script>
+
+//onclick function
+$("#maxButton").click(function () { 
+	
+	//read json url and assign it to a data string
+	 $.getJSON('/Price_Pattern/getDetails/CompanyMaximaController/'+ permno, function(data) {
+		     var jsonArr = data;
+		   	console.log(data);
+		     //generate maxima chart divs  
+		     for(var i = 0; i < data.length; i++){
+		    	 $("#graphs").append('<div class="row"><div class="col-md-5"><div class="panel panel-default"><div class="panel-body"><div id="chart'+ i +'"></div></div></div></div></div>');
+		     }
+
+					
+		     //pass json data to the c3 graph
+					for (var i = 0; i < data.length; i++) {
+						var divId = "#chart" + i.toString();
+						//console.log(jsonArr[i][0]);
+						chart = c3.generate({
+							bindto : divId,
+							data : {
+								json : jsonArr[i],
+								keys : {
+									x : 'Date', // it's possible to specify 'x' when category axis
+									value : [ 'PRC', 'Pseudo_PRC' ],
+								}
+							},
+							zoom : {
+								enabled : true
+							},
+							axis : {
+								x : {
+									type : 'timeseries',
+									tick : {
+										count: 4,
+										format : '%Y-%m-%d'
+									}
+								},
+								
+								y : {
+									show: true,
+									tick: {
+						                format: d3.format("$")
+						            }
+								}
+							},
+							size : {
+								width : 300,
+								height : 200
+							},
+							grid: {
+						        x: {
+						            lines: [{value: jsonArr[i][1].Date}]
+						        }
+						    },
+						    regions: [{start:jsonArr[i][0].Date, end:jsonArr[i][2].Date}]
+						});
+					}
+				});
+	 });
+</script>
+<script>
+
+//onclick function
+$("#minButton").click(function () { 
+	
+	//read json url and assign it to a data string
+	 $.getJSON('/Price_Pattern/getDetails/CompanyMinimaController/'+ permno, function(data) {
+		     var jsonArr = data;
+		     
+		     //generate maxima chart divs  
+		     for(var i = 0; i < data.length; i++){
+		    	 $("#graphs").append('<div class="row"><div class="col-md-6"><div class="panel panel-default"><div class="panel-body"><div id="chart'+ i +'"></div></div></div></div></div>');
+		     }
+
+					
+		     //pass json data to the c3 graph
+					for (var i = 0; i < data.length; i++) {
+						var divId = "#chart" + i.toString();
+						//console.log(identifier);
+						chart = c3.generate({
+							bindto : divId,
+							data : {
+								json : jsonArr[i],
+								keys : {
+									x : 'Date', // it's possible to specify 'x' when category axis
+									value : [ 'PRC', 'Pseudo_PRC' ],
+								}
+							},
+							zoom : {
+								enabled : true
+							},
+							axis : {
+								x : {
+									type : 'timeseries',
+									tick : {
+										count: 4,
+										format : '%Y-%m-%d'
+									}
+								},
+								
+								y : {
+									show: true,
+									tick: {
+						                format: d3.format("$")
+						            }
+								}
+							},
+							size : {
+								width : 300,
+								height : 200
+							},
+							grid: {
+						        x: {
+						            lines: [{value: jsonArr[i][1].Date}]
+						        }
+						    },
+						    regions: [
+						              {start:jsonArr[i][0].Date, end:jsonArr[i][2].Date}
+						          ]
+						});
+					}
+				});
+	 });
+</script>
+<script src="js/pace.js"></script>
 </body>
 
 </html>

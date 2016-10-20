@@ -62,6 +62,75 @@ public class CompanyEventDAO {
 	}
 	
 	
+	//get maxima details (values of maxima date range)
+		public List<companydetails> getMaximaDetails(List<companydetails> result, String maxDate){
+			List<companydetails> maximaRange = new ArrayList<companydetails>();
+			
+			//parameters for calculate maxima (can be used as method parameters and change maximas)
+			int prcPercentage = 1;
+			int afterDays = 10;
+			int beforeDays = 9;
+
+			int i;
+			for(i=0 ; i < result.size(); i++){
+				//find index of maximaDate
+				if(result.get(i).getDate().equals(maxDate)){
+					double maxPRC = result.get(i).getPseudo_PRC();
+					double lowerLevelPRC = maxPRC * (100 - prcPercentage)/100 ;
+					
+					//find down lowerLeverPrice of maxima
+					int k;
+					for(k=i; k > 0; k--){
+						if((result.get(k).getPseudo_PRC() <= lowerLevelPRC)){
+							System.out.println(result.get(k).getPseudo_PRC());
+							System.out.println(result.get(k).getDate());
+							maximaRange.add(result.get(k));
+							break;
+						}
+					}
+					
+					maximaRange.add(result.get(i));
+					
+					//find up lowerLeverPrice of maxima
+					int j;
+					for(j=i; j < result.size(); j++){
+						if((result.get(j).getPseudo_PRC() <= lowerLevelPRC)){
+							System.out.println(result.get(j).getPseudo_PRC());
+							System.out.println(result.get(j).getDate());
+							maximaRange.add(result.get(j));
+							break;
+						}
+					}
+
+					//if maxima exists on first 9 days 
+					int l;
+					if((i-beforeDays)<0){
+						for(l = 0; l <= i + afterDays; l++){
+							maximaRange.add(result.get(l));
+						}
+					}
+					
+					//if maxima exists on last 10 days
+					if((i+afterDays)>result.size()){
+						for(l = i - beforeDays; l < result.size(); l++){
+							maximaRange.add(result.get(l));
+						}
+					}
+					
+					//default maxima 
+					if((i-beforeDays)>=0 && (i+afterDays)<=result.size()){
+						for(l = i - beforeDays; l <= i + afterDays; l++){
+							maximaRange.add(result.get(l));
+						}
+					}
+									
+				}
+			}
+			
+			return maximaRange;
+		}
+	
+	
 	
 	//return minima list
 	public List<List<companydetails>> retMinima(int permno){
@@ -105,83 +174,21 @@ public class CompanyEventDAO {
     	return list;
 	}
 	
-	
-	
-	//get maxima details (values of maxima date range)
-	public List<companydetails> getMaximaDetails(List<companydetails> result, String maxDate){
-		List<companydetails> maximaRange = new ArrayList<companydetails>();
 
-		int i;
-		for(i=0 ; i < result.size(); i++){
-			//find index of maximaDate
-			if(result.get(i).getDate().equals(maxDate)){
-				double maxPRC = result.get(i).getPseudo_PRC();
-				double lowerLevelPRC = maxPRC * (100-1)/100 ;
-				
-				//find down lowerLeverPrice of maxima
-				int k;
-				for(k=i; k > 0; k--){
-					if((result.get(k).getPseudo_PRC() <= lowerLevelPRC)){
-						System.out.println(result.get(k).getPseudo_PRC());
-						System.out.println(result.get(k).getDate());
-						maximaRange.add(result.get(k));
-						break;
-					}
-				}
-				
-				maximaRange.add(result.get(i));
-				
-				//find up lowerLeverPrice of maxima
-				int j;
-				for(j=i; j < result.size(); j++){
-					if((result.get(j).getPseudo_PRC() <= lowerLevelPRC)){
-						System.out.println(result.get(j).getPseudo_PRC());
-						System.out.println(result.get(j).getDate());
-						maximaRange.add(result.get(j));
-						break;
-					}
-				}
-
-				//if maxima exists on first 9 days 
-				int l;
-				if((i-9)<0){
-					for(l = 0; l <= i + 10; l++){
-						maximaRange.add(result.get(l));
-					}
-				}
-				
-				//if maxima exists on last 10 days
-				if((i+10)>result.size()){
-					for(l = i - 9; l < result.size(); l++){
-						maximaRange.add(result.get(l));
-					}
-				}
-				
-				//default maxima 
-				if((i-9)>=0 && (i+10)<=result.size()){
-					for(l = i - 9; l <= i + 10; l++){
-						maximaRange.add(result.get(l));
-					}
-				}
-								
-			}
-		}
-		
-		return maximaRange;
-	}
-	
-	
-	
-	
 	//get minima details (values of minima date range)
 		public List<companydetails> getMinimaDetails(List<companydetails> result, String minDate){
 			List<companydetails> minimaRange = new ArrayList<companydetails>();
-
+			
+			int prcPercentage = 1;
+			int afterDays = 10;
+			int beforeDays = 9;
+			
+			
 			int i;
 			for(i=0 ; i < result.size(); i++){
 				if(result.get(i).getDate().equals(minDate)){
 					double minPRC = result.get(i).getPseudo_PRC();
-					double upperLevelPRC = minPRC * (100+1)/100 ;
+					double upperLevelPRC = minPRC * (100+prcPercentage)/100 ;
 					
 					int k;
 					for(k=i; k > 0; k--){
@@ -207,20 +214,20 @@ public class CompanyEventDAO {
 					
 
 					int l;
-					if((i-9)<0){
-						for(l = 0; l <= i + 10; l++){
+					if((i-beforeDays)<0){
+						for(l = 0; l <= i + afterDays; l++){
 							minimaRange.add(result.get(l));
 						}
 					}
 					
-					if((i+10)>result.size()){
-						for(l = i - 9; l < result.size(); l++){
+					if((i+afterDays)>result.size()){
+						for(l = i - beforeDays; l < result.size(); l++){
 							minimaRange.add(result.get(l));
 						}
 					}
 					
-					if((i-9)>=0 && (i+10)<=result.size()){
-						for(l = i - 9; l <= i + 10; l++){
+					if((i-beforeDays)>=0 && (i+afterDays)<=result.size()){
+						for(l = i - beforeDays; l <= i + afterDays; l++){
 							minimaRange.add(result.get(l));
 						}
 					}
