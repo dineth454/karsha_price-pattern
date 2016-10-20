@@ -117,17 +117,6 @@ public class CompanyEventDAO {
 			if(result.get(i).getDate().equals(maxDate)){
 				double maxPRC = result.get(i).getPseudo_PRC();
 				double lowerLevelPRC = maxPRC * (100-1)/100 ;
-				//System.out.println(i + "pure");
-				
-				//find up lowerLeverPrice of maxima
-				int j;
-				for(j=i; j < result.size(); j++){
-					if((result.get(j).getPseudo_PRC() <= lowerLevelPRC)){
-						System.out.println(result.get(j).getPseudo_PRC());
-						System.out.println(result.get(j).getDate());
-						break;
-					}
-				}
 				
 				//find down lowerLeverPrice of maxima
 				int k;
@@ -135,6 +124,20 @@ public class CompanyEventDAO {
 					if((result.get(k).getPseudo_PRC() <= lowerLevelPRC)){
 						System.out.println(result.get(k).getPseudo_PRC());
 						System.out.println(result.get(k).getDate());
+						maximaRange.add(result.get(k));
+						break;
+					}
+				}
+				
+				maximaRange.add(result.get(i));
+				
+				//find up lowerLeverPrice of maxima
+				int j;
+				for(j=i; j < result.size(); j++){
+					if((result.get(j).getPseudo_PRC() <= lowerLevelPRC)){
+						System.out.println(result.get(j).getPseudo_PRC());
+						System.out.println(result.get(j).getDate());
+						maximaRange.add(result.get(j));
 						break;
 					}
 				}
@@ -163,6 +166,7 @@ public class CompanyEventDAO {
 								
 			}
 		}
+		
 		return maximaRange;
 	}
 	

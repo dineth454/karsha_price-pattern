@@ -32,7 +32,7 @@
 <body>
 
 <div class="container"></div>
-<button id="createButtons">CreateElements</button>
+<button id="createButtons">Maxima</button>
 
 
 <!--  <div class="container">
@@ -57,17 +57,17 @@ $("#createButtons").click(function () {
 	//read json url and assign it to a data string
 	 $.getJSON('/Price_Pattern/getDetails/CompanyMaximaController/38703', function(data) {
 		     var jsonArr = data;
-		     
+		   	console.log(data);
 		     //generate maxima chart divs  
 		     for(var i = 0; i < data.length; i++){
-		    	 $(".container").append('<div class="row"><div class="col-md-6"><div class="panel panel-default"><div class="panel-body"><div id="chart'+ i +'"></div></div></div></div></div>');
+		    	 $(".container").append('<div class="row"><div class="col-md-5"><div class="panel panel-default"><div class="panel-body"><div id="chart'+ i +'"></div></div></div></div></div>');
 		     }
 
 					
 		     //pass json data to the c3 graph
 					for (var i = 0; i < data.length; i++) {
 						var divId = "#chart" + i.toString();
-						//console.log(identifier);
+						//console.log(jsonArr[i][0]);
 						chart = c3.generate({
 							bindto : divId,
 							data : {
@@ -84,14 +84,30 @@ $("#createButtons").click(function () {
 								x : {
 									type : 'timeseries',
 									tick : {
+										count: 4,
 										format : '%Y-%m-%d'
 									}
+								},
+								
+								y : {
+									show: true,
+									tick: {
+						                format: d3.format("$")
+						            }
 								}
 							},
 							size : {
-								width : 500,
-								height : 300
-							}
+								width : 300,
+								height : 200
+							},
+							grid: {
+						        x: {
+						            lines: [{value: jsonArr[i][1].Date}]
+						        }
+						    },
+						    regions: [
+						              {start:jsonArr[i][0].Date, end:jsonArr[i][2].Date}
+						          ]
 						});
 					}
 				});
