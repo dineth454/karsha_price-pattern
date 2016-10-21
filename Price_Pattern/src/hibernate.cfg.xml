@@ -15,7 +15,8 @@
         <property name="hbm2ddl.auto">update </property>
         
         <mapping resource="com/jwt/hibernate/bean/company.hbm.xml"/>
-        <mapping resource="com/jwt/hibernate/bean/companyeventdata.hbm.xml"/>
+        <mapping resource="com/jwt/hibernate/bean/maxmin.hbm.xml"/>
+        <mapping resource="com/jwt/hibernate/bean/stock.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>
