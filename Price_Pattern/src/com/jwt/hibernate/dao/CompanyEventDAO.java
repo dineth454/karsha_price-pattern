@@ -11,7 +11,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 //import com.jwt.hibernate.bean.companydetails;
-import com.jwt.hibernate.bean.CompanyEventData;
+import com.jwt.hibernate.bean.maxminDetails;
 import com.jwt.hibernate.bean.companydetails;
 
 public class CompanyEventDAO {
@@ -34,8 +34,8 @@ public class CompanyEventDAO {
             Transaction transaction = session.beginTransaction();
             
             //query for get maxima 
-            Query<?> query = session.createQuery("from CompanyEventData where EXTREMATYPE='max' and META_PERMNO='"+permno+"'");           
-            List<CompanyEventData> result = (List<CompanyEventData>) query.list();
+            Query<?> query = session.createQuery("from maxminDetails where EXTREMATYPE='max' and META_PERMNO='"+permno+"'");           
+            List<maxminDetails> result = (List<maxminDetails>) query.list();
             
             //query for get company details according permno
             Query<?> queryToGetComanyList = session.createQuery("from companydetails where PERMNO='"+permno+"'");
@@ -149,8 +149,8 @@ public class CompanyEventDAO {
             // 4. Starting Transaction
             Transaction transaction = session.beginTransaction();
             
-            Query<?> query = session.createQuery("from CompanyEventData where EXTREMATYPE='min' and META_PERMNO='"+permno+"'");           
-            List<CompanyEventData> result = (List<CompanyEventData>) query.list();
+            Query<?> query = session.createQuery("from maxminDetails where EXTREMATYPE='min' and META_PERMNO='"+permno+"'");           
+            List<maxminDetails> result = (List<maxminDetails>) query.list();
             
             Query<?> queryToGetComanyList = session.createQuery("from companydetails where PERMNO='"+permno+"'");
     		List<companydetails> resultComanyList = (List<companydetails>) queryToGetComanyList.list();
