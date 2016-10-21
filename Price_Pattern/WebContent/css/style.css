@@ -254,9 +254,8 @@ textarea {
 */
 
 .main {
-	padding-bottom: 2em;
-	
-	border-bottom: 1px solid #000;
+	/*padding-bottom: 2em;
+	border-bottom: 1px solid #000;*/
 }
 
 
@@ -1339,4 +1338,3 @@ newly add by asensanjula----
 	font-size:1.5em;
 	text-decoration: underline;
 }
-

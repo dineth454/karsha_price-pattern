@@ -22,7 +22,7 @@ import com.jwt.hibernate.bean.companydetails;
 public class CompanyDAO {
 	public List<companydetails> getDetails(int permno){
 		List<companydetails> list = null;
-		//System.out.print("hello");
+
     	try {
             // 1. configuring hibernate
             Configuration configuration = new Configuration().configure();

@@ -36,9 +36,6 @@ public class CompanyPriceController {
 			jsonObject.put("Turnover",companydetails.getTurnover());
 			jsonArray.put(jsonObject);
 			//jsonObject.put(companydetails.getPRC());
-			
-			
-			
         }	
 		
 		return Response.status(200).entity(jsonArray.toString()).build();
