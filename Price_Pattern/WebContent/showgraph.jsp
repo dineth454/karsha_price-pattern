@@ -122,6 +122,7 @@
 							    <button id="maxima" type="button" class="btn btn-danger" style="background-color: #e62e00;">Maxima</button>
 							    <button id="minima" type="button" class="btn btn-success" style="background-color: #00802b;">Minima</button>
 							    <button id="PRCB" type="button" class="btn btn-primary" style="background-color: #004d00;display:none">Show PRC_Graph</button>
+							    <a  class="col-md-offset-8">Maxima <span class="badge">5</span></a>
 							  </div>
 							</div> 	
  	
