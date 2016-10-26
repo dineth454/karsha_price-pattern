@@ -49,7 +49,7 @@ var svg = d3.select("#treeView").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("data/companyTree.json", function(error, flare) {
+d3.json("/Price_Pattern/getDetails/CompanyTreeController", function(error, flare) {
   if (error) throw error;
 
   root = flare;
@@ -202,6 +202,7 @@ function mouseover(d) {
         .attr('transform', function(d){ 
             return 'translate(5, -10)';
         })
+        .style("color","blue")
         .text(d.name);
 }
 

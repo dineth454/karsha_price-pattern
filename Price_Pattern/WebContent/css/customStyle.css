@@ -17,6 +17,10 @@
 	  stroke: #ccc;
 	  stroke-width: 1.5px;
 	}
+	
+text:hover {
+	color: blue;
+}
 		
 	
 #demo{
