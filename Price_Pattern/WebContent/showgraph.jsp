@@ -121,6 +121,7 @@
 							  <div class="panel-body">
 							    <button id="maxima" type="button" class="btn btn-danger" style="background-color: #e62e00;">Maxima</button>
 							    <button id="minima" type="button" class="btn btn-success" style="background-color: #00802b;">Minima</button>
+							    <button id="amNeg" type="button" class="btn btn-default" style="background-color: #009900;color:white;">AmNeg</button>
 							    <button id="PRCB" type="button" class="btn btn-primary" style="background-color: #004d00;display:none">Show PRC_Graph</button>
 							  <a  id="count" style="display:none" class="col-md-offset-6 "></a><span  id="badges" class="badge"></span> <!-- To show how many Charts maxima minima -->
 							    <a  id="count1" style="display:none" class="col-md-offset-6 "></a><span  id="badges1" class="badge"></span>
@@ -160,6 +161,7 @@
   <script src="js/graphs/price_graph.js"></script>
     <script src="js/graphs/maxima_data.js"></script>
    <script src="js/graphs/minima_data.js"></script>
+   <script src="js/graphs/amNeg_data.js"></script>
     <script>
 $(document).ready(function(){
     $("#maxima,#minima").click(function(){
