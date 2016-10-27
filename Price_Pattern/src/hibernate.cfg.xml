@@ -17,6 +17,9 @@
         <mapping resource="com/jwt/hibernate/bean/company.hbm.xml"/>
         <mapping resource="com/jwt/hibernate/bean/maxmin.hbm.xml"/>
         <mapping resource="com/jwt/hibernate/bean/stock.hbm.xml"/>
+        <mapping resource="com/jwt/hibernate/bean/allcompany.hbm.xml"/>
+        <mapping resource="com/jwt/hibernate/bean/naics.hbm.xml"/>
+        <mapping resource="com/jwt/hibernate/bean/amNeg.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>

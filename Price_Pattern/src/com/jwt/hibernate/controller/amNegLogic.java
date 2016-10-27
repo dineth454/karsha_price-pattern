@@ -12,16 +12,19 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.jwt.hibernate.bean.companydetails;
-import com.jwt.hibernate.dao.CompanyEventDAO;
+import com.jwt.hibernate.dao.amNegDAO;
 
-@Path("/CompanyMaximaController")
-public class CompanyMaximaController {
-	@Path("{maximaGraphData}")
+
+
+@Path("/amNegLogic")
+public class amNegLogic {
+	@Path("{graphData}")
 	@GET
 	@Produces("application/json")
-	public Response genMaximaJson(@PathParam("maximaGraphData") int permno){
-		CompanyEventDAO companyEvent = new CompanyEventDAO();
-		List<List<companydetails>> list =  companyEvent.retMaxima(permno);
+	public Response generateAmnegJson(@PathParam("graphData") int permno){
+		amNegDAO amNegObj = new amNegDAO();
+		List<List<companydetails>> list = amNegObj.returnAmnegList(10078);
+		
 		JSONArray jsonArray = new JSONArray();
 		
 		int i;
@@ -44,5 +47,4 @@ public class CompanyMaximaController {
 		
 		return Response.status(200).entity(jsonArray.toString()).build();
 	}
-
 }

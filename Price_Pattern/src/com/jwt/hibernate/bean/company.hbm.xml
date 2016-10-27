@@ -5,7 +5,7 @@
 
  
 <hibernate-mapping>
-   <class name="com.jwt.hibernate.bean.companydetails" table="cep_simulator">
+   <class name="com.jwt.hibernate.bean.companydetails" table="stock_all">
      <meta attribute="class-description">
          This class contains the Company detail. 
       </meta>
@@ -14,7 +14,7 @@
       </id>
       <property name="PERMNO" column="PERMNO" type="int"/>
       <property name="PRC" column="PRC" type="double"/>
-      <property name="Pseudo_PRC" column="Pseudo_PRC" type="double"/>
+      <property name="Pseudo_PRC" column="PseudoPRC" type="double"/>
       <property name="Turnover" column="Turnover" type="double"/>
       
    </class>
