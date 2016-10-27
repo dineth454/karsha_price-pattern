@@ -21,6 +21,8 @@ function doThism () {
  
 
 arr = JSON.parse( arr); // Do not need to pass to a another array; 
+document.getElementById("count").innerHTML = "Maxima Count  ";
+document.getElementById("badges").innerHTML = arr.length;
 if(arr.length>0){
 for(c=0;c<arr.length;c++){
 	  $('#parent').append('<div class="col-md-4"><div class="page-header" align="center">Maxima -'+(c+1)+'</div><div id="demo'+ c +'"></div></div>');

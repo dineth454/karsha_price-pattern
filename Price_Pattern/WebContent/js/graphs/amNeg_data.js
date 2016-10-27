@@ -1,18 +1,15 @@
-/**
- * 
- */
 
 /**
  * 
- * This is where graph data is found and visualize graph in web page
+ * This is where AmNeg Data is created to visualize the chart in main page.
  */
 
-$('#minima').on('click', doThis);
+$('#amNeg').on('click', doThis);
 function doThis () {    
  var c;
  var arr;
  $.ajax({
-	    url:  '/Price_Pattern/getDetails/minimaLogic/'+ permno,
+	    url:  '/Price_Pattern/getDetails/amNegLogic/'+ permno,
 	    type: "GET",
 	    dataType: 'html',
 	    async: false,
@@ -24,11 +21,11 @@ function doThis () {
  
 
 arr = JSON.parse( arr); // Do not need to pass to a another array; 
-document.getElementById("count1").innerHTML = "Minima Count  "; 
-document.getElementById("badges1").innerHTML = arr.length;
+document.getElementById("count2").innerHTML = "AmNeg  Count  "; 
+document.getElementById("badges2").innerHTML = arr.length;
 if(arr.length>0){
 for(c=0;c<arr.length;c++){
-	  $('#parent1').append('<div class="col-md-4"><div class="page-header" align="center">Minima -'+(c+1)+'</div><div id="demot'+ c +'"></div></div>');
+	  $('#parent2').append('<div class="col-md-4"><div class="page-header" align="center">AmNeg-'+(c+1)+'</br><div align="center">(pattern -'+arr[c][0]['pattern']+')</div></div><div id="demot'+ c +'"></div></div>');
 	  }
 
 
@@ -52,7 +49,7 @@ var chart=c3.generate({
 	        x: {
 	        	 type: 'timeseries',
 	        	 tick: {
-	                 count: 4,
+	                 count: 3,
 	                 format: '%Y-%m-%d'
 	             },
 				    label: {
@@ -77,14 +74,6 @@ var chart=c3.generate({
 	            }
 	        },
 	    },
-	    grid: {
-	        x: {
-	            lines: [
-	                {value: arr[i][arr[i].length-1]['minimaDate'], text: 'MINIMA',position: 'middle'}
-	               
-	            ]
-	        }
-	    },
 	    size:{
 	    	 width:300,
 	    	 height:275
@@ -93,11 +82,7 @@ var chart=c3.generate({
 	    	enabled: true,
 	  		rescale: true
 			},
-			regions: [
-			          {axis: 'x', start:  arr[i][arr[i].length-1]['leftDate'], end:  arr[i][arr[i].length-1]['rightDate'], class: 'regionX'},
-			         
-			          
-			      ],
+			
 	    bar: {
 	        width: {
 	            ratio: 0.5

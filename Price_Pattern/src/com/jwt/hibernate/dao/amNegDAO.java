@@ -14,23 +14,24 @@ import com.jwt.hibernate.bean.AmNeg;
 import com.jwt.hibernate.bean.companydetails;
 
 public class amNegDAO {
+				 // 1. configuring hibernate
+			    Configuration configuration = new Configuration().configure();
+			
+			    // 2. create sessionfactory
+			    SessionFactory sessionFactory = configuration.buildSessionFactory();
+			
+			    // 3. Get Session object
+			    Session session = sessionFactory.openSession();
+			
+			    // 4. Starting Transaction
+			    Transaction transaction = session.beginTransaction();
 	public List<List<companydetails>> returnAmnegList(int permno){
 		List<List<companydetails>> list = null;
 		
     	try {
-            // 1. configuring hibernate
-            Configuration configuration = new Configuration().configure();
- 
-            // 2. create sessionfactory
-            SessionFactory sessionFactory = configuration.buildSessionFactory();
- 
-            // 3. Get Session object
-            Session session = sessionFactory.openSession();
- 
-            // 4. Starting Transaction
-            Transaction transaction = session.beginTransaction();
-            Query<?> query1 = session.createQuery("from AmNeg where PERMNO=' "+permno+" ' and pattern!=null");
-            List<AmNeg> amNegList = (List<AmNeg>) query1.list();
+           
+         
+            List<AmNeg> amNegList = getPatternDetails(permno); 
             
             Query<?> queryToGetComanyList = session.createQuery("from companydetails where PERMNO='"+permno+"'");
     		List<companydetails> resultComanyList = (List<companydetails>) queryToGetComanyList.list();
@@ -42,13 +43,10 @@ public class amNegDAO {
     			amNegCollection.add(getAmNegDetails(resultComanyList, amNegList.get(i).getDateMax(), amNegList.get(i).getDateMin()));
     		}
     
-            for(AmNeg companydetails : amNegList)
-            {
-            	System.out.println("maxdate: "+companydetails.getDateMax() +", mindate: "+companydetails.getDateMin());
-            }
+            
 
             
-            transaction.commit();
+            transaction.commit(); 
             System.out.println("\n\n Retrieved \n");
             return amNegCollection;
             
@@ -61,9 +59,16 @@ public class amNegDAO {
     	return list;
     }
 	
+	public  List<AmNeg> getPatternDetails(int permno){
+		
+		   Query<?> query1 = session.createQuery("from AmNeg where PERMNO=' "+permno+" ' and pattern!=null");
+           List<AmNeg> amNegList = (List<AmNeg>) query1.list();
+           return amNegList;
+	}
 	
 	public List<companydetails> getAmNegDetails(List<companydetails> result, String maxDate, String minDate){
 		List<companydetails> maximaRange = new ArrayList<companydetails>();
+		
 		
 		int maximaPosition = 0;
 		int minimaPosition = 0;
@@ -79,6 +84,7 @@ public class amNegDAO {
 		for(j = maximaPosition; j < result.size(); j++){
 			if(result.get(j).getDate().equals(minDate)){
 				minimaPosition = j;
+				break;
 			}
 		}
 		

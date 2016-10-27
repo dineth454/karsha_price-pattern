@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.jwt.hibernate.bean.AmNeg;
 import com.jwt.hibernate.bean.companydetails;
 import com.jwt.hibernate.dao.amNegDAO;
 
@@ -23,7 +24,9 @@ public class amNegLogic {
 	@Produces("application/json")
 	public Response generateAmnegJson(@PathParam("graphData") int permno){
 		amNegDAO amNegObj = new amNegDAO();
-		List<List<companydetails>> list = amNegObj.returnAmnegList(10078);
+		List<List<companydetails>> list = amNegObj.returnAmnegList(permno);
+		
+		List<AmNeg> amNegList =amNegObj.getPatternDetails(permno); 
 		
 		JSONArray jsonArray = new JSONArray();
 		
@@ -38,9 +41,26 @@ public class amNegLogic {
 				jsonObject.put("Date",companydetails.getDate());
 				jsonObject.put("PRC",companydetails.getPRC());
 				jsonObject.put("Pseudo_PRC",companydetails.getPseudo_PRC());
+				
+				
+				 switch(amNegList.get(i).getPattern()) {
+		         case 1 :
+		        	 jsonObject.put("pattern","MmaxToMmin");
+		            break;
+		         case 2 :
+		        	 jsonObject.put("pattern","MmaxToMin");
+		            break;
+		         case 3 :
+		        	 jsonObject.put("pattern","MaxToMmin");
+		            break;
+		         case 4 :
+		        	 jsonObject.put("pattern","MaxToMin");
+		            break;
+				 }
 				inerJsonArray.put(jsonObject);
 				//jsonObject.put(companydetails.getPRC());	
 	        }
+				 
 			
 			jsonArray.put(inerJsonArray);
 		}
