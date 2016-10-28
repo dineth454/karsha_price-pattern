@@ -46,15 +46,19 @@ public class amNegLogic {
 				 switch(amNegList.get(i).getPattern()) {
 		         case 1 :
 		        	 jsonObject.put("pattern","MmaxToMmin");
+		        	 jsonObject.put("color","#ccb3ff");
 		            break;
 		         case 2 :
 		        	 jsonObject.put("pattern","MmaxToMin");
+		        	 jsonObject.put("color","#b3ffb3");
 		            break;
 		         case 3 :
 		        	 jsonObject.put("pattern","MaxToMmin");
+		        	 jsonObject.put("color","#ffccff");
 		            break;
 		         case 4 :
 		        	 jsonObject.put("pattern","MaxToMin");
+		        	 jsonObject.put("color","#ffcccc");
 		            break;
 				 }
 				inerJsonArray.put(jsonObject);
