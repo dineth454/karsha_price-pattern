@@ -10,6 +10,7 @@
 	
 	.node text {
 	  font: 10px sans-serif;
+	  
 	}
 	
 	.link {
@@ -19,7 +20,7 @@
 	}
 	
 text:hover {
-	color: blue;
+	fill: blue;
 }
 		
 	

@@ -129,8 +129,8 @@ public class CompanyTreeController {
 		for(Company company : CompanyList)
         {
 			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("name",company.getPERMNO());
-			jsonObject.put("sector",company.getCOMNAM());
+			jsonObject.put("name","NAICS_NO : " + company.getNAICS());
+			jsonObject.put("sector",company.getCOMNAM()+"   |   "+company.getPERMNO() + "   |   " + company.getTSYMBOL());
 			jsonObject.put("children","");
 			jsonArray2.put(jsonObject);
         }

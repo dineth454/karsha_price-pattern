@@ -83,7 +83,7 @@ function update(source) {
 
 	childCount(0, root);  
 
-	newHeight = d3.max(levelWidth) * 25; // 20 pixels per line    
+	newHeight = d3.max(levelWidth) * 30; // 20 pixels per line    
 
 	tree = tree.size([newHeight, width]);
 
@@ -125,7 +125,11 @@ function update(source) {
 	  .attr("dy", ".35em")
 	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
 	  .text(function(d) { return d.sector; })
-	  .style("fill-opacity", 1e-2);
+	  .style('stroke', '#000000')
+	  .style('stroke-width', '0.1px')
+	  .style('font-size', '12px');
+	  //.style("fill-opacity", 1e-2);
+	  
 
 	nodeEnter.append("text")
 	  .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
@@ -203,15 +207,15 @@ function click(d) {
 
 function mouseover(d) {
     d3.select(this).append("text")
-    	//.attr("dx", "5")
-    	.attr("dy", ".35em")
-    	.attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+    	.attr("dx", "5")
+    	.attr("dy", ".25em")
     	.text(function(d) { return d.name; })
         .attr("class", "hover")
         .attr('transform', function(d){ 
             return 'translate(5, -10)';
         })
-        .style("color","blue")
+        .style('font-size','10px')
+        .style('fill','blue');
         //.text(d.name);
 }
 
