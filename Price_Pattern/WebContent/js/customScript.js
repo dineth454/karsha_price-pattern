@@ -224,5 +224,3 @@ function mouseout(d) {
     d3.select(this).select("text.hover").remove();
 }
 
-
-
