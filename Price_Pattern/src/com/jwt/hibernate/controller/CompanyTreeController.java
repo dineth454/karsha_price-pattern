@@ -18,57 +18,10 @@ import org.json.JSONObject;
 
 import com.jwt.hibernate.bean.Company;
 import com.jwt.hibernate.bean.Naics;
-import com.jwt.hibernate.dao.CompanyTree;
 
 @Path("/CompanyTreeController")
 public class CompanyTreeController {
 
-	/*@GET
-	@Produces("application/json")
-	public Response genTree(){
-		CompanyTree tree = new CompanyTree();
-
-		//create json for Naics Nodes in tree
-		List<Naics> naicsList = tree.getNaicsList();
-		
-		JSONArray jsonArray1 = new JSONArray();
-		for(Naics naics : naicsList)
-        {
-			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("name",naics.getIndustryName());
-			jsonObject.put("sector","sec : "+naics.getCode());
-			jsonObject.put("children",companyOnNaics(tree, naics.getCode()));
-			jsonArray1.put(jsonObject);
-        }
-		
-		//json for root of tree 
-		JSONObject jsonObject1 = new JSONObject();
-		jsonObject1.put("name","All Companies");
-		jsonObject1.put("sector","All Companies");
-		jsonObject1.put("children",jsonArray1);
-		
-		return Response.status(200).entity(jsonObject1.toString()).build();
-	}
-	
-	
-	
-	public JSONArray companyOnNaics(CompanyTree tree, int code){
-		List<Company> CompanyList = tree.getCompanyList(code);
-		
-		JSONArray jsonArray2 = new JSONArray();
-		for(Company company : CompanyList)
-        {
-			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("name",company.getPERMNO());
-			jsonObject.put("sector",company.getCOMNAM());
-			jsonObject.put("children","");
-			jsonArray2.put(jsonObject);
-        }
-		
-		return jsonArray2;
-	}
-	*/
-	
 	@GET
 	@Produces("application/json")
 	public Response genTreeTwo(){
