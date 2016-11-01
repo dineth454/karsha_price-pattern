@@ -39,10 +39,11 @@ public class CompanyTreeController {
             // 4. Starting Transaction
             Transaction transaction = session.beginTransaction();
             
+            //get all naics category to a list
             Query<?> query1 = session.createQuery("from Naics");
             List<Naics> naicsList = (List<Naics>) query1.list();
             
-
+          //json structure for NAICS Sector nodes
             JSONArray jsonArray1 = new JSONArray();
     		for(Naics naics : naicsList)
             {
@@ -54,7 +55,7 @@ public class CompanyTreeController {
             }
     		
     		
-    		//json for root of tree 
+    		//json structure for root node
     		JSONObject jsonObject1 = new JSONObject();
     		jsonObject1.put("name","All Companies");
     		jsonObject1.put("sector","All Companies");
@@ -73,7 +74,7 @@ public class CompanyTreeController {
 		return Response.status(200).entity(nullJsonObject.toString()).build();
 	}
 	
-	
+	//json structure for children nodes
 	public JSONArray companyOnNaicsTwo(Session session, int code){
 		Query<?> query2 = session.createQuery("from Company where NAICS like '"+code+"%'");
 		List<Company> CompanyList = (List<Company>) query2.list();
@@ -83,7 +84,8 @@ public class CompanyTreeController {
         {
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("name","NAICS_NO : " + company.getNAICS());
-			jsonObject.put("sector",company.getCOMNAM()+"   |   "+company.getPERMNO() + "   |   " + company.getTSYMBOL());
+			jsonObject.put("comDetails",company.getCOMNAM()+"   |   "+company.getPERMNO() + "   |   " + company.getTSYMBOL());
+			jsonObject.put("url","showgraph.jsp?Key="+ company.getPERMNO() +"&symbol="+company.getTSYMBOL()+"&naics="+company.getNAICS()+"&company="+ company.getCOMNAM());
 			jsonObject.put("children","");
 			jsonArray2.put(jsonObject);
         }

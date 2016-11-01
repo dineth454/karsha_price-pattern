@@ -1,5 +1,7 @@
 //============== D3 tree scripts ===============//
 
+
+//functions to collapse all nodes
 function collapse(d) {
     if (d.children) {
       d._children = d.children;
@@ -14,6 +16,7 @@ function collapse(d) {
 	    update(root);
   }
   
+//functions to expand all nodes
 function expand(d){   
     var children = (d.children)?d.children:d._children;
     if (d._children) {        
@@ -29,6 +32,7 @@ function expandAll(){
     update(root);
 }
 
+//creating tree structure
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
     width = 960 - margin.right - margin.left,
     height = 800 - margin.top - margin.bottom;
@@ -50,6 +54,7 @@ var svg = d3.select("#treeView").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
+//load json data to the tree
 d3.json("/Price_Pattern/getDetails/CompanyTreeController", function(error, flare) {
   if (error) throw error;
 
@@ -65,11 +70,12 @@ d3.json("/Price_Pattern/getDetails/CompanyTreeController", function(error, flare
 d3.select(self.frameElement).style("height", "800px");
 
 
+//update tree content according to a node click
 function update(source) {
 
 	var duration = d3.event && d3.event.altKey ? 5000 : 500;  
 
-	// compute the new height
+	// compute the new height (handle node collision error & maintain readable view of tree in this part)
 	var levelWidth = [1];
 	var childCount = function(level, n) {
 	if(n.children && n.children.length > 0) {
@@ -82,12 +88,13 @@ function update(source) {
 	};
 
 	childCount(0, root);  
-
-	newHeight = d3.max(levelWidth) * 30; // 20 pixels per line    
-
+	
+	// 20 pixels per line
+	newHeight = d3.max(levelWidth) * 30;     
 	tree = tree.size([newHeight, width]);
-
-	d3.select("svg").remove();//TO REMOVE THE ALREADY SVG CONTENTS AND RELOAD ON EVERY UPDATE
+	
+	//to remove the already svg content & reload on every update
+	d3.select("svg").remove();
 
 	svg = d3.select("#treeView").append("svg");
 
@@ -118,7 +125,7 @@ function update(source) {
       .on("mouseout", mouseout);
 
 	nodeEnter.append("circle")
-	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+	  .style("fill", function(d) { return d._children ? "#88ddd8" : "#fff"; });
 
 	nodeEnter.append("text")
 	  .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
@@ -130,13 +137,25 @@ function update(source) {
 	  .style('font-size', '12px');
 	  //.style("fill-opacity", 1e-2);
 	  
+	//add hyperlinks to the children node (used another comDetails & url attributes only for children nodes)
+	nodeEnter.append("svg:a")
+	  .attr("xlink:href", function(d){return d.url;})  // <-- reading the new "url" property
+	.append("svg:text")
+	  .text(function(d) { return d.comDetails; })
+	  .attr("x", 12)
+	  .attr("dy", ".35em")
+	  .style('stroke', '#000000')
+	  .style('stroke-width', '0.1px')
+	  .style('font-size', '12px')
+	  .style("fill", '#000')
+	  .on("click", click);
 
-	nodeEnter.append("text")
+	/*nodeEnter.append("text")
 	  .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
 	  .attr("dy", "1.00em")
 	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
 	  .text(function(d) { return d.info1; })
-	  .style("fill-opacity", 1e-2);
+	  .style("fill-opacity", 1e-2);*/
 
 	// Transition nodes to their new position.
 	var nodeUpdate = node.transition()
@@ -145,7 +164,7 @@ function update(source) {
 
 	nodeUpdate.select("circle")
 	  .attr("r", 6)
-	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+	  .style("fill", function(d) { return d._children ? "#4dcbc5" : "#ebfaf9"; });
 
 	nodeUpdate.selectAll("text")
 	  .style("fill-opacity", 4);
@@ -205,17 +224,19 @@ function click(d) {
   update(d);
 }
 
+//hover action to text
 function mouseover(d) {
     d3.select(this).append("text")
-    	.attr("dx", "5")
-    	.attr("dy", ".25em")
+    	.attr("dx", "7")
+    	.attr("dy", ".10em")
+    	.attr("text-anchor", function(d) { return d.children || d._children ? "middle" : "start"; })
     	.text(function(d) { return d.name; })
         .attr("class", "hover")
         .attr('transform', function(d){ 
             return 'translate(5, -10)';
         })
         .style('font-size','10px')
-        .style('fill','blue');
+        .style('fill','#247b77');
         //.text(d.name);
 }
 
