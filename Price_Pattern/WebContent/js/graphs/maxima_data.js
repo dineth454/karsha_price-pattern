@@ -65,12 +65,7 @@ var chart=c3.generate({
 	            label: {
 	                text: 'PRC/PsedoPRC in $',
 	                position: 'outer-middle'
-	                // inner-top : default
-	                // inner-middle
-	                // inner-bottom
-	                // outer-top
-	                // outer-middle
-	                // outer-bottom
+	             
 	            }
 	        },
 	    },
@@ -105,7 +100,7 @@ var chart=c3.generate({
  }
 }
 else{
-	//document.write("No Maxima Found")
+	
 	alert(" No Data Found");
 }
 $('#maxima').off('click',doThism);
