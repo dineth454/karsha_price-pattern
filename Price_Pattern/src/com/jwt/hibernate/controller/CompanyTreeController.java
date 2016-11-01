@@ -58,7 +58,7 @@ public class CompanyTreeController {
     		//json structure for root node
     		JSONObject jsonObject1 = new JSONObject();
     		jsonObject1.put("name","All Companies");
-    		jsonObject1.put("sector","All Companies");
+    		jsonObject1.put("rootSector","All Companies");
     		jsonObject1.put("children",jsonArray1);
     		
     		

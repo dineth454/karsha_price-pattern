@@ -150,12 +150,15 @@ function update(source) {
 	  .style("fill", '#000')
 	  .on("click", click);
 
-	/*nodeEnter.append("text")
-	  .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
-	  .attr("dy", "1.00em")
-	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-	  .text(function(d) { return d.info1; })
-	  .style("fill-opacity", 1e-2);*/
+	nodeEnter.append("text")
+	  .attr("x", 12)
+	  .attr("dy", ".35em")
+	  .text(function(d) { return d.rootSector; })
+	  .style('stroke', '#000000')
+	  .style('stroke-width', '0.1px')
+	  .style('font-size', '12px')
+	  .style("fill", '#000')
+	  .style("fill-opacity", 1e-2);
 
 	// Transition nodes to their new position.
 	var nodeUpdate = node.transition()
