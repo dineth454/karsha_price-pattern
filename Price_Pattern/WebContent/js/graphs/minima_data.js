@@ -62,7 +62,7 @@ var chart=c3.generate({
 	        },
 	        y: {
 	        	tick: {
-	                format: d3.format("$,")
+	        		format: d3.format("$.2f,")
 //	                format: function (d) { return "$" + d; }
 	            },
 	            label: {

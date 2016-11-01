@@ -9,7 +9,7 @@ function doThisn () {
  var c;
  var arr;
  $.ajax({
-	    url:  '/Price_Pattern/getDetails/amNegLogic/'+ permno,
+	    url:  '/Price_Pattern/getDetails/amNegLogic/'+ permno, //this is the url where json format is generate for graph visualization 
 	    type: "GET",
 	    dataType: 'html',
 	    async: false,
@@ -21,6 +21,7 @@ function doThisn () {
  
 
 arr = JSON.parse( arr); // Do not need to pass to a another array; 
+
 document.getElementById("count2").innerHTML = "AmNeg  Count  "; 
 document.getElementById("badges2").innerHTML = arr.length;
 var p1=0,p2=0,p3=0,p4=0;
@@ -44,12 +45,13 @@ for(c=0;c<arr.length;c++){
 		 }
 	  
 }
+/*  Show distinct pattern counts out of total AmNEg count*/
 $('#p1').append(p1+'/'+arr.length);
-$('#p2').append(p2);
-$('#p3').append(p3);
-$('#p4').append(p4);
+$('#p2').append(p2+'/'+arr.length);
+$('#p3').append(p3+'/'+arr.length);
+$('#p4').append(p4+'/'+arr.length);
 
-console.log(arr.length);
+
 var i;
  for(i=0;i<arr.length;i++){
 var chart=c3.generate({
@@ -86,12 +88,7 @@ var chart=c3.generate({
 	            label: {
 	                text: 'PRC/PsedoPRC in $',
 	                position: 'outer-middle'
-	                // inner-top : default
-	                // inner-middle
-	                // inner-bottom
-	                // outer-top
-	                // outer-middle
-	                // outer-bottom
+	               
 	            }
 	        },
 	    },
@@ -114,8 +111,8 @@ var chart=c3.generate({
  }
 }
 else{
-	//document.write("No Maxima Found")
-	alert(" No Data Found");
+	
+	alert(" No Data Found"); //show alert when  data missing..
 }
 $('#amNeg').off('click',doThisn);
  }
