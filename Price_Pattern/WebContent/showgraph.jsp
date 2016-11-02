@@ -37,6 +37,24 @@
   
   <link href="css/shwgrph.css" rel="stylesheet" type="text/css">
 </head>
+<style>
+#circle {
+	width: 40px;
+	height: 40px;
+	background: red;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	position:relative;
+}
+
+#circle span{
+position: absolute;
+	left:80px;
+	top:10px;
+	font-size: 13px;
+}
+</style>
 
 <body>
 <div class="navbar navbar-fixed-top">
@@ -130,6 +148,21 @@
 							</div> 	
  	
  					</div>
+ 					<!-- display amNeg color pattern type -->
+ 					<div id="amnegcolor" class="col-md-12"  style="display:none">
+ 							<div class="panel panel-default">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">AmNeg Color Patterns</h3>
+							  </div>
+							  <div class="panel-body  " >
+							   <div  class="col-md-3"><div  id="circle" style="background-color: #ccb3ff;"><span class="badge">MmaxToMmin</span><span id="p1" class="badge" style="left:190px;"></span></div></div>
+							   <div  class="col-md-3"><div  id="circle" style="background-color: #b3ffb3;"><span class="badge">MmaxToMin</span><span id="p2" class="badge" style="left:190px;"></span></div></div>
+							   <div  class="col-md-3"><div  id="circle" style="background-color: #ffccff;"><span class="badge">MaxToMmin</span><span id="p3" class="badge" style="left:190px;"></span></div></div>
+							   <div class="col-md-3"><div  id="circle" style="background-color: #ffcccc;"><span class="badge">MaxToMin</span><span id="p4" class="badge" style="left:190px;"></span></div></div>
+							  </div>
+							</div> 	
+ 					
+ 					</div>
  
  
 			 </div>
@@ -182,6 +215,7 @@ $(document).ready(function(){
         // $("#PRCgraph").fadeOut("slow");
        $("#parent1").fadeOut();
        $("#parent2").fadeOut();
+       $("#amnegcolor").fadeOut();
        $("#parent").fadeIn();
       $("#count1,#badges1").fadeOut(-1000);
       $("#count2,#badges2").fadeOut(-1000);
@@ -193,6 +227,7 @@ $(document).ready(function(){
         // $("#PRCgraph").fadeOut("slow");
        $("#parent").fadeOut();
        $("#parent2").fadeOut();
+       $("#amnegcolor").fadeOut();
        $("#parent1").fadeIn();
       
        $("#count,#badges").fadeOut(-1000);
@@ -204,9 +239,12 @@ $(document).ready(function(){
     $("#amNeg").click(function(){
         // $("#PRCgraph").fadeOut();
         // $("#PRCgraph").fadeOut("slow");
+        
        $("#parent").fadeOut();
        $("#parent1").fadeOut();
+      
        $("#parent2").fadeIn();
+       $("#amnegcolor").fadeIn();
       
        $("#count,#badges").fadeOut(-1000);
        $("#count1,#badges1").fadeOut(-1000);
