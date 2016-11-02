@@ -21,6 +21,8 @@ function doThism () {
  
 
 arr = JSON.parse( arr); // Do not need to pass to a another array; 
+document.getElementById("count").innerHTML = "Maxima Count  ";
+document.getElementById("badges").innerHTML = arr.length;
 if(arr.length>0){
 for(c=0;c<arr.length;c++){
 	  $('#parent').append('<div class="col-md-4"><div class="page-header" align="center">Maxima -'+(c+1)+'</div><div id="demo'+ c +'"></div></div>');
@@ -57,18 +59,13 @@ var chart=c3.generate({
 	        },
 	        y: {
 	        	tick: {
-	                format: d3.format("$,")
+	        		format: d3.format("$.2f,")
 //	                format: function (d) { return "$" + d; }
 	            },
 	            label: {
 	                text: 'PRC/PsedoPRC in $',
 	                position: 'outer-middle'
-	                // inner-top : default
-	                // inner-middle
-	                // inner-bottom
-	                // outer-top
-	                // outer-middle
-	                // outer-bottom
+	             
 	            }
 	        },
 	    },
@@ -103,7 +100,7 @@ var chart=c3.generate({
  }
 }
 else{
-	//document.write("No Maxima Found")
+	
 	alert(" No Data Found");
 }
 $('#maxima').off('click',doThism);

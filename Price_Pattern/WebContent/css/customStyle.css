@@ -3,20 +3,25 @@
 	}
 	
 	.node circle {
-	  fill: #fff;
-	  stroke: steelblue;
+	  fill: #ebf9f8;
+	  stroke: #247b77;
 	  stroke-width: 1.5px;
 	}
 	
 	.node text {
 	  font: 10px sans-serif;
+	  
 	}
 	
 	.link {
 	  fill: none;
-	  stroke: #ccc;
+	  stroke: #ccd0ed;
 	  stroke-width: 1.5px;
 	}
+	
+text:hover {
+	fill: #88ddd8;
+}
 		
 	
 #demo{

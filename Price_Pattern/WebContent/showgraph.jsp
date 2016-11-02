@@ -37,6 +37,24 @@
   
   <link href="css/shwgrph.css" rel="stylesheet" type="text/css">
 </head>
+<style>
+#circle {
+	width: 40px;
+	height: 40px;
+	background: red;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	position:relative;
+}
+
+#circle span{
+position: absolute;
+	left:80px;
+	top:10px;
+	font-size: 13px;
+}
+</style>
 
 <body>
 <div class="navbar navbar-fixed-top">
@@ -121,10 +139,29 @@
 							  <div class="panel-body">
 							    <button id="maxima" type="button" class="btn btn-danger" style="background-color: #e62e00;">Maxima</button>
 							    <button id="minima" type="button" class="btn btn-success" style="background-color: #00802b;">Minima</button>
-							    <button id="PRCB" type="button" class="btn btn-primary" style="background-color: #1a1aff;display:none">Show PRC_Graph</button>
+							    <button id="amNeg" type="button" class="btn btn-default" style="background-color: #009900;color:white;">AmNeg</button>
+							    <button id="PRCB" type="button" class="btn btn-primary" style="background-color: #004d00;display:none">Show PRC_Graph</button>
+							  <a  id="count" style="display:none" class="col-md-offset-6 "></a><span  id="badges" class="badge"></span> <!-- To show how many Charts maxima minima -->
+							    <a  id="count1" style="display:none" class="col-md-offset-6 "></a><span  id="badges1" class="badge"></span>
+							     <a  id="count2" style="display:none" class="col-md-offset-6 "></a><span  id="badges2" class="badge"></span>
 							  </div>
 							</div> 	
  	
+ 					</div>
+ 					<!-- display amNeg color pattern type -->
+ 					<div id="amnegcolor" class="col-md-12"  style="display:none">
+ 							<div class="panel panel-default">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">AmNeg Color Patterns</h3>
+							  </div>
+							  <div class="panel-body  " >
+							   <div  class="col-md-3"><div  id="circle" style="background-color: #ccb3ff;"><span class="badge">MmaxToMmin</span><span id="p1" class="badge" style="left:190px;"></span></div></div>
+							   <div  class="col-md-3"><div  id="circle" style="background-color: #b3ffb3;"><span class="badge">MmaxToMin</span><span id="p2" class="badge" style="left:190px;"></span></div></div>
+							   <div  class="col-md-3"><div  id="circle" style="background-color: #ffccff;"><span class="badge">MaxToMmin</span><span id="p3" class="badge" style="left:190px;"></span></div></div>
+							   <div class="col-md-3"><div  id="circle" style="background-color: #ffcccc;"><span class="badge">MaxToMin</span><span id="p4" class="badge" style="left:190px;"></span></div></div>
+							  </div>
+							</div> 	
+ 					
  					</div>
  
  
@@ -134,6 +171,7 @@
 	
  <div class="row" id="parent"></div><!-- This id for show maxima -->
   <div class="row" id="parent1"></div><!-- This id for show minima -->
+  <div class="row" id="parent2"></div><!-- This id for show amNeg -->
  </div>
  
  
@@ -156,31 +194,64 @@
  
  
   <script src="js/graphs/price_graph.js"></script>
+    <script src="js/graphs/maxima_data.js"></script>
+   <script src="js/graphs/minima_data.js"></script>
+   <script src="js/graphs/amNeg_data.js"></script>
     <script>
 $(document).ready(function(){
-    $("#maxima,#minima").click(function(){
+    $("#maxima,#minima,#amNeg").click(function(){
        // $("#PRCgraph").fadeOut();
        // $("#PRCgraph").fadeOut("slow");
       //$("#parent").fadeOut();
        $("#PRCgraph").fadeOut(1000);
        $("#PRCB").fadeIn(1000);
+       
+ 
+     
+       
     });
     $("#maxima").click(function(){
         // $("#PRCgraph").fadeOut();
         // $("#PRCgraph").fadeOut("slow");
        $("#parent1").fadeOut();
+       $("#parent2").fadeOut();
+       $("#amnegcolor").fadeOut();
        $("#parent").fadeIn();
-       
+      $("#count1,#badges1").fadeOut(-1000);
+      $("#count2,#badges2").fadeOut(-1000);
+      $("#count,#badges").fadeIn(1000);
        
      });
     $("#minima").click(function(){
         // $("#PRCgraph").fadeOut();
         // $("#PRCgraph").fadeOut("slow");
        $("#parent").fadeOut();
+       $("#parent2").fadeOut();
+       $("#amnegcolor").fadeOut();
        $("#parent1").fadeIn();
-       
+      
+       $("#count,#badges").fadeOut(-1000);
+       $("#count2,#badges2").fadeOut(-1000);
+       $("#count1,#badges1").fadeIn(1000);
        
      });
+    
+    $("#amNeg").click(function(){
+        // $("#PRCgraph").fadeOut();
+        // $("#PRCgraph").fadeOut("slow");
+        
+       $("#parent").fadeOut();
+       $("#parent1").fadeOut();
+      
+       $("#parent2").fadeIn();
+       $("#amnegcolor").fadeIn();
+      
+       $("#count,#badges").fadeOut(-1000);
+       $("#count1,#badges1").fadeOut(-1000);
+       $("#count2,#badges2").fadeIn(1000);
+       
+     });
+    
     
     $("#PRCB").click(function(){
         // $("#PRCgraph").fadeOut();
@@ -190,8 +261,7 @@ $(document).ready(function(){
      });
 });
 </script>
-  <script src="js/graphs/maxima_data.js"></script>
-   <script src="js/graphs/minima_data.js"></script>
+
   <script src="js/pace.js"></script>
   
 
