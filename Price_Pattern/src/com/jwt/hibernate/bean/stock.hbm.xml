@@ -5,9 +5,9 @@
 
  
 <hibernate-mapping>
-   <class name="com.jwt.hibernate.bean.stock" table="stock">
+   <class name="com.jwt.hibernate.bean.stock" table="stock_all">
      <meta attribute="class-description">
-         This class contains the Maxima and  Minima detail. 
+         This class contains the Details about all companies.
       </meta>
        <composite-id>
             <key-property name="PERMNO" type="int">
