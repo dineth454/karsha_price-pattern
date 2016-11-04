@@ -60,7 +60,7 @@ position: absolute;
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-       <a class="brand" href="index.html">Karsha - Price Pattern </a>
+       <a class="brand" href="index.html">Karsha - Equity Price Features </a>
       </div>
     </div>
   </div>
@@ -90,7 +90,7 @@ position: absolute;
     	
     		<div class="col-md-6">
     			   <div class="page-header" align="center">
-								<h1>Price Analysis </h1>
+								<h1>Equity Price Features </h1>
 				</div>
 			</div>
 			<!-- Company Details From URL -->
