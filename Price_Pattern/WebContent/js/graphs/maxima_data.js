@@ -90,6 +90,7 @@ var chart=c3.generate({
 			         
 			          
 			      ],
+			
 	    bar: {
 	        width: {
 	            ratio: 0.5
