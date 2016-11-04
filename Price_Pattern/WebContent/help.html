@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Price pattern - help</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+          rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/dashboard.css" rel="stylesheet">
+  <link href="css/c3.css" rel="stylesheet">
+ 
+  <style type="text/css">
+.logo {
+    width: 250px;
+    height: 150px;
+    border: 3px solid #73AD21;
+}
+
+.jumbotron p{
+	font-size:16px;
+}
+  </style>
+</head>
+<body>
+   <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+       <a class="brand" href="index.html">Karsha - PRICE PATTERN</a>
+      </div>
+    </div>
+  </div>
+  <div class="subnavbar">
+    <div class="subnavbar-inner">
+      <div class="container">
+       <ul class="mainnav">
+          <li><a href="index.html"><i class="icon-home"></i><span>Home</span> </a> </li>
+          <li><a href="search.html"><i class="icon-dashboard"></i><span>Search</span> </a> </li>
+          
+          <li class="active"><a href="help.html"><i class="icon-user"></i><span>Help</span> </a></li>
+          <li><a href="about.html"><i class="icon-user"></i><span>About</span> </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<!-- /main -->
+<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="jumbotron">
+				  <h2>Data analyzing method</h2> 
+				  <p>Details of all the companies were streamed to WSO2 CEP(Complex Event Processor) by creating a data flow.</p>
+				  <img style="margin-bottom:20px;" class="center-block" src="img/flow.png"/>
+				  
+				  <p>Calculate the minimum points and maximum points of the Pseudo prices using Siddhi query language. </p>
+				  <ul>
+				  	<li>Separated all the pseudo prices regarding to companies.</li>
+				  	<li>Calculate the minima, maxima points using Kalman filter which is an inbuilt function of the Siddhi language.</li>
+				  
+				  </ul>
+				  
+				  <h4><b>Siddhi query</b></h4>
+				  <p style="margin-left:50px;font-size:13px;color:brown;">partition with (meta_PERMNO of inputStream) <b>// Separate price values regarding to the company</b><br>
+						begin<br>
+						  from inputStream #timeseries:kalmanMinMax(meta_PseudoPRC, 0.00001,0.0001, 20, 'minmax')<br>
+						  select meta_PERMNO, meta_date, meta_RET, meta_SHROUT, meta_VOL, meta_RawVol, meta_Turnover, <br>meta_PRC, meta_PseudoPRC, meta_PseudoPRCn, 0.00001 as meta_Overall_stddev, 0.0001 as <br>meta_Batch_stddev, 20 as meta_Window_size, extremaType<br>
+						  insert into outputStream;<br>
+						end;
+				  </p>
+				  
+				  <h4><b>Explanation</b></h4>
+				  <p>Parameters which were used for the Kalman filter</p>
+				  
+				  <ul>
+				  	<li>Overall standard deviation: 0.00001</li>
+				  	<li>Batch standard deviation: 0.0001</li>
+				  	<li>Window size: 20</li>
+				  </ul>
+				  
+				  <img width="450" style="margin-bottom:20px;" class="center-block" src="img/max.png"/>
+				   
+				</div>
+			
+			</div> <!-- end of first jumbo -->
+			
+			<div class="col-md-12">
+				<div class="jumbotron">
+					<h2>Find Companies using Company Tree</h2>
+					
+					<p style="font-size:13px;">All companies are represented by company tree. According to the initial view of company tree companies are categorized based on their NAICS code. First two digit of a NAICS code represent the sector of a company. Description of the sector is displayed by moving mouse pointer close to a node or its text label (figure 1). When click on a node or label it expands all companies related to that category. Then user can find company by the details which are given in labels. When click on the one of label (company name & other details), it generates its price pattern graph (figure 2).
+					</p>
+					
+					 <img  style="margin-bottom:20px;" class="center-block" src="img/two.jpg"/><p align="center">figure 1</p>
+					  <img  class="center-block" style="margin-bottom:20px;"  src="img/three.jpg" /><p align="center"> figure 2</p>
+				
+				</div>
+			
+			</div>
+			
+			<div class="col-md-12">
+				<div class="jumbotron">
+					<h2>Maxima and Minima Graphs
+					</h2>
+					<h5><b><u>For Maxima</u></b></h5>
+					<p style="font-size:14px;">Pink area of the graphs are used to represent maxima area. It means that area consists a maximum point. Boundary values of the range are less than 1% (This value can be changed according to requirements.) of its maximum value. User can check that values moving mouse point on the graph.
+					</p>
+					<img  style="margin-bottom:20px;" class="center-block" src="img/max1.JPG"/>
+					
+					
+					
+					<h5><b><u>For Minima</u></b></h5>
+					<p style="font-size:14px;">Same as maxima graphs. Pink area of the graphs are used to represent minima area. It means that area consists a minimum point. Boundary values of the range are greater than 1% (This value can be changed according to requirements.) of its minimum value.
+					
+					</p>
+					<img  style="margin-bottom:20px;" class="center-block" src="img/min.JPG"/>
+					
+					<h2>AmNeg Graphs
+					</h2>
+					<p style="font-size:14px;" >amNeg: Is the behaviour(slope) of two consecutive maxima and a minima. (first value must be a Maxima)</p>
+					<p style="font-size:14px;" >Use this table to identify the type of Amaneg patterns.</p>
+					<img  width="960" style="margin-bottom:20px;" class="center-block" src="img/amnegColors.JPG"/>
+					
+					<p style="font-size:14px;" >Window size of graphs are different. First PRC/PseudoPRC value in the graph shows maximum value of maxima and last PRC/PseudoPRC value in the graph shows minimum value of minima. Users can check that values by moving mouse pointer close to those points. Color dot represent the AmNeg type.
+</p>
+					
+					<img  style="margin-bottom:20px;" class="center-block" src="img/amneg.JPG"/>
+					
+				</div>
+			
+			</div>
+			
+			
+		
+		</div>
+
+
+</div>
+
+<div class="extra">
+  <div class="extra-inner">
+    <div class="container">
+      <!-- /row --> 
+    </div>
+    <!-- /container --> 
+  </div>
+  <!-- /extra-inner --> 
+</div>
+<!-- /extra -->
+<div class="footer">
+  <div class="footer-inner">
+    <div class="container">
+      <div class="row">
+        <div class="span12"> &copy; 2016 <a href="#">
+       	</a></div>
+        <!-- /span12 --> 
+      </div>
+      <!-- /row --> 
+    </div>
+    <!-- /container --> 
+  </div>
+  <!-- /footer-inner --> 
+</div>
+<!-- /footer --> 
+<script src="js/jquery-1.7.2.min.js"></script> 
+<script src="js/bootstrap.js"></script> 
+
+
+</body>
+</html>
