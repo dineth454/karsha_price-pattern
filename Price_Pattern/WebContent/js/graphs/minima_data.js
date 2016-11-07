@@ -7,8 +7,8 @@
  * This is where graph data is found and visualize graph in web page
  */
 
-$('#minima').on('click', doThis);
-function doThis () {    
+//$('#minima').on('click', doThis);
+//function doThis () {    
  var c;
  var arr;
  $.ajax({
@@ -106,5 +106,5 @@ else{
 	//document.write("No Maxima Found")
 	alert(" No Data Found");
 }
-$('#minima').off('click',doThis);
- }
+//$('#minima').off('click',doThis);
+ //}
