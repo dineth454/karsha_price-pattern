@@ -4,8 +4,8 @@
  * This is where AmNeg Data is created to visualize the chart in main page.
  */
 
-$('#amNeg').on('click', doThisn);
-function doThisn () {    
+//$('#amNeg').on('click', doThisn);
+//function doThisn () {    
  var c;
  var arr;
  $.ajax({
@@ -114,5 +114,5 @@ else{
 	
 	alert(" No Data Found"); //show alert when  data missing..
 }
-$('#amNeg').off('click',doThisn);
- }
+//$('#amNeg').off('click',doThisn);
+ //}

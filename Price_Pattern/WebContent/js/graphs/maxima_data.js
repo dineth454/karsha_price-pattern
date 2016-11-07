@@ -2,11 +2,15 @@
  * 
  * This is where graph data is found and visualize graph in web page
  */
+//$('#maxima').on('click', doprocess);
+//$('#maxima').on('click', doThism);
 
-$('#maxima').on('click', doThism);
-function doThism () {   
+
+
+/*function doThism () {   */
+	
  var c;
- //document.getElementById('parent').innerHTML = "";
+ 
  var arr;
  $.ajax({
 	    url:  '/Price_Pattern/getDetails/maximaLogic/'+permno,
@@ -90,6 +94,7 @@ var chart=c3.generate({
 			         
 			          
 			      ],
+			
 	    bar: {
 	        width: {
 	            ratio: 0.5
@@ -103,6 +108,7 @@ else{
 	
 	alert(" No Data Found");
 }
-$('#maxima').off('click',doThism);
+//$('#maxima').off('click',doThism);
+//$('#loading').fadeOut(500);
 
- }
+ //}

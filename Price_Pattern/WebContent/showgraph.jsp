@@ -4,7 +4,7 @@
 <html>
 <head>
 
-  <link href="css/themes/green/pace-theme-center-simple.css" rel="stylesheet" />
+  <link href="css/themes/green/pace-theme-corner-indicator.css" rel="stylesheet" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
@@ -24,7 +24,7 @@
   <script src="js/bootstrap.min.js"></script>
    <script src="js/predict.js"></script> 
 
-
+ <script src="js/pace.js"></script>
   <!-- Load c3.css -->
   <link href="css/c3.css" rel="stylesheet" type="text/css">
   
@@ -54,13 +54,16 @@ position: absolute;
 	top:10px;
 	font-size: 13px;
 }
+
+
+
 </style>
 
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-       <a class="brand" href="index.html">Karsha - Price Pattern </a>
+       <a class="brand" href="index.html">Karsha - Equity Price Features </a>
       </div>
     </div>
   </div>
@@ -90,7 +93,7 @@ position: absolute;
     	
     		<div class="col-md-6">
     			   <div class="page-header" align="center">
-								<h1>Price Analysis </h1>
+								<h1>Equity Price Features </h1>
 				</div>
 			</div>
 			<!-- Company Details From URL -->
@@ -141,9 +144,10 @@ position: absolute;
 							    <button id="minima" type="button" class="btn btn-success" style="background-color: #00802b;">Minima</button>
 							    <button id="amNeg" type="button" class="btn btn-default" style="background-color: #009900;color:white;">AmNeg</button>
 							    <button id="PRCB" type="button" class="btn btn-primary" style="background-color: #004d00;display:none">Show PRC_Graph</button>
-							  <a  id="count" style="display:none" class="col-md-offset-6 "></a><span  id="badges" class="badge"></span> <!-- To show how many Charts maxima minima -->
-							    <a  id="count1" style="display:none" class="col-md-offset-6 "></a><span  id="badges1" class="badge"></span>
-							     <a  id="count2" style="display:none" class="col-md-offset-6 "></a><span  id="badges2" class="badge"></span>
+							    
+							  <a  id="count" style="display:none" class="col-md-offset-6 "></a><span style="display:none;" id="badges" class="badge"></span> <!-- To show how many Charts maxima minima -->
+							    <a  id="count1" style="display:none" class="col-md-offset-6 "></a><span style="display:none;"  id="badges1" class="badge"></span>
+							     <a  id="count2" style="display:none" class="col-md-offset-6 "></a><span  style="display:none;" id="badges2" class="badge"></span>
 							  </div>
 							</div> 	
  	
@@ -167,11 +171,17 @@ position: absolute;
  
 			 </div>
 	</div>
+	
+	 <div id="loading" style="display:none;">
+  <img id="loading-image" src="img/ajax-loader.gif" alt="Loading..." />
+</div>
 	<div class="container pre-scrollable">	
 	
- <div class="row" id="parent"></div><!-- This id for show maxima -->
-  <div class="row" id="parent1"></div><!-- This id for show minima -->
-  <div class="row" id="parent2"></div><!-- This id for show amNeg -->
+ <div class="row" id="parent" style="display:none;">
+
+ </div><!-- This id for show maxima -->
+  <div class="row" id="parent1" style="display:none;"></div><!-- This id for show minima -->
+  <div class="row" id="parent2"  style="display:none;"></div><!-- This id for show amNeg -->
  </div>
  
  
@@ -192,8 +202,9 @@ position: absolute;
 <!-- /footer --> 
  
  
- 
-  <script src="js/graphs/price_graph.js"></script>
+
+   <script src="js/graphs/price_graph.js"></script>
+   
     <script src="js/graphs/maxima_data.js"></script>
    <script src="js/graphs/minima_data.js"></script>
    <script src="js/graphs/amNeg_data.js"></script>
@@ -205,11 +216,19 @@ $(document).ready(function(){
       //$("#parent").fadeOut();
        $("#PRCgraph").fadeOut(1000);
        $("#PRCB").fadeIn(1000);
+   
        
  
      
        
     });
+    
+    $("#maxima").click(function(){
+    	
+        
+       
+     });
+    
     $("#maxima").click(function(){
         // $("#PRCgraph").fadeOut();
         // $("#PRCgraph").fadeOut("slow");
@@ -262,7 +281,8 @@ $(document).ready(function(){
 });
 </script>
 
-  <script src="js/pace.js"></script>
+  
+ 
   
 
 </body>
