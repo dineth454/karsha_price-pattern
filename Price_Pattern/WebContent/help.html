@@ -13,6 +13,9 @@
   <link href="css/style.css" rel="stylesheet">
   <link href="css/dashboard.css" rel="stylesheet">
   <link href="css/c3.css" rel="stylesheet">
+  
+  <script src="js/jquery-2.1.4.min.js"></script> 
+  <script src="js/bootstrap.min.js"></script>
  
   <style type="text/css">
 .logo {
@@ -102,6 +105,60 @@
 			
 			</div>
 			
+			<div class="col-md-12">
+				<div class="jumbotron">
+					<h2>Data Source and PseudoPrice</h2>
+					
+					<h5><b><u>PseudoPrice</u></b></h5>
+					
+					<ul style="list-style-type:none">
+					  <li>PseudoPrice computation : <strong>Given a return value <i>RET<sub>d</sub></i> on some day d (including dividends and splits) and an initial price <i>P<sub>d-1</sub></i> a pseudo price can be computed as <i>P<sub>d</sub> = (1+RET<sub>d</sub>) P<sub>d-1</sub></i>  . We use <i>P<sub>0</sub> = Initial price on January 1 2004</i> to initialize the computation.</strong></li>
+					</ul>
+					</br>
+					<h5><b><u>Data Source</u></b></h5>
+					
+					<ul style="list-style-type:none">
+					  <li>Data Source : <strong>WRDS S&P 500</strong></li>
+					  <li>Interval : <strong>January 1 2004 to 31 December 2015</strong></li>
+					  <li>RET : <strong><a href="#" data-toggle="modal" data-target="#myModal">Holding Period Return</a><strong></li>
+					</ul> 
+				</div>
+			</div>
+
+			<!-- Modal -->
+			<div id="myModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Holding Period Return</h4>
+						</div>
+						<div class="modal-body">
+							<p>A return is the change in the total value of an investment in a common stock over some period of time per dollar of initial investment. RET(I) is the return for a sale on day I. It is based on a purchase on the most recent time previous to I when the se curity had a valid price. Usually, this time is I - 1. Returns are calculated as follows:</p>
+							<p><strong>For time t (a holding period), let:</strong></p>
+							<ul style="list-style-type:none">
+					  			<li>t? = time of last available price < t</li>
+					  			<li>r(t) = return on purchase at t?, sale at t</li>
+					  			<li>p(t) = last sale price or closing bid/ask average at time t</li>
+					  			<li>d(t) = cash adjustment for t</li>
+					  			<li>f(t) = price adjustment factor for t</li>
+					  			<li>p(t?) = last sale price or closing bid/ask average at time of last available price < t.</li>
+					  			<li>then,</li>
+							</ul>
+							<center><p style="font-size: 150%;"><strong>r(t) = [ (p(t)f(t) + d(t)) / p(t') ] - 1</strong></p></center>
+							<p>t? is usually one period before t, but t? can be up to ten periods before t if there are no valid prices2 in the interval. A series of special return codes specify the reason a return is missing. </p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
 			<div class="col-md-12">
 				<div class="jumbotron">
 					<h2>Maxima and Minima Graphs
