@@ -72,27 +72,31 @@
 			<%@ page import = "java.sql.*" %>
 			<% Class.forName("com.mysql.jdbc.Driver"); %>
 			<%
-				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/karshacep", "root", ""); // <== Check!
-				// Connection conn =
-				//    DriverManager.getConnection("jdbc:odbc:eshopODBC");  // Access
+				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/karshacep", "root", "");
 				Statement stmt = conn.createStatement();
+				Statement stmt2 = conn.createStatement();
 
-				String sqlStr = "SELECT * FROM naics";
+				String query1 = "SELECT * FROM naics";
 				
 				try{
-					System.out.println("Query statement is " + sqlStr);
-					ResultSet rset = stmt.executeQuery(sqlStr);
+					System.out.println("Query statement is " + query1);
+					ResultSet rset = stmt.executeQuery(query1);
+					
+					while(rset.next()){
+						int count = 0;
+						String query2 = "SELECT * FROM all_company_info WHERE NAICS like '"+rset.getString(1)+"%'";
+						ResultSet rset2 = stmt2.executeQuery(query2);
+						
+						while(rset2.next()){
+							count = count + 1;
+						}%>
+						
+						<a href="#" class="list-group-item list-group-item-action"><%= rset.getString(1) %> | <%= rset.getString(2) %><span class="badge"><%= count %></span></a>
+					<%}
 				}catch(SQLException e){
 					System.out.println("errrrror" + e);
 				}
-				// for debugging
-				
 			%>
-
-			<a href="#" class="list-group-item list-group-item-action">11 | Agriculture, Forestry, Fishing and Hunting<span class="badge">12</span></a>
-	  <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-	  <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-	  <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
   </div>
 </div>
 
