@@ -14,6 +14,7 @@
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
   <link href="css/font-awesome.css" rel="stylesheet">
   <link href="css/dashboard.css" rel="stylesheet">
+  <link href="css/shwgrph.css" rel="stylesheet" type="text/css">
   
     <!-- CSS files for D3 Tree -->
   <link href="css/customStyle.css" rel="stylesheet">
@@ -63,11 +64,9 @@
 
 
 <div class="container">
-  <h2>NAICS Companies</h2>
+  <h2>Equity Price Features comparison</h2>
   <div class="list-group">
-	  <a href="#" class="list-group-item active">
-	    Naics Sectors 
-	  </a>
+	  <a href="#" class="list-group-item active">NAICS Details<span class="badge">No of Companies</span></a>
 
 			<%@ page import = "java.sql.*" %>
 			<% Class.forName("com.mysql.jdbc.Driver"); %>
