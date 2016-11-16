@@ -24,7 +24,8 @@ function draw_timeline() {
 	// these define the actual items that are displayed on the chart
 	var items = [
 	    {id : 0,lane : 0,desc : 'Qin',start : yr(5),end : yr(205),class : 'item'},
-	    {id : 1,lane : 0,desc : 'Jin',start : yr(265),end : yr(420),class : 'item'}
+	    {id : 1,lane : 0,desc : 'Jin',start : yr(265),end : yr(420),class : 'item'},
+	    {id : 0,lane : 1,desc : 'Min',start : yr(465),end : yr(520),class : 'item'}
 	];
 	// define the chart extents
 	var margin = {top : 20,	right : 15,	bottom : 15,left : 70},
