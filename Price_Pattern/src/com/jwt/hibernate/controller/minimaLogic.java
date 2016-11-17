@@ -30,7 +30,7 @@ public class minimaLogic {
 		JSONArray jsonArray = new JSONArray();
 		
 		maxminDAO minima = new maxminDAO();
-		List<maxminDetails> minset = minima.getMinimaSet(permno); // get the maixma details 
+		List<maxminDetails> minset = minima.getMinimaSet(permno); // get the minima details 
 		
 		stockDAO st = new stockDAO();
 		List<stock> stockdata = st.getDetails(permno); // get the Stock  details
