@@ -43,7 +43,7 @@
            arr = JSON.parse( arr); //
          //  document.write(arr[0].Dates);
             var data = [];
-            var endTime = new Date(1422642600000);
+            var endTime = new Date("2015-12-31");
             var oneMonth = 30 * 24 * 60 * 60 * 1000;
             var startTime = new Date("2004-01-01");
             var middleTime = startTime + ((endTime - startTime) / 2);
@@ -65,11 +65,19 @@
                     
                 }
              }
-             else  if(name=="Minima"){
+             else  if(name=="AmNeg"){
                  for (var j = 0; j <arr[1].Dates.length; j++) {
                     // var time = Math.floor((Math.random() * oneMonth)) + startTime;
                      //document.write(time+"\n");
                      event.dates.push(new Date(arr[1].Dates[j]));
+                     
+                 }
+              }
+             else  if(name=="Minima"){
+                 for (var j = 0; j <arr[2].Dates.length; j++) {
+                    // var time = Math.floor((Math.random() * oneMonth)) + startTime;
+                     //document.write(time+"\n");
+                     event.dates.push(new Date(arr[2].Dates[j]));
                      
                  }
               }
@@ -87,17 +95,7 @@
 
 
              
-           /* var currentDate = new Date()
-            var day = currentDate.getDate()
-            var month = currentDate.getMonth() + 1
-            var year = currentDate.getFullYear()
-            document.write("<b>" + day + "/" + month + "/" + year + "</b>")*/
-
- /*   data=[ { name: "Maxima", data: [] },
-  { name: "Minima", data: [new Date(1421078669423), new Date(1421987096398)] },
-  { name: "AmNeg", data: [new Date(1420303476752 )] }]; 
-            */
-           document.write(JSON.stringify(data));
+         
 
             
 
@@ -128,61 +126,19 @@ var t=0;
                 .minScale(0.5)
                 .maxScale(100)
                 .locale(locale)
+                
+                .eventLineColor(function (datum, index) {
+            return color(index);
+        })
 
                 .eventColor(function (datum, index) {
                    
-                    if (count==0) {
-                        
-                       if(t<data[0].dates.length){
-                          t=t+1;   
-                        return 'green';
-                    }else{
-                        count=1;
-                        t=1;
-                        return 'green';
-
-                    }
-                        
-                        
-                    }
-
-                    else if(count==1){
-                        if(t<data[1].dates.length){
-                          t=t+1;   
-                          return 'green';
-                        }
-                        else{
-                            count=2;
-                            t=1;
-                            return "green";
-                            
-
-                        }
-
-                    }
-
-                    else if(count==2){
-                            if(t<data[2].dates.length-1){
-                              t=t+1;
-                              
-                              return 'green';
-                        }
-                        else if(t==data[2].dates.length-1){
-                            count=0;
-                            t=0;
-                            return 'green';
-                            
-                            //return "yellow";
-                            
-
-                        }
-
-                    }
+                
                     
-                   
+                     
                 })
 
-                .width(1250)
+                .width(1200)
                 .margin({ top: 100, left: 200, bottom: 0, right: 0 })
                 .axisFormat(function(xAxis) {
                     xAxis.ticks(5);
@@ -190,12 +146,18 @@ var t=0;
                 .eventHover(function(el) {
                     var series = el.parentNode.firstChild.innerHTML;
                     var timestamp = d3.select(el).data()[0];
-                    document.getElementById('legend').innerHTML = 'Hovering [' + timestamp + '] in series "' + series + '"';
+                    
+                    var currentDate = timestamp
+                    var day = currentDate.getDate()
+                    var month = currentDate.getMonth() + 1
+                    var year = currentDate.getFullYear()
+                    
+                    document.getElementById('legend').innerHTML ="<b>" + year + "-" + month + "-" + day + "</b>";
                 })
                 .eventZoom(function (scale) {
                     var limit = scale.domain();
                     var period = parseInt((limit[1] - limit[0]) / (30 * 24) );
-                    document.getElementById('zoomEnd').innerHTML = 'Zoomed on a period of "' + period + ' hours"';
+                   // document.getElementById('zoomEnd').innerHTML = 'Zoomed on a period of "' + period + ' hours"';
                 });
 
 
