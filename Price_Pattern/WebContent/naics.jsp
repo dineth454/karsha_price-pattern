@@ -43,20 +43,20 @@
 <body>
    <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
-      <div class="container top">
-       <a class="brand" href="index.html">Karsha - Equity Price Features </a>
+      <div class="container">
+       <a class="brand" href="index.html">Karsha - Equity Price Features</a>
       </div>
     </div>
   </div>
   <div class="subnavbar">
-    <div class="subnavbar-inner navbar">
+    <div class="subnavbar-inner">
       <div class="container">
        <ul class="mainnav">
-          <li> <a href="index.html"><i class="icon-home"></i><span>Home</span> </a> </li>
-          <li><a href="search.html"><i class="icon-dashboard"></i><span>Search</span> </a> </li>
-          
-          <li><a href="help.html"><i class="icon-user"></i><span>help</span> </a></li>
-            <li><a href="#"><i class="icon-cogs  "></i><span>About</span> </a></li>
+          <li><a href="index.html"><i class="icon-home"></i><span>Home</span> </a> </li>
+          <li><a href="search.html"><i class="icon-search"></i><span>Search</span> </a> </li>
+          <li class="active"><a href="naics.jsp"><i class="icon-list-alt"></i><span>Sectors</span> </a></li>
+          <li><a href="help.html"><i class="icon-file-text"></i><span>Details</span> </a></li>
+          <li><a href="#"><i class="icon-user"></i><span>About</span> </a></li>
         </ul>
       </div>
     </div>
@@ -66,7 +66,7 @@
 <div class="container">
   <h2>Equity Price Features comparison</h2>
   <div class="list-group">
-	  <a href="#" class="list-group-item active">NAICS Details<span class="badge">No of Companies</span></a>
+	  <a href="#" class="list-group-item active"><b>NAICS Details</b><span class="badge">No of Companies</span></a>
 
 			<%@ page import = "java.sql.*" %>
 			<% Class.forName("com.mysql.jdbc.Driver"); %>
