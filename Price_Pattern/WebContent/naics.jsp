@@ -14,6 +14,7 @@
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
   <link href="css/font-awesome.css" rel="stylesheet">
   <link href="css/dashboard.css" rel="stylesheet">
+  <link href="css/shwgrph.css" rel="stylesheet" type="text/css">
   
     <!-- CSS files for D3 Tree -->
   <link href="css/customStyle.css" rel="stylesheet">
@@ -42,20 +43,20 @@
 <body>
    <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
-      <div class="container top">
-       <a class="brand" href="index.html">Karsha - Equity Price Features </a>
+      <div class="container">
+       <a class="brand" href="index.html">Karsha - Equity Price Features</a>
       </div>
     </div>
   </div>
   <div class="subnavbar">
-    <div class="subnavbar-inner navbar">
+    <div class="subnavbar-inner">
       <div class="container">
        <ul class="mainnav">
-          <li> <a href="index.html"><i class="icon-home"></i><span>Home</span> </a> </li>
-          <li><a href="search.html"><i class="icon-dashboard"></i><span>Search</span> </a> </li>
-          
-          <li><a href="help.html"><i class="icon-user"></i><span>help</span> </a></li>
-            <li><a href="#"><i class="icon-cogs  "></i><span>About</span> </a></li>
+          <li><a href="index.html"><i class="icon-home"></i><span>Home</span> </a> </li>
+          <li><a href="search.html"><i class="icon-search"></i><span>Search</span> </a> </li>
+          <li class="active"><a href="naics.jsp"><i class="icon-list-alt"></i><span>Sectors</span> </a></li>
+          <li><a href="help.html"><i class="icon-file-text"></i><span>Details</span> </a></li>
+          <li><a href="#"><i class="icon-user"></i><span>About</span> </a></li>
         </ul>
       </div>
     </div>
@@ -63,36 +64,38 @@
 
 
 <div class="container">
-  <h2>NAICS Companies</h2>
+  <h2>Equity Price Features comparison</h2>
   <div class="list-group">
-	  <a href="#" class="list-group-item active">
-	    Naics Sectors 
-	  </a>
+	  <a href="#" class="list-group-item active"><b>NAICS Details</b><span class="badge">No of Companies</span></a>
 
 			<%@ page import = "java.sql.*" %>
 			<% Class.forName("com.mysql.jdbc.Driver"); %>
 			<%
-				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/karshacep", "root", ""); // <== Check!
-				// Connection conn =
-				//    DriverManager.getConnection("jdbc:odbc:eshopODBC");  // Access
+				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/karshacep", "root", "");
 				Statement stmt = conn.createStatement();
+				Statement stmt2 = conn.createStatement();
 
-				String sqlStr = "SELECT * FROM naics";
+				String query1 = "SELECT * FROM naics";
 				
 				try{
-					System.out.println("Query statement is " + sqlStr);
-					ResultSet rset = stmt.executeQuery(sqlStr);
+					System.out.println("Query statement is " + query1);
+					ResultSet rset = stmt.executeQuery(query1);
+					
+					while(rset.next()){
+						int count = 0;
+						String query2 = "SELECT * FROM all_company_info WHERE NAICS like '"+rset.getString(1)+"%'";
+						ResultSet rset2 = stmt2.executeQuery(query2);
+						
+						while(rset2.next()){
+							count = count + 1;
+						}%>
+						
+						<a href="#" class="list-group-item list-group-item-action"><%= rset.getString(1) %> | <%= rset.getString(2) %><span class="badge"><%= count %></span></a>
+					<%}
 				}catch(SQLException e){
 					System.out.println("errrrror" + e);
 				}
-				// for debugging
-				
 			%>
-
-			<a href="#" class="list-group-item list-group-item-action">11 | Agriculture, Forestry, Fishing and Hunting<span class="badge">12</span></a>
-	  <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-	  <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-	  <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
   </div>
 </div>
 
