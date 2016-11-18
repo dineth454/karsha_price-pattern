@@ -19,3 +19,8 @@ border-bottom: none;
   border-color: #004d4d;
 }
 
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    z-index: 2;
+    color: #fff;
+    background-color: #004d4d;
+    border-color: #004d4d;

@@ -73,7 +73,7 @@ textarea {
 	padding: 7px 0;
 	height:50px;
 	
-	background: #247b77;
+	background: #000;
 	
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
@@ -187,7 +187,7 @@ textarea {
 
 .subnavbar .container > ul > li.active > a {
 	
-	border-bottom:3px solid #ff7f74;
+	border-bottom:3px solid #46e5b3;
 	color: #383838;
 }
     
@@ -1337,4 +1337,26 @@ newly add by asensanjula----
 #eachRecord:HOVER{
 	font-size:1.5em;
 	text-decoration: underline;
+}
+
+
+	
+/*changed bootstrapButton*/
+
+.btn-primary {
+    color: #fff;
+    background-color: #247b77;
+    border-color: #247b77;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #004d4d;
+    border-color: #204d74;
+}
+
+.btn-primary:focus {
+    color: #fff;
+    background-color: #004d4d;
+    border-color: #122b40;
 }
