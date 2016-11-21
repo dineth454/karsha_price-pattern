@@ -16,9 +16,6 @@ import com.jwt.hibernate.bean.maxminDetails;
 
 import com.jwt.hibernate.dao.maxminDAO;
 
-
-
-
 @Path("/testNaics38703")
 public class testNaics38703 {
 	@Path("{naicsData}")
