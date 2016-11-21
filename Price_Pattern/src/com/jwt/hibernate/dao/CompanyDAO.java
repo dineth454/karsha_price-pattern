@@ -16,6 +16,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import com.google.gson.Gson;
+import com.jwt.hibernate.bean.Company;
+//import com.jwt.hibernate.bean.Company;
 import com.jwt.hibernate.bean.companydetails;
 
 
@@ -40,21 +42,7 @@ public class CompanyDAO {
             //1st way....
             List<companydetails> result = (List<companydetails>) query.list();
             
-            //Gson gson = new Gson();
-            //String jsonString = gson.toJson(result);
-        /*    
-            for(companydetails companydetails : result)
-            {
-            	System.out.println("PermNo: "+companydetails.getPERMNO()+", Price: "+companydetails.getPRC());
-            }
-            */
-            // 2nd way......
-            //List users = (List)query.list();
-            //for (Iterator iterator = users.iterator(); iterator.hasNext();)
-            //{
-            //    User user = (User) iterator.next();
-            //    System.out.println("Roll Number: "+user.getUserName()+", Student Name: "+user.getPassword1());
-            //}
+          
             
             transaction.commit();
             System.out.println("\n\n Retrieved \n");
@@ -90,5 +78,47 @@ public class CompanyDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	/* this is for all company info table method */
+
+	public List<Company> getPermnoForNaics(int naics){
+		List<Company> list = null;
+
+    	try {
+            // 1. configuring hibernate
+            Configuration configuration = new Configuration().configure();
+ 
+            // 2. create sessionfactory
+            SessionFactory sessionFactory = configuration.buildSessionFactory();
+ 
+            // 3. Get Session object
+            Session session = sessionFactory.openSession();
+ 
+            // 4. Starting Transaction
+            Transaction transaction = session.beginTransaction();
+            Query<?> query = session.createQuery(" from Company  where NAICS like '"+naics+"%' group by PERMNO");
+            
+            //1st way....
+          
+            List<Company> result = (List<Company>) query.list();
+         
+        
+        
+            transaction.commit();
+            System.out.println("\n\n Retrieved \n");
+           
+            return result;
+            
+ 
+        } catch (HibernateException e) {
+            System.out.println(e.getMessage());
+            System.out.println("error");
+        }
+    	
+    	return list;
+    	
+    }
+	
+
 }
 
