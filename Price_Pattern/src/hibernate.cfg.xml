@@ -20,5 +20,6 @@
         <mapping resource="com/jwt/hibernate/bean/allcompany.hbm.xml"/>
         <mapping resource="com/jwt/hibernate/bean/naics.hbm.xml"/>
         <mapping resource="com/jwt/hibernate/bean/amNeg.hbm.xml"/>
+        <mapping resource="com/jwt/hibernate/bean/aggregate.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
