@@ -22,21 +22,33 @@ setTimeout(function () {
                     tick: {format: '%Y-%m-%d'}
                 },
                 y: {
-    	        	tick: {
-    	                format: d3.format("$,")
+    	        	//tick: {
+    	              //  format: d3.format("$,")
 //    	                format: function (d) { return "$" + d; }
-    	            },
+    	            //},
     	            label: {
     	                text: 'PRC/PsedoPRC in $',
     	                position: 'outer-middle'
-    	                // inner-top : default
-    	                // inner-middle
-    	                // inner-bottom
-    	                // outer-top
-    	                // outer-middle
-    	                // outer-bottom
     	            }
     	        },
+    	        y2: {
+                    show: true,
+                    label:'Turnover'
+                }
+            },
+            tooltip: {
+                format: {
+                    value: function (value, ratio, id) {
+                        var format = id === 'Turnover' ? d3.format(',') : d3.format('$');
+                        return format(value);
+                    }
+                }
+            },
+            point: {
+                show: function(){
+                	var show = id === 'Turnover' ? false : true;
+                	return show;
+                }
             }
         });
     }, 500);

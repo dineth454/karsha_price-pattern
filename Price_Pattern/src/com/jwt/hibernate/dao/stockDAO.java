@@ -10,7 +10,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 
-
 import com.jwt.hibernate.bean.stock;
 
 public class stockDAO {
@@ -49,6 +48,8 @@ public class stockDAO {
     	return list;
     	
     }
+	
+
 	
 	
 	}
