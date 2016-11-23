@@ -45,11 +45,14 @@
     </div>
   </div>
   
-  
+  <%
+    int naicskey = Integer.parseInt(request.getParameter("naics"));
+%>
 <script>
+var naicskey = "<%=naicskey%>";
 var arr;
 $.ajax({
-	    url:  '/Price_Pattern/getDetails/naicsData/11' ,//this is the url where json format is generate for graph visualization 
+	    url:  '/Price_Pattern/getDetails/naicsData/'+naicskey , //this is the url where json format is generate for graph visualization 
 	    type: "GET",
 	    dataType: 'html',
 	    async: false,
@@ -107,7 +110,7 @@ var chart = c3.generate({
             }
         },
         y: {
-        	 show: true,
+        	 show: false,
             label: 'Permno',
             tick: {
 	      values: [1, 2, 3, 4,5,6]
@@ -115,14 +118,15 @@ var chart = c3.generate({
         }
     },
 zoom: {
-  enabled: true
+  enabled: true,
+  rescale: true
 },
 subchart: {
   show: true
 },
 size:{
 	 width:1200,
-	 height:400
+	 height: 800
 },
 grid: {
         y: {

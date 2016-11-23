@@ -69,17 +69,17 @@ public class naicsData {
 		for(int z=0;z<permList.size();z++){
 			int permno=permList.get(z).getPERMNO();
 			JSONObject jsonObject1 = new JSONObject();
-			jsonObject1.put("value",minv*(z+1)+2*z);
+			jsonObject1.put("value",(minv*(z+1)+2*z)-0.5);
 			jsonObject1.put("text","Minima/"+permno);
 			lines.put(jsonObject1);
 			
 			JSONObject jsonObject2 = new JSONObject();
-			jsonObject2.put("value",amv*(z+1)+z);
-			jsonObject2.put("text","AmNeg/"+permno);
+			jsonObject2.put("value",(amv*(z+1)+z)-0.5);
+			jsonObject2.put("text","AmNeg");
 			lines.put(jsonObject2);
 			
 			JSONObject jsonObject3 = new JSONObject();
-			jsonObject3.put("value",mv*(z+1));
+			jsonObject3.put("value",mv*(z+1)-0.5);
 			jsonObject3.put("text","Maxima/"+permno);
 			lines.put(jsonObject3);
 			/*
