@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.jwt.hibernate.bean;
 
 public class Aggregate {
@@ -27,8 +24,5 @@ public class Aggregate {
 	public void setLOSS(double lOSS) {
 		LOSS = lOSS;
 	}
-	
-
-
 
 }

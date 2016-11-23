@@ -28,13 +28,17 @@ public class aggregateController {
 		
 		for(Aggregate Aggregate : list)
         {
+			
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("date",Aggregate.getDATE());
-			jsonObject.put("gain",Aggregate.getGAIN());
-			jsonObject.put("loss",Aggregate.getLOSS());
+			jsonObject.put("peak_gain",Aggregate.getGAIN());
+			jsonObject.put("peak_loss",Aggregate.getLOSS());
 			jsonArray.put(jsonObject);
 			//jsonObject.put(companydetails.getPRC());
         }	
+		
+		
+		
 		
 		return Response.status(200).entity(jsonArray.toString()).build();
 		
