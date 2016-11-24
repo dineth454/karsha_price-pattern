@@ -31,8 +31,8 @@ public class aggregateController {
 			
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("date",Aggregate.getDATE());
-			jsonObject.put("peak_gain",Aggregate.getGAIN()/1000000);
-			jsonObject.put("peak_loss",Aggregate.getLOSS()/1000000);
+			jsonObject.put("peak_gain",Aggregate.getGAIN());
+			jsonObject.put("peak_loss",Aggregate.getLOSS());
 			jsonArray.put(jsonObject);
 			//jsonObject.put(companydetails.getPRC());
         }	

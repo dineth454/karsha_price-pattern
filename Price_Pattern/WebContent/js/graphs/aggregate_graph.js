@@ -36,15 +36,18 @@ function daily_aggrigation() {
 
 			y : {
 				label : {
-					text : 'Gain / Loss $M',
+					text : 'Gain / Loss $',
 					position : 'outer-top'
-				}				
+				},
+				tick: {
+	                format: d3.format("$s")
+	            }
 			}
 		},
 		tooltip : {
 			format : {
 				value : function(value, ratio, id) {
-					var format = id === '' ? d3.format(',') : d3.format('$.4f');
+					var format = id === '' ? d3.format(',') : d3.format('$s');
 					return format(value);
 				}
 			}
