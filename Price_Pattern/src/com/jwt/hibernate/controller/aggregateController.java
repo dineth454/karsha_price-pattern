@@ -37,11 +37,6 @@ public class aggregateController {
 			//jsonObject.put(companydetails.getPRC());
         }	
 		
-		
-		
-		
-		return Response.status(200).entity(jsonArray.toString()).build();
-		
+		return Response.status(200).entity(jsonArray.toString()).build();	
 	}
-
 }
