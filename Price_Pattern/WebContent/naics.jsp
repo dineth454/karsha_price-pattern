@@ -66,7 +66,7 @@
 <div class="container">
   <h2>Equity Price Features comparison</h2>
   <div class="list-group">
-	  <a href="#" class="list-group-item active"><b>NAICS Details</b><span class="badge">No of Companies</span></a>
+	  <a href="" class="list-group-item active"><b>NAICS Details</b><span class="badge">No of Companies</span></a>
 
 			<%@ page import = "java.sql.*" %>
 			<% Class.forName("com.mysql.jdbc.Driver"); %>
@@ -90,7 +90,7 @@
 							count = count + 1;
 						}%>
 						
-						<a href="#" class="list-group-item list-group-item-action"><%= rset.getString(1) %> | <%= rset.getString(2) %><span class="badge"><%= count %></span></a>
+						<a href="naicsGraph.jsp?naics=<%= rset.getString(1)%>" class="list-group-item list-group-item-action"><%= rset.getString(1) %> | <%= rset.getString(2) %><span class="badge"><%= count %></span></a>
 					<%}
 				}catch(SQLException e){
 					System.out.println("errrrror" + e);
