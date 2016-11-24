@@ -80,7 +80,7 @@ var chart = c3.generate({
             }
         },
         y: {
-        	 show: true,
+        	 show: false,
             label: 'Permno',
             tick: {
 	      values: [0,1, 2, 3]
@@ -92,18 +92,26 @@ zoom: {
   rescale: true
 },
 subchart: {
-  show: true
+  show: true,
+  size: {
+	    height: 30
+	  }
 },
 size:{
 	 width:1000,
-	 height: 350
+	 height: 200
 },
+tooltip: {
+	   show: 'dataToHide'
+	},
+	
+	
 grid: {
         y: {
             lines: [
-					{value: 1.0, text: 'Minima'},
-					{value: 2.0, text: 'AmNeg'},
-					{value: 3.0, text: 'Maxima'}
+					{value: 0.8, text: 'Minima'},
+					{value: 1.8, text: 'AmNeg'},
+					{value: 2.8, text: 'Maxima'}
                     ]
 
         }
