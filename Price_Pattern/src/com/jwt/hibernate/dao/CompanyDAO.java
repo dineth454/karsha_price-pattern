@@ -22,21 +22,24 @@ import com.jwt.hibernate.bean.companydetails;
 
 
 public class CompanyDAO {
+	
+	   // 1. configuring hibernate
+    Configuration configuration = new Configuration().configure();
+
+    // 2. create sessionfactory
+    SessionFactory sessionFactory = configuration.buildSessionFactory();
+
+    // 3. Get Session object
+    Session session = sessionFactory.openSession();
+
+    // 4. Starting Transaction
+    Transaction transaction = session.beginTransaction();
+	
 	public List<companydetails> getDetails(int permno){
 		List<companydetails> list = null;
 
     	try {
-            // 1. configuring hibernate
-            Configuration configuration = new Configuration().configure();
- 
-            // 2. create sessionfactory
-            SessionFactory sessionFactory = configuration.buildSessionFactory();
- 
-            // 3. Get Session object
-            Session session = sessionFactory.openSession();
- 
-            // 4. Starting Transaction
-            Transaction transaction = session.beginTransaction();
+         
             Query<?> query = session.createQuery("from companydetails where PERMNO=' "+permno+" ' ");
             
             //1st way....
@@ -85,17 +88,7 @@ public class CompanyDAO {
 		List<Company> list = null;
 
     	try {
-            // 1. configuring hibernate
-            Configuration configuration = new Configuration().configure();
- 
-            // 2. create sessionfactory
-            SessionFactory sessionFactory = configuration.buildSessionFactory();
- 
-            // 3. Get Session object
-            Session session = sessionFactory.openSession();
- 
-            // 4. Starting Transaction
-            Transaction transaction = session.beginTransaction();
+          
             Query<?> query = session.createQuery(" from Company  where NAICS like '"+naics+"%' group by PERMNO");
             
             //1st way....

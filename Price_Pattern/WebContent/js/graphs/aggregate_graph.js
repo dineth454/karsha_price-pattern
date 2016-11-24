@@ -1,6 +1,3 @@
-/**
- * 
- */
 function daily_aggrigation() {
 
 	var chart = c3.generate({

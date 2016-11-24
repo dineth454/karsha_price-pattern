@@ -47,7 +47,7 @@ public class amNegDAO {
 
             
             transaction.commit(); 
-            System.out.println("\n\n Retrieved \n");
+            System.out.println("\n\n Retrieved Amneg\n");
             return amNegCollection;
             
  
