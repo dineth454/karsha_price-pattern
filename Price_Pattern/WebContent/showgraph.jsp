@@ -33,6 +33,7 @@
   <script src="js/predict.js"></script> 
   
   <link href="css/shwgrph.css" rel="stylesheet" type="text/css">
+  
 </head>
 <style>
 #circle {
@@ -166,10 +167,6 @@ position: absolute;
  					</div>
 			 </div>
 	</div>
-	
-	<div id="loading" style="display:none;">
-  <img id="loading-image" src="img/ajax-loader.gif" alt="Loading..." />
-</div>
 	<div class="container pre-scrollable">	
 	
  <div class="row" id="parent" style="display:none;">
