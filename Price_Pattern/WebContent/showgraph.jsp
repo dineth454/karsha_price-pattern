@@ -162,15 +162,12 @@ position: absolute;
 							   <div  class="col-md-3"><div  id="circle" style="background-color: #ffccff;"><span class="badge">MaxToMmin</span><span id="p3" class="badge" style="left:190px;"></span></div></div>
 							   <div class="col-md-3"><div  id="circle" style="background-color: #ffcccc;"><span class="badge">MaxToMin</span><span id="p4" class="badge" style="left:190px;"></span></div></div>
 							  </div>
-							</div> 	
- 					
+							</div> 			
  					</div>
- 
- 
 			 </div>
 	</div>
 	
-	 <div id="loading" style="display:none;">
+	<div id="loading" style="display:none;">
   <img id="loading-image" src="img/ajax-loader.gif" alt="Loading..." />
 </div>
 	<div class="container pre-scrollable">	
