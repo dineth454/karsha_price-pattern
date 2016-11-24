@@ -12,19 +12,23 @@ import org.hibernate.query.Query;
 
 import com.jwt.hibernate.bean.maxminDetails;
 
-public class maxminDAO {
-				
-			    
+public  class maxminDAO {
+	
+	
+	
+	    
+	
+	
 	public List<maxminDetails> getMaximaSet(int permno){
 		List<maxminDetails> list = null;
 		
-    	try {
-    		Configuration configuration = new Configuration().configure();
-		    SessionFactory sessionFactory = configuration.buildSessionFactory();
-		    Session session = sessionFactory.openSession();
-		    Transaction transaction = session.beginTransaction();
-            
+    	
+            try{
  
+            	Configuration configuration = new Configuration().configure();
+        	    SessionFactory sessionFactory = configuration.buildSessionFactory();
+        	    Session session = sessionFactory.openSession();
+        	    Transaction transaction = session.beginTransaction();
             String Max="max";
             Query<?> query = session.createQuery("from maxminDetails where META_PERMNO=' "+permno+" ' and EXTREMATYPE = '"+Max+"'   ");
          
@@ -38,11 +42,11 @@ public class maxminDAO {
        
             
             transaction.commit();
-            System.out.println("\n\n Retrieved \n");
+            System.out.println("\n\n Retrieved Maxima\n");
             return result;
             
  
-        } catch (HibernateException e) {
+            }catch (HibernateException e) {
             System.out.println(e.getMessage());
             System.out.println("error");
         }
@@ -57,11 +61,11 @@ public class maxminDAO {
 		List<maxminDetails> list = null;
 		
     	try {
-           
     		Configuration configuration = new Configuration().configure();
-		    SessionFactory sessionFactory = configuration.buildSessionFactory();
-		    Session session = sessionFactory.openSession();
-		    Transaction transaction = session.beginTransaction();
+    	    SessionFactory sessionFactory = configuration.buildSessionFactory();
+    	    Session session = sessionFactory.openSession();
+    	    Transaction transaction = session.beginTransaction();
+    		
  
             String Min="min";
             Query<?> query = session.createQuery("from maxminDetails where META_PERMNO=' "+permno+" ' and EXTREMATYPE = '"+Min+"'   ");
@@ -76,7 +80,7 @@ public class maxminDAO {
        
             
             transaction.commit();
-            System.out.println("\n\n Retrieved \n");
+            System.out.println("\n\n RetrievedMinima \n");
             return result;
             
  
