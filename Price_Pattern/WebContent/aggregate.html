@@ -18,28 +18,16 @@
 <link href="css/c3.css" rel="stylesheet" type="text/css">
 <link href="css/dashboard.css" rel="stylesheet">
 
+<!-- Green circle until load the graph -->
+<link href="css/themes/green/pace-theme-corner-indicator.css" rel="stylesheet" />
+<script src="js/pace.js"></script>
+
 <meta charset='utf-8'>
 <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
 <meta content='D3 based reusable chart library' name='description'>
 <meta content='c3js.org' name='author'>
 <meta content='width=device-width' name='viewport'>
 <title>aggregate</title>
-<script>
-	(function(i, s, o, g, r, a, m) {
-		i['GoogleAnalyticsObject'] = r;
-		i[r] = i[r] || function() {
-			(i[r].q = i[r].q || []).push(arguments)
-		}, i[r].l = 1 * new Date();
-		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-		a.async = 1;
-		a.src = g;
-		m.parentNode.insertBefore(a, m)
-	})(window, document, 'script', '//www.google-analytics.com/analytics.js',
-			'ga');
-	ga('create', 'UA-42896059-3', 'c3js.org');
-	ga('send', 'pageview');
-</script>
-
 <style type="text/css">
 .logo {
 	width: 250px;
@@ -79,13 +67,12 @@
 		<div class="subnavbar-inner">
 			<div class="container">
 				<ul class="mainnav">
-					<li class="active"><a href="index.html"><i
-							class="icon-home"></i><span>Home</span> </a></li>
+					<li><a href="index.html"><i class="icon-home"></i><span>Home</span> </a></li>
 					<li><a href="search.html"><i class="icon-dashboard"></i><span>Search</span></a></li>
+					<li><a href="naics.jsp"><i class="icon-list-alt"></i><span>Sectors</span> </a></li>
+					<li class="active"><a href="aggregate.html"><i class="icon-bar-chart"></i><span>Daily Aggregate</span> </a></li>
 					<li><a href="help.html"><i class="icon-user"></i><span>Details</span></a></li>
 					<li><a href="#"><i class="icon-cogs  "></i><span>About</span></a></li>
-					<li><a href="aggregate.html"><i class="icon-user"></i><span>Daily
-								Aggregate</span> </a></li>
 				</ul>
 			</div>
 		</div>
@@ -120,7 +107,7 @@
 
 
 
-	<!-- /extra -->
+	
 	<div class="footer">
 		<div class="footer-inner">
 			<div class="container">

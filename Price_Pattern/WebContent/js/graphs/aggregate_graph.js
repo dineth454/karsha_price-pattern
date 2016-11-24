@@ -36,7 +36,7 @@ function daily_aggrigation() {
 
 			y : {
 				label : {
-					text : 'Gain / Loss $',
+					text : 'Gain / Loss $M',
 					position : 'outer-top'
 				}				
 			}
