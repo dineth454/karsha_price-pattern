@@ -11,6 +11,7 @@
 //function doThis () {    
  var c;
  var arr;
+ var minarr;
  $.ajax({
 	    url:  '/Price_Pattern/getDetails/minimaLogic/'+ permno,
 	    type: "GET",
@@ -24,6 +25,7 @@
  
 
 arr = JSON.parse( arr); // Do not need to pass to a another array; 
+minarr=arr;
 document.getElementById("count1").innerHTML = "Minima Count  "; 
 document.getElementById("badges1").innerHTML = arr.length;
 if(arr.length>0){

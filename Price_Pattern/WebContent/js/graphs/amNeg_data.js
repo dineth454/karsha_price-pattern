@@ -8,6 +8,7 @@
 //function doThisn () {    
  var c;
  var arr;
+ var amNegarr;
  $.ajax({
 	    url:  '/Price_Pattern/getDetails/amNegLogic/'+ permno, //this is the url where json format is generate for graph visualization 
 	    type: "GET",
@@ -21,6 +22,7 @@
  
 
 arr = JSON.parse( arr); // Do not need to pass to a another array; 
+amNegarr=arr;
 
 document.getElementById("count2").innerHTML = "AmNeg  Count  "; 
 document.getElementById("badges2").innerHTML = arr.length;

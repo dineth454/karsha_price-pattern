@@ -6,7 +6,7 @@ public class AmNeg {
 	private String dateMax;
 	private String dateMin;
 	private int pattern;
-	//fakelkjl
+
 	public int getId() {
 		return id;
 	}
