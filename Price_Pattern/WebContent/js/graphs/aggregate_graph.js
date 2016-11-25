@@ -38,13 +38,20 @@ function daily_aggrigation() {
 				label : {
 					text : 'Gain / Loss $',
 					position : 'outer-top'
-				}				
+				},
+				tick: {
+					values: [-990000000,-900000000,-800000000,-700000000,-600000000,-500000000,
+					         -400000000,-300000000,-200000000,-100000000,0,
+					         100000000,200000000,300000000,400000000,500000000,600000000,700000000,
+					         800000000, 900000000,990000000],
+	                format: d3.format("$s")
+	            }
 			}
 		},
 		tooltip : {
 			format : {
 				value : function(value, ratio, id) {
-					var format = id === '' ? d3.format(',') : d3.format('$.4f');
+					var format = id === '' ? d3.format(',') : d3.format('$s');
 					return format(value);
 				}
 			}
