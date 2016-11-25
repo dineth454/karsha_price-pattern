@@ -68,10 +68,22 @@
   <div class="list-group">
 	  <a href="" class="list-group-item active"><b>NAICS Details</b><span class="badge">No of Companies</span></a>
 
+			<%@ page import = "java.io.FileInputStream" %>
+			<%@ page import = "java.io.InputStream" %>
+			<%@ page import = "java.io.IOException" %>
+			<%@ page import = "java.util.Properties" %>
 			<%@ page import = "java.sql.*" %>
-			<% Class.forName("com.mysql.jdbc.Driver"); %>
-			<%
-				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/karshacep", "root", "");
+			<% 
+			Properties prop = new Properties();
+			InputStream input = null;
+
+			try {
+				input = getClass().getClassLoader().getResourceAsStream("dbconfig.properties");
+				// load a properties file
+				prop.load(input);
+				
+				Class.forName(prop.getProperty("dbdriver"));
+				Connection conn = DriverManager.getConnection(prop.getProperty("database"), prop.getProperty("dbuser"), prop.getProperty("dbpassword"));
 				Statement stmt = conn.createStatement();
 				Statement stmt2 = conn.createStatement();
 
@@ -95,7 +107,24 @@
 				}catch(SQLException e){
 					System.out.println("errrrror" + e);
 				}
-			%>
+
+				// get the property value and print it out
+				System.out.println(prop.getProperty("database"));
+				System.out.println(prop.getProperty("dbuser"));
+				System.out.println(prop.getProperty("dbpassword"));
+
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			} finally {
+				if (input != null) {
+					try {
+						input.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		%>
   </div>
 </div>
 
