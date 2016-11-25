@@ -39,7 +39,7 @@ setTimeout(function () {
             tooltip: {
                 format: {
                     value: function (value, ratio, id) {
-                        var format = id === 'Turnover' ? d3.format(',') : d3.format('$');
+                        var format = id === 'Turnover' ? d3.format(',.4f') : d3.format('$.4f');
                         return format(value);
                     }
                 }

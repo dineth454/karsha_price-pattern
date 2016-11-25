@@ -15,11 +15,11 @@
   <link href="css/style.css" rel="stylesheet">
   <link href="css/dashboard.css" rel="stylesheet">
   
-   <script src="js/jquery-2.1.4.min.js"></script> 
+  <script src="js/jquery-2.1.4.min.js"></script> 
   <script src="js/bootstrap.min.js"></script>
    
 
- <script src="js/pace.js"></script>
+  <script src="js/pace.js"></script>
   <!-- Load c3.css -->
   <link href="css/c3.css" rel="stylesheet" type="text/css">
   
@@ -27,7 +27,7 @@
   <script src="js/d3.min.js" charset="utf-8"></script>
   <script src="js/c3.js"></script>
 
-    <script src="js/jquery-2.1.4.min.js"></script> 
+  <script src="js/jquery-2.1.4.min.js"></script> 
     
 </head>
 
