@@ -23,6 +23,7 @@
    <script src="js/jquery-2.1.4.min.js"></script> 
   <script src="js/bootstrap.min.js"></script>
    <script src="js/predict.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
  <script src="js/pace.js"></script>
   <!-- Load c3.css -->
@@ -132,6 +133,17 @@ position: absolute;
 			 
 	 </div>
  </div>
+ 
+<!-- Start of show Matrix Graph -->
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+		<div id="matrix" align="center"></div>
+</div>
+</div>
+</div>
+
+<!-- End Of Matrix Graph -->
 
  <div class="container" >
  <div class="row">
@@ -207,6 +219,7 @@ position: absolute;
     <script src="js/graphs/maxima_data.js"></script>
    <script src="js/graphs/minima_data.js"></script>
    <script src="js/graphs/amNeg_data.js"></script>
+   <script src="js/graphs/matrix_data.js"></script>
     <script>
 $(document).ready(function(){
     $("#maxima,#minima,#amNeg").click(function(){
