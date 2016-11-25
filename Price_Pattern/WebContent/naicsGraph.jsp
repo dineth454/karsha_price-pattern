@@ -64,7 +64,7 @@ $.ajax({
 
 
 arr = JSON.parse( arr); // Do not need to pass to a another array; 
-document.write(arr.length);
+//document.write(arr.length);
 
 </script>
  
