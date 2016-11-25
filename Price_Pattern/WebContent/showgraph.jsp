@@ -138,7 +138,11 @@ position: absolute;
 <div class="container">
 <div class="row">
 <div class="col-md-12">
+		<div class="panel panel-default">
+		 <div class="panel-body">
 		<div id="matrix" align="center"></div>
+		</div>
+		</div>
 </div>
 </div>
 </div>
