@@ -16,7 +16,7 @@ import com.jwt.hibernate.bean.mxmn;
 
 public class mxmnDAO {
 	
-	   // 1. configuring hibernate
+	
     Configuration configuration = new Configuration().configure();
 
     // 2. create sessionfactory
