@@ -64,7 +64,6 @@ $.ajax({
 
 
 arr = JSON.parse( arr); // Do not need to pass to a another array; 
-document.write(arr.length);
 
 </script>
  
@@ -83,7 +82,7 @@ var chart = c3.generate({
     data: {
         xs: {
             Maxima: 'Dates_Maxima',
-            AmNeg: 'Dates_AmNeg',
+          //  AmNeg: 'Dates_AmNeg',
            Minima : 'Dates_Minima'
         },
         
@@ -94,8 +93,8 @@ var chart = c3.generate({
 			arr[1],
 			arr[2],
 			arr[3],
-			arr[4],
-			arr[5]
+			
+			
 			
 			
         ],
@@ -130,7 +129,7 @@ size:{
 },
 grid: {
         y: {
-            lines: arr[6]
+            lines: arr[arr.length-1]
         }
     }
 });
