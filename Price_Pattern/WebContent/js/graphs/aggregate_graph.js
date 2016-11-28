@@ -26,7 +26,7 @@ function daily_aggrigation() {
 			x : {
 				type : 'timeseries',
 				label : {
-					text : 'dates',
+					text : 'date',
 					position : 'outer-end'
 				},
 				tick : {

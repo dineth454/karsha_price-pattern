@@ -14,12 +14,12 @@
   <link href="css/font-awesome.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <link href="css/dashboard.css" rel="stylesheet">
-  
-  <script src="js/jquery-2.1.4.min.js"></script> 
+   <link href="css/themes/green/pace-theme-corner-indicator.css" rel="stylesheet" />
+   <script src="js/jquery-2.1.4.min.js"></script> 
   <script src="js/bootstrap.min.js"></script>
    
 
-  <script src="js/pace.js"></script>
+ <script src="js/pace.js"></script>
   <!-- Load c3.css -->
   <link href="css/c3.css" rel="stylesheet" type="text/css">
   
@@ -27,11 +27,15 @@
   <script src="js/d3.min.js" charset="utf-8"></script>
   <script src="js/c3.js"></script>
 
-  <script src="js/jquery-2.1.4.min.js"></script> 
+    <script src="js/jquery-2.1.4.min.js"></script> 
+      <link href="css/shwgrph.css" rel="stylesheet" type="text/css">
     
 </head>
 
 <style>
+.g{
+background-color: yellow;
+}
 
 </style>
 <body>
@@ -44,6 +48,19 @@
       </div>
     </div>
   </div>
+  <!-- pagination  -->
+  <div class="container">
+    <div class="row">
+    <!-- pagination in top  -->
+    	<div class="col-md-12">
+    			 <ol class="breadcrumb">
+				  <li><a href="index.html">Home</a></li>
+				  <li><a href="naics.jsp">Sector</a></li>
+				  <li class="active">Visualization</li>
+				</ol>
+    	</div>
+    </div>
+</div>
   
   <%
     int naicskey = Integer.parseInt(request.getParameter("naics"));
@@ -64,26 +81,34 @@ $.ajax({
 
 
 arr = JSON.parse( arr); // Do not need to pass to a another array; 
-document.write(arr.length);
 
 </script>
  
 <div class="container">
 <div class="row">
 <div class="col-md-12">
-<div id="chart"></div>
+<div class="panel panel-default">
+		<div class="panel-heading">
+							    <h3 class="panel-title">Sector Based Maxima , Minima Occurance </h3>
+							  </div>
+		 <div class="panel-body">
+			<div id="chart"></div>
+		</div>
+</div>
 
 </div>
 
 </div>
 </div>
 <script type="text/javascript">
+
+if(arr.length>0){
 var chart = c3.generate({
 	bindto: document.getElementById('chart'),
     data: {
         xs: {
             Maxima: 'Dates_Maxima',
-            AmNeg: 'Dates_AmNeg',
+          //  AmNeg: 'Dates_AmNeg',
            Minima : 'Dates_Minima'
         },
         
@@ -94,12 +119,15 @@ var chart = c3.generate({
 			arr[1],
 			arr[2],
 			arr[3],
-			arr[4],
-			arr[5]
+			
+			
 			
 			
         ],
         type: 'scatter'
+    },
+    color: {
+        pattern: ['#0066ff', ' #ff3300']
     },
     axis: {
         x: {
@@ -125,15 +153,19 @@ subchart: {
   show: true
 },
 size:{
-	 width:1200,
+	 width:1140,
 	 height: 800
 },
 grid: {
         y: {
-            lines: arr[6]
+            lines: arr[arr.length-1]
         }
     }
 });
+}
+else{
+	alert(" Sector Data is not Found"); //show alert when  data missing..
+}
 
 </script>
 </body>
