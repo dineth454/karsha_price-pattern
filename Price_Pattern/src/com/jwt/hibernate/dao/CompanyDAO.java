@@ -48,6 +48,7 @@ public class CompanyDAO {
           
             
             transaction.commit();
+            session.close();
             System.out.println("\n\n Retrieved \n");
             return result;
             
@@ -98,6 +99,7 @@ public class CompanyDAO {
         
         
             transaction.commit();
+            session.close();
             System.out.println("\n\n Retrieved \n");
            
             return result;

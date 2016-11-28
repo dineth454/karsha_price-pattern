@@ -37,6 +37,7 @@ public class aggregateDAO {
                   
             
             transaction.commit();
+            session.close();
             System.out.println("\n\n Retrieved \n");
             return result;
             

@@ -63,6 +63,7 @@ public class CompanyTreeController {
     		
     		
     		transaction.commit();
+    		session.close();
             System.out.println("\n\n Retrieved \n");
     		return Response.status(200).entity(jsonObject1.toString()).build();
 

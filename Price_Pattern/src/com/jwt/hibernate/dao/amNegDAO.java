@@ -47,6 +47,7 @@ public class amNegDAO {
 
             
             transaction.commit(); 
+            //session.close();
             System.out.println("\n\n Retrieved Amneg\n");
             return amNegCollection;
             
