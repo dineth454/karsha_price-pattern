@@ -13,22 +13,18 @@ import org.hibernate.query.Query;
 import com.jwt.hibernate.bean.maxminDetails;
 
 public  class maxminDAO {
-	
+	Configuration configuration = new Configuration().configure();
+    SessionFactory sessionFactory = configuration.buildSessionFactory();
+    Session session = sessionFactory.openSession();
+    Transaction transaction = session.beginTransaction();
 	
 	
 	    
 	
 	
 	public List<maxminDetails> getMaximaSet(int permno){
-		List<maxminDetails> list = null;
-		
-    	
-            try{
- 
-            	Configuration configuration = new Configuration().configure();
-        	    SessionFactory sessionFactory = configuration.buildSessionFactory();
-        	    Session session = sessionFactory.openSession();
-        	    Transaction transaction = session.beginTransaction();
+		List<maxminDetails> list = null;  	
+            try{	
             String Max="max";
             Query<?> query = session.createQuery("from maxminDetails where META_PERMNO=' "+permno+" ' and EXTREMATYPE = '"+Max+"'   ");
          
