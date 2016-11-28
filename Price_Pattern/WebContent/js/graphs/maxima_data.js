@@ -26,6 +26,7 @@
  
 
 arr = JSON.parse( arr); // Do not need to pass to a another array; 
+
 maxarr=arr;
 
 document.getElementById("count").innerHTML = "Maxima Count  ";
@@ -110,7 +111,7 @@ var chart=c3.generate({
 }
 else{
 	
-	alert(" No Data Found");
+	alert(" Maxima  Data is not Found");
 }
 //$('#maxima').off('click',doThism);
 //$('#loading').fadeOut(500);
