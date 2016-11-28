@@ -95,7 +95,7 @@ public class naicsData {
 			int permno=pl.getJSONObject(k).getInt("PERMNO");
 			JSONObject jsonObject1 = new JSONObject();
 			jsonObject1.put("value",(minv*(k+1)+2*k)-0.5);
-			jsonObject1.put("text","Minima/"+permno);
+			jsonObject1.put("text","Minima");
 			lines.put(jsonObject1);
 			
 			JSONObject jsonObject3 = new JSONObject();

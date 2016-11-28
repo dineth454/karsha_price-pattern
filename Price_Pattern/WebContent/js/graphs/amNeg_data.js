@@ -114,7 +114,7 @@ var chart=c3.generate({
 }
 else{
 	
-	alert(" No Data Found"); //show alert when  data missing..
+	alert(" Amneg Data is not Found"); //show alert when  data missing..
 }
 //$('#amNeg').off('click',doThisn);
  //}
