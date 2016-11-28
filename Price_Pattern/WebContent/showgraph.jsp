@@ -5,25 +5,23 @@
 <head>
 
   <link href="css/themes/green/pace-theme-corner-indicator.css" rel="stylesheet" />
-
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
   <title>Stock Price Graph</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
-          rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
   <link href="css/font-awesome.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <link href="css/dashboard.css" rel="stylesheet">
   
-   <script src="js/jquery-2.1.4.min.js"></script> 
+  <script src="js/jquery-2.1.4.min.js"></script> 
   <script src="js/bootstrap.min.js"></script>
+
    <script src="js/predict.js"></script> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
  <script src="js/pace.js"></script>
   <!-- Load c3.css -->
@@ -33,8 +31,8 @@
   <script src="js/d3.min.js" charset="utf-8"></script>
   <script src="js/c3.js"></script>
 
-    <script src="js/jquery-2.1.4.min.js"></script> 
-    <script src="js/predict.js"></script> 
+  <script src="js/jquery-2.1.4.min.js"></script> 
+  <script src="js/predict.js"></script> 
   
   <link href="css/shwgrph.css" rel="stylesheet" type="text/css">
   
@@ -88,9 +86,10 @@ position: absolute;
 
 <!-- end Of container -->	
 </div>
-</div>		
-	<!-- start 02container  -->	   
- <div class="container ">
+</div>
+		
+<!-- start 02container  -->	   
+<div class="container ">
 <div class="row">
     	
     		<div class="col-md-6">
@@ -177,15 +176,10 @@ position: absolute;
 							   <div  class="col-md-3"><div  id="circle" style="background-color: #ffccff;"><span class="badge">MaxToMmin</span><span id="p3" class="badge" style="left:190px;"></span></div></div>
 							   <div class="col-md-3"><div  id="circle" style="background-color: #ffcccc;"><span class="badge">MaxToMin</span><span id="p4" class="badge" style="left:190px;"></span></div></div>
 							  </div>
-							</div> 	
- 					
+							</div> 			
  					</div>
- 
- 
 			 </div>
 	</div>
-	
-
 	<div class="container pre-scrollable">	
 	
  <div class="row" id="parent" style="display:none;">
