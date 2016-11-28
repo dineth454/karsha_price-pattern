@@ -107,6 +107,8 @@
 					<%}
 				}catch(SQLException e){
 					System.out.println("errrrror" + e);
+				}finally{
+					conn.close();
 				}
 
 				// get the property value and print it out
