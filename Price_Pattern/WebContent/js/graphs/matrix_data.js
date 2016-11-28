@@ -91,12 +91,7 @@ zoom: {
   enabled: true,
   rescale: true
 },
-subchart: {
-  show: true,
-  size: {
-	    height: 30
-	  }
-},
+
 size:{
 	 width:1000,
 	 height: 200
