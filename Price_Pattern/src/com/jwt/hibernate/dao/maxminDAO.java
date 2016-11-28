@@ -38,6 +38,7 @@ public  class maxminDAO {
        
             
             transaction.commit();
+          //  session.close();
             System.out.println("\n\n Retrieved Maxima\n");
             return result;
             
@@ -76,6 +77,7 @@ public  class maxminDAO {
        
             
             transaction.commit();
+            //session.close();
             System.out.println("\n\n RetrievedMinima \n");
             return result;
             
