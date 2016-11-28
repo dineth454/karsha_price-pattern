@@ -101,6 +101,39 @@ arr = JSON.parse( arr); // Do not need to pass to a another array;
 </div>
 </div>
 <script type="text/javascript">
+function tooltip_contents(d, defaultTitleFormat, defaultValueFormat, color) {
+    var $$ = this, config = $$.config, CLASS = $$.CLASS,
+        titleFormat = config.tooltip_format_title || defaultTitleFormat,
+        nameFormat = config.tooltip_format_name || function (name) { return name; },
+        valueFormat = config.tooltip_format_value || defaultValueFormat,
+        text, i, title, value, name, bgcolor;
+    
+    // You can access all of data like this:
+    console.log($$.data.targets);
+    
+    for (i = 0; i < d.length; i++) {
+        if (! (d[i] && (d[i].value || d[i].value === 0))) { continue; }
+
+        // ADD
+        if (d[i].name === 'data2') { continue; }
+        
+        if (! text) {
+            //title = 'you can add your tooltip title here'
+            title =''
+            text = "<table class='" + CLASS.tooltip + "'>" + (title || title === 0 ? "<tr><th colspan='2'>" + title + "</th></tr>" : "");
+        }
+
+        name = nameFormat(d[i].name);
+        value = valueFormat(d[i].value, d[i].ratio, d[i].id, d[i].index);
+        bgcolor = $$.levelColor ? $$.levelColor(d[i].value) : color(d[i].id);
+
+        text += "<tr class='" + CLASS.tooltipName + "-" + d[i].id + "'>";
+        text += "<td class='name'><span style='background-color:" + bgcolor + "'></span>" + name + "</td>";
+        text += "<td class='value'></td>";
+        text += "</tr>";
+    }
+    return text + "</table>";   
+}
 
 if(arr.length>0){
 var chart = c3.generate({
@@ -125,6 +158,9 @@ var chart = c3.generate({
 			
         ],
         type: 'scatter'
+    },
+    tooltip: {
+        contents: tooltip_contents
     },
     color: {
         pattern: ['#0066ff', ' #ff3300']
