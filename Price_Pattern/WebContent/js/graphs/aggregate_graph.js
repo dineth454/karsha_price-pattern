@@ -50,10 +50,13 @@ function daily_aggrigation() {
 		},
 		tooltip : {
 			format : {
-				value : function(value, ratio, id) {
-					var format = id === '' ? d3.format(',') : d3.format('$s');
+				/*value : function(value, ratio, id) {
+					var format = id === '' ? d3.format(',') : d3.format('$.6s');
 					return format(value);
-				}
+				}*/
+				value: function(value) {
+	                return d3.format("$,.2f")(value)
+	            }
 			}
 		},
 	});
