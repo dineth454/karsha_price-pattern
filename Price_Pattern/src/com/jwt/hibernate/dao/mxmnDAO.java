@@ -42,7 +42,7 @@ public class mxmnDAO {
         
         
             transaction.commit();
-           
+            session.close();
            
             System.out.println("\n\n Retrievedddd \n");
             return result;
@@ -72,7 +72,7 @@ public class mxmnDAO {
         
             transaction.commit();
            
-           
+            session.close();
             System.out.println("\n\n Retrievedddd \n");
             return result;
             
@@ -103,7 +103,7 @@ public class mxmnDAO {
         
             transaction.commit();
            
-           
+            session.close();
             System.out.println("\n\n Retrieve count \n");
             return result;
             

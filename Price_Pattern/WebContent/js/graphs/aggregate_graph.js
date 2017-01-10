@@ -51,6 +51,7 @@ function daily_aggrigation() {
 		        	   return value;
 		           }
 			}
+
 		},
 	});
 }

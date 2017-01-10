@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Karsha | Help</title>
+<title>Karsha - help</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -64,6 +64,130 @@
 	<!-- /main -->
 	<div class="container">
 		<div class="row">
+
+			<div class="col-md-12">
+				<div class="jumbotron">
+					<h2>Data Source and PseudoPrice</h2>
+
+					<h5>
+						<b><u>PseudoPrice</u></b>
+					</h5>
+
+					<ul style="list-style-type: none">
+						<li>PseudoPrice computation : <strong>Given a return
+								value <i>RET<sub>d</sub></i> on some day d (including dividends
+								and splits) and an initial price <i>P<sub>d-1</sub></i> a pseudo
+								price can be computed as <i>P<sub>d</sub> = (1+RET<sub>d</sub>)
+									P<sub>d-1</sub></i> . We use <i>P<sub>0</sub> = Initial price
+									on January 1 2004
+							</i> to initialize the computation.
+						</strong></li>
+					</ul>
+					</br>
+					<h5>
+						<b><u>Data Source</u></b>
+					</h5>
+
+					<ul style="list-style-type: none">
+						<li>Data Source : <strong>WRDS S&P 500</strong></li>
+						<li>Interval : <strong>January 1 2004 to December 31
+								2015</strong></li>
+						<li>RET : <strong><a href="#" data-toggle="modal"
+								data-target="#myModal">Holding Period Return</a><strong></li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div class="col-md-12">
+				<div class="jumbotron">
+					<h2>Features: Locally Significant Minima (LMn), Maxima (LMx)
+						and Approximate Maximal Negative Slope (AMNeg)</h2>
+					<br>
+					<h5>
+						<b><u>For Maxima</u></b>
+					</h5>
+					<p style="font-size: 14px;">Pink area of the graphs are used to
+						represent maxima area. It means that area consists a maximum
+						point. Boundary values of the range are less than 1% (This value
+						can be changed according to requirements.) of its maximum value.
+						User can check that values moving mouse point on the graph.</p>
+					<img style="margin-bottom: 20px;" class="center-block"
+						src="img/max1.JPG" />
+
+
+
+					<h5>
+						<b><u>For Minima</u></b>
+					</h5>
+					<p style="font-size: 14px;">Same as maxima graphs. Pink area of
+						the graphs are used to represent minima area. It means that area
+						consists a minimum point. Boundary values of the range are greater
+						than 1% (This value can be changed according to requirements.) of
+						its minimum value.</p>
+					<img style="margin-bottom: 20px;" class="center-block"
+						src="img/min.JPG" />
+
+					<h2>AmNeg Graphs</h2>
+					<p style="font-size: 14px;">amNeg: Is the behaviour(slope) of
+						two consecutive maxima and a minima. (first value must be a
+						Maxima)</p>
+					<p style="font-size: 14px;">Use this table to identify the type
+						of Amaneg patterns.</p>
+					<img width="960" style="margin-bottom: 20px;" class="center-block"
+						src="img/amnegColors.JPG" />
+
+					<p style="font-size: 14px;">Window size of graphs are
+						different. First PRC/PseudoPRC value in the graph shows maximum
+						value of maxima and last PRC/PseudoPRC value in the graph shows
+						minimum value of minima. Users can check that values by moving
+						mouse pointer close to those points. Color dot represent the AmNeg
+						type.</p>
+
+					<img style="margin-bottom: 20px;" class="center-block"
+						src="img/amneg.JPG" />
+
+				</div>
+
+			</div>
+			
+			
+			
+			<div class="col-md-12">
+				<div class="jumbotron">
+					<h2>Daily aggregate graph</h2>
+					<br>
+					<ul style="list-style-type: none">
+						<li>Daily aggregate graph represents, daily aggregation of
+							all the companies for a particular day. It has all the gains and
+							losses of all the companies and all the calculations based on
+							market capitalization (Mcap) of each company.</li>
+						<li><strong><b>Caculation of Gain/Loss:</b></strong> Get the
+							value (Mcap = outstanding stocks * stock price) for a particular
+							day (from all the companies) and <strong><b><i>Substract</i></b></strong>
+							the value from the previous day Mcap.</li>
+						<li><u>This graph represents gains and losses of all the
+								companies as a one unite. (not individually)</u></li>
+					</ul>
+					<br>
+					<h5>
+						<b><u>Data Source</u></b>
+					</h5>
+
+					<ul style="list-style-type: none">
+						<li>Data Source : <strong>WRDS S&P 500</strong></li>
+						<li>Interval : <strong>January 2 2004 to December 31
+								2015</strong></li>
+						<!-- <li>RET : <strong><a href="#" data-toggle="modal"
+								data-target="#myModal">Holding Period Return</a><strong></li> -->
+					</ul>
+					<img width="960" style="margin-bottom: 20px;" class="center-block"
+						src="img/daily_aggregate.PNG" />
+				</div>
+			</div>
+			
+
+
 			<div class="col-md-12">
 				<div class="jumbotron">
 					<h2>Data analyzing method</h2>
@@ -141,38 +265,7 @@
 
 			</div>
 
-			<div class="col-md-12">
-				<div class="jumbotron">
-					<h2>Data Source and PseudoPrice</h2>
 
-					<h5>
-						<b><u>PseudoPrice</u></b>
-					</h5>
-
-					<ul style="list-style-type: none">
-						<li>PseudoPrice computation : <strong>Given a return
-								value <i>RET<sub>d</sub></i> on some day d (including dividends
-								and splits) and an initial price <i>P<sub>d-1</sub></i> a pseudo
-								price can be computed as <i>P<sub>d</sub> = (1+RET<sub>d</sub>)
-									P<sub>d-1</sub></i> . We use <i>P<sub>0</sub> = Initial price
-									on January 1 2004
-							</i> to initialize the computation.
-						</strong></li>
-					</ul>
-					</br>
-					<h5>
-						<b><u>Data Source</u></b>
-					</h5>
-
-					<ul style="list-style-type: none">
-						<li>Data Source : <strong>WRDS S&P 500</strong></li>
-						<li>Interval : <strong>January 1 2004 to 31 December
-								2015</strong></li>
-						<li>RET : <strong><a href="#" data-toggle="modal"
-								data-target="#myModal">Holding Period Return</a><strong></li>
-					</ul>
-				</div>
-			</div>
 
 			<!-- Modal -->
 			<div id="myModal" class="modal fade" role="dialog">
@@ -223,98 +316,6 @@
 
 				</div>
 			</div>
-
-			<div class="col-md-12">
-				<div class="jumbotron">
-					<h2>Maxima and Minima Graphs</h2>
-					<h5>
-						<b><u>For Maxima</u></b>
-					</h5>
-					<p style="font-size: 14px;">Pink area of the graphs are used to
-						represent maxima area. It means that area consists a maximum
-						point. Boundary values of the range are less than 1% (This value
-						can be changed according to requirements.) of its maximum value.
-						User can check that values moving mouse point on the graph.</p>
-					<img style="margin-bottom: 20px;" class="center-block"
-						src="img/max1.JPG" />
-
-
-
-					<h5>
-						<b><u>For Minima</u></b>
-					</h5>
-					<p style="font-size: 14px;">Same as maxima graphs. Pink area of
-						the graphs are used to represent minima area. It means that area
-						consists a minimum point. Boundary values of the range are greater
-						than 1% (This value can be changed according to requirements.) of
-						its minimum value.</p>
-					<img style="margin-bottom: 20px;" class="center-block"
-						src="img/min.JPG" />
-
-					<h2>AmNeg Graphs</h2>
-					<p style="font-size: 14px;">amNeg: Is the behaviour(slope) of
-						two consecutive maxima and a minima. (first value must be a
-						Maxima)</p>
-					<p style="font-size: 14px;">Use this table to identify the
-						type of Amaneg patterns.</p>
-					<img width="960" style="margin-bottom: 20px;" class="center-block"
-						src="img/amnegColors.JPG" />
-
-					<p style="font-size: 14px;">Window size of graphs are
-						different. First PRC/PseudoPRC value in the graph shows maximum
-						value of maxima and last PRC/PseudoPRC value in the graph shows
-						minimum value of minima. Users can check that values by moving
-						mouse pointer close to those points. Color dot represent the AmNeg
-						type.</p>
-
-					<img style="margin-bottom: 20px;" class="center-block"
-						src="img/amneg.JPG" />
-
-				</div>
-
-			</div>
-
-			<div class="col-md-12">
-				<div class="jumbotron">
-					<h2>Daily aggregate graph</h2>
-					<br>
-					<ul style="list-style-type: none">
-						<li>
-							Daily aggregate graph represents, daily aggregation of all the companies for a 
-							particular day. 
-							It has all the gains and losses of all the companies and all the
-							calculations based on market capitalization (Mcap) of each company.
-						</li>
-						<li>
-							<strong><b>Caculation of Gain/Loss:</b></strong> Get the value 
-							(Mcap = outstanding stocks * stock price) for a particular day
-							(from all the companies) and 
-							<strong><b><i>Substract</i></b></strong> the value from the previous day Mcap.
-						</li>
-						<li>
-							<u>This graph represents gains and losses of all the companies as a one unite. 
-							(not individually)</u>
-						</li>
-					</ul>
-					<br>
-					<h5>
-						<b><u>Data Source</u></b>
-					</h5>
-
-					<ul style="list-style-type: none">
-						<li>Data Source : <strong>WRDS S&P 500</strong></li>
-						<li>Interval : <strong>January 2 2004 to 31 December
-								2015</strong></li>
-						<!-- <li>RET : <strong><a href="#" data-toggle="modal"
-								data-target="#myModal">Holding Period Return</a><strong></li> -->
-					</ul>
-					<img width="960" style="margin-bottom: 20px;" class="center-block"
-						src="img/daily_aggregate.PNG" />
-				</div>
-			</div>
-
-
-
 		</div>
 
 
