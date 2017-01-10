@@ -33,6 +33,8 @@ setTimeout(function () {
     	        },
     	        y2: {
                     show: true,
+                    max: 0.1,
+                    min: -0.1,
                     label:'Turnover'
                 }
             },
