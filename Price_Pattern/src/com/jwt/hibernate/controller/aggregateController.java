@@ -30,6 +30,10 @@ public class aggregateController {
 			jsonObject.put("date", Aggregate.getDATE());
 			jsonObject.put("peak_gain", Aggregate.getGAIN());
 			jsonObject.put("peak_loss", Aggregate.getLOSS());
+			jsonObject.put("diff_gain", Aggregate.getDIFF_GAIN());
+			jsonObject.put("diff_loss", Aggregate.getDIFF_LOSS());
+			jsonObject.put("max_count", Aggregate.getMax_count());
+			jsonObject.put("min_count", -1*Aggregate.getMin_count());
 			jsonArray.put(jsonObject);
 			// jsonObject.put(companydetails.getPRC());
 		}

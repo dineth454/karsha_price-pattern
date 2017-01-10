@@ -14,6 +14,10 @@
       </id>
       <property name="GAIN" column="gain" type="double"/>
       <property name="LOSS" column="loss" type="double"/> 
+      <property name="DIFF_GAIN" column="diff_gain" type="double"/> 
+      <property name="DIFF_LOSS" column="diff_loss" type="double"/> 
+      <property name="max_count" column="maxima_count" type="int"/> 
+       <property name="min_count" column="minima_count" type="int"/> 
       
       
    </class>
