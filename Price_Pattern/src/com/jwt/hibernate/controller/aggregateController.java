@@ -16,12 +16,12 @@ import com.jwt.hibernate.dao.aggregateDAO;
 
 @Path("/aggregateController")
 public class aggregateController {
-	@Path("")
+	@Path("{graphDate}")
 	@GET
 	@Produces("application/json")
-	public Response generateJson() {
+	public Response generateJson(@PathParam("graphDate") int graphDate) {
 		aggregateDAO data = new aggregateDAO();
-		List<Aggregate> list = data.getDetails();
+		List<Aggregate> list = data.getDetails(graphDate);
 		// company.genJson(list, request, response);
 		JSONArray jsonArray = new JSONArray();
 

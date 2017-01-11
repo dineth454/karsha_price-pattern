@@ -1,8 +1,9 @@
-function daily_aggrigation() {
-
+function daily_aggrigation(ss) {
+console.log(ss);
 	var chart = c3.generate({
+		 bindto: '#matrix',
 		data : {
-			url : '/Price_Pattern/getDetails/aggregateController/',
+			url : '/Price_Pattern/getDetails/aggregateController/'+ss,
 			mimeType : 'json',
 			x : 'x',
 			type : 'bar',
