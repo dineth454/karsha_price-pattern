@@ -10,6 +10,9 @@ setTimeout(function () {
                 keys: {
                     x: 'Date', // it's possible to specify 'x' when category axis
                     value: ['PRC', 'Pseudo_PRC','Turnover'],
+                },
+                axes: {
+                	Turnover: 'y2'
                 }
             },
             zoom: {
@@ -32,11 +35,9 @@ setTimeout(function () {
     	            }
     	        },
     	        y2: {
-                    show: true,
-                    max: 0.1,
-                    min: -0.1,
-                    label:'Turnover'
-                }
+    	        	show: true,
+    	        	label: 'Turnover'
+    	        }
             },
             tooltip: {
                 format: {
@@ -44,12 +45,6 @@ setTimeout(function () {
                         var format = id === 'Turnover' ? d3.format(',.4f') : d3.format('$.4f');
                         return format(value);
                     }
-                }
-            },
-            point: {
-                show: function(){
-                	var show = id === 'Turnover' ? false : true;
-                	return show;
                 }
             }
         });

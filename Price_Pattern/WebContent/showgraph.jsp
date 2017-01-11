@@ -55,6 +55,10 @@ position: absolute;
 	font-size: 13px;
 }
 
+#chart .c3-circles-Turnover {
+  display: none;
+}
+
 
 
 </style>
